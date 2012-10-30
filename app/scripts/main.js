@@ -11,4 +11,5 @@ window.StacheTrack = {
 
 $(document).ready(function(){
   StacheTrack.init();
+
 });
