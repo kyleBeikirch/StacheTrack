@@ -1,92 +1,90 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html lang="en">
+<!-- Adapted to work with the getUserMedia API using code from http://wesbos.com/html5-video-face-detection-canvas-javascript/ -->
     <head>
-        <meta charset="utf-8"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <title></title>
-        <meta name="description" content=""/>
-        <meta name="viewport" content="width=device-width"/>
-        <link rel="stylesheet" href="styles/main.css"/>
-        <link rel="stylesheet" href="styles/demo.css">
+        <meta charset="utf-8">
+        <title>HTML5 Face Detection - JavaScript getUserMedia API and Groucho Marx glasses!</title>
+        <style>
+body {
+    font-family: sans-serif;
+    font-size: 17px;
+    line-height: 24px;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    text-align: center;
+    background-color: #111;
+}
 
+#info {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    top: 50%;
+    margin-top: -15px;
+}
+
+#output {
+    width: 640px;
+    height: 480px;
+    background: black;
+    -webkit-transform: scale(-1, 1);
+}
+        </style>
     </head>
     <body>
+        <p id="info">Please allow access to your camera!</p>
+        <canvas id="output"></canvas>
+        <script src="scripts/vendor/glasses/ccv.js"></script>
+        <script src="scripts/vendor/glasses/face.js"></script>
+        <script>
 
-<div class="container">
-    <header>
-        <div class="page-header">
-          <h1>getUserMedia.js <small>Cross-browser getUserMedia() shim demo</small></h1>
-        </div>
-    </header>
-    <section>
-    <div class="row">
-      <div class="span12">
-        <div class="row">
-          <div class="span4">
-          <h2>Input</h2>
-            <div id="webcam">
-            </div>
-          </div>
+// requestAnimationFrame shim
+(function() {
+    var i = 0,
+        lastTime = 0,
+        vendors = ['ms', 'moz', 'webkit', 'o'];
+    
+    while (i < vendors.length && !window.requestAnimationFrame) {
+        window.requestAnimationFrame = window[vendors[i] + 'RequestAnimationFrame'];
+        i++;
+    }
+    
+    if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime(),
+                timeToCall = Math.max(0, 1000 / 60 - currTime + lastTime),
+                id = setTimeout(function() { callback(currTime + timeToCall); }, timeToCall);
+            
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+    }
+}());
 
-          <div class="span4">
-          <h2>Output</h2>
-          <canvas id="canvas"  height="240" width="320"></canvas>
-          </div>
-          <div class="span4">       
-        <h2>Face Detection</h2>
-            <canvas id="output"  height="426" width="515"></canvas>
-        </div>
-        </div>
 
-        <div class="row">
-            <p id="errorMessage"></p>
-        </div>
-        <div class="row">
-            <p>Please make sure you are running this demo on a HTTP server :) If your browser supports getUserMedia()/WebRTC and it has been enabled, the native capabilities of your browser will be used for this page. If not, a Flash fallback will be used which will keep the entire demo entirely functional. If for any reason the face detection doesn't detect your face, please try taking another picture with your face positoned more centrally.</p>
-        </div>
-            <div class="row">
-                <div class="span4">&nbsp;</div>
-                <div class="span4"><button class="btn btn-primary btn-large" id="takeSnapshot">1. Take a picture</button>&nbsp;<button class="btn btn-primary btn-large" id="detectFaces">2. Detect faces</button></div>
-                <div class="span4">&nbsp;</div>
-        </div>
-      </div>
-    </div>
-    </section>
-    <footer>This shim &copy; <a href="http://addyosmani.com">Addy Osmani</a> 2012.</footer>
-</div>
 
-        <!--[if IE]><script src="js/excanvas.js"></script><![endif]-->
-        <script type="text/javascript" src="scripts/vendor/glasses/ccv.js"></script>
-        <script type="text/javascript" src="scripts/vendor/glasses/face.js"></script>
-        <script type="text/javascript" src="scripts/vendor/glasses/stackblur.js"></script>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
-
-        <!-- Add your site or application content here -->
-
+        </script>
         <!-- build:js scripts/scripts.js -->
         <script src="scripts/vendor/jquery.min.js"></script>
         <script src="scripts/vendor/lodash.min.js"></script>
         <script src="scripts/vendor/backbone-min.js"></script>
-        <script src="scripts/vendor/getUserMedia.min.js"></script>
         <script src="scripts/main.js"></script>
-        <script src="scripts/webcam.js"></script>
+        <script src="scripts/app.js"></script>
         <script src="scripts/views/application-view.js"></script>
         <script src="scripts/models/application-model.js"></script>
         <script src="scripts/collections/application-collection.js"></script>
         <script src="scripts/routes/application-router.js"></script>
-        <!-- endbuild -->
 
+ 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
-        </script>
+         </script>
+
     </body>
 </html>
