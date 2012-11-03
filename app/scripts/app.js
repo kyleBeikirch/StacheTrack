@@ -68,6 +68,12 @@ var App = {
         for (i = App.comp.length; i--; ) {
             ctx.drawImage(App.glasses, (App.comp[i].x - w / 2) * m, (App.comp[i].y - w / 2) * m, (App.comp[i].width + w) * m, (App.comp[i].height + w) * m);
         }
+    },
+    convertCanvasToImage: function() {
+        var image = new Image();
+        var canvas = App.canvas;
+        image.src = canvas.toDataURL("image/png");
+        return image;
     }
 };
 
