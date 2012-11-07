@@ -6,7 +6,6 @@ var App = {
             setTimeout(function() {
                 App.video.play();
                 App.canvas.style.display = 'inline';
-                App.info.style.display = 'none';
                 App.canvas.width = App.video.videoWidth;
                 App.canvas.height = App.video.videoHeight;
                 App.backCanvas.width = App.video.videoWidth / 4;
