@@ -9,7 +9,7 @@ body {
     width: 100%;
     height: 100%;
     margin: 0;
-    background-color: black;
+    background-color: #333;
     color: white;
     text-align: center;
 }
@@ -24,7 +24,8 @@ body {
 #converter{
     position: absolute;
     top: 650px;
-    width: 100%
+    width: 100%;
+    cursor: pointer;
 }
 
 
@@ -34,6 +35,7 @@ body {
     width: 640px;
     height: 480px;
     background: white;
+    border: #999 1px solid;
     -webkit-transform: scale(-1, 1);
 }
 
@@ -43,6 +45,6 @@ body {
     top: -480px;
     width: 640px;
     height: 480px;
-    border: #999 1px solid;
     margin: 0 auto;
+    -webkit-transform: scale(-1, 1);
 }
