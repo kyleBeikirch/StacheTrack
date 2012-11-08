@@ -90,14 +90,31 @@ $(document).ready(function(){
 
   function showPoints()    
   {
-    console.log("show");
-    console.log(circles);
+
+    var maxY = 0;
+    var maxX = 0;
+    var minY = 1000;
+    var minX = 1000;
+
     var txt=document.getElementById("txt");   
-    txt.innerHTML="";    
+    txt.innerHTML="";
+     
     for(var i=0;i<circles.length;i++)   
     {
-      txt.innerHTML=txt.innerHTML + "new jsPoint(" + circles[i].center.x + "," + circles[i].center.y + "),";
+      maxY = Math.max( maxY, circles[i].center.y);
+      minY = Math.min( minY, circles[i].center.y);
+      maxX = Math.max( maxX, circles[i].center.x);
+      minX = Math.min( minX, circles[i].center.x);
+      
     }
+
+    var height = maxX - minX;
+    var width = maxY - minY;
+    var ratio = Math.round(width/height*1000)/1000;
+
+    txt.innerHTML= "MaxY: " + maxY + ", MinY: " + minY + ", MaxX: " + maxX + ", MinX: " + minX + ", height: " + height + ", width: " + width + ", ratio: " + ratio;
+
+
   }
 });
 
