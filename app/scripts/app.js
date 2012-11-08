@@ -5,7 +5,7 @@ var App = {
             App.video.removeEventListener('canplay');
             setTimeout(function() {
                 App.video.play();
-                App.canvas.style.display = 'inline';
+                $(App.canvas).fadeIn(1000);
                 App.canvas.width = App.video.videoWidth;
                 App.canvas.height = App.video.videoHeight;
                 App.backCanvas.width = App.video.videoWidth / 4;
@@ -83,7 +83,7 @@ App.init = function() {
     App.video = document.createElement('video');
     App.backCanvas = document.createElement('canvas');
     App.canvas = document.querySelector('#output');
-    App.canvas.style.display = 'none';
+    $(App.canvas).fadeOut();
     App.context = App.canvas.getContext('2d');
     App.info = document.querySelector('#info');
     

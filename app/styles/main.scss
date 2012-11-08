@@ -48,3 +48,17 @@ body {
     margin: 0 auto;
     -webkit-transform: scale(-1, 1);
 }
+
+#mustacheMolder {
+    overflow: hidden;
+    position: relative;
+    top: -960px;
+    width: 640px;
+    height: 480px;
+    margin: 0 auto;
+}
+
+path
+{
+    opacity: 0.5;
+}
