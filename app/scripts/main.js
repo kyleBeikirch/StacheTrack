@@ -11,178 +11,77 @@ window.StacheTrack = {
 
 $(document).ready(function(){
   StacheTrack.init();
+  var graphicsDiv=document.getElementById("mustacheMolder");
+  var gr = new jxGraphics(graphicsDiv);
+  var pen = new jxPen(new jxColor("black"),1);
+  var brushYellow = new jxBrush(new jxColor('yellow'));
+  var brushRed = new jxBrush(new jxColor('663300'));
 
-  $('#fillClosed').click(function() 
-    {
-      fillClosedCurve();
-    });
-  var canvasDiv=document.getElementById("imageHolder");
-  var gr=new jsGraphics(canvasDiv);
-  var penWidth;
-  var col;
-  var pen;
-  var d1,d2;
-  var msdiv=document.getElementById("timems");
-  setPenColor(true);
-    
-  var points=new Array();
+  graphicsDiv.onmousemove = getMouseXY;
 
-  var ie=false;
+  var mouseX = 0, mouseY = 0;
 
-  canvasDiv.onmousemove = getMouseXY;
-  canvasDiv.onclick=drawPoint;
+  //Mousedown event handler for circle
+  function circleMouseDown(evt, obj) {
+      drag = true;
+      activeCircle = obj;
+  }
 
-  var mouseX = 0;
-  var mouseY = 0;
+  //Mouseup event handler for circle
+  function circleMouseUp() {
+      drag = false;
+      activeCircle = null;
+  }
 
-  //Get mouse position
-  function getMouseXY(e)
-  {
-    if (ie) 
+  //Predefined curve points
+  var curvePoints = [new jxPoint(68, 187), new jxPoint(152, 94), new jxPoint(300, 128), new jxPoint(442, 67), new jxPoint(511, 213), new jxPoint(398, 275), new jxPoint(205, 277)];
+
+  //Draw closed curve
+  var curve = new jxClosedCurve(curvePoints, pen, brushRed)
+  curve.draw(gr);
+
+  //Draw circles at the curve points
+  var circles = new Array(), drag = false, activeCircle;;
+  for (var i in curvePoints) {
+      var cir = new jxCircle(curvePoints[i], 5, pen, brushYellow);
+          cir.draw(gr);
+          cir.addEventListener('mousedown', circleMouseDown);
+          cir.addEventListener('mouseup', circleMouseUp);
+          circles[i] = cir;
+      }
+
+  //Check mouse position and redraw curve/circles
+  function getMouseXY(e) {
+      if (document.all) //For IE
     {
       mouseX = event.clientX + document.body.parentElement.scrollLeft;
       mouseY = event.clientY + document.body.parentElement.scrollTop;
     } else { 
-      mouseX = e.pageX;
-      mouseY = e.pageY;
+      mouseX = e.pageX
+      mouseY = e.pageY
     }  
 
     if (mouseX < 0){mouseX = 0}
     if (mouseY < 0){mouseY = 0}  
     
-    mouseX =mouseX - canvasDiv.offsetLeft;
-    mouseY =mouseY - canvasDiv.offsetTop;
-
+    mouseX =mouseX - graphicsDiv.offsetLeft;
+    mouseY = mouseY - graphicsDiv.offsetTop;
+    
+    //Redraw the curve with the changed point
+    if (drag) {
+        if (activeCircle) {
+            activeCircle.center = new jxPoint(mouseX, mouseY);
+            activeCircle.draw(gr);
+            var curvePoints = new Array(); 
+            for (var i in circles) {
+                curvePoints[i] = circles[i].center;
+            }
+            curve.points = curvePoints;
+            curve.draw(gr); 
+        }
+    }
     return true;
   }
-
-  function setPenColor(noAlert)
-  {
-    col=new jsColor("blue");
-
-    penWidth = 1
-
-    if(!isNaN(penWidth))
-      pen=new jsPen(col,penWidth);
-    else
-      pen=new jsPen(col,5);
-      
-    if(!noAlert)
-    {
-      if(points.length==0)
-      {
-        alert("Please click at any location on the blank canvas at left side to plot the points!");
-        return false;
-      }
-      else if(points.length==1)
-      {
-        alert("2 or more points are required to draw any curve! Please plot more points by clicking at any location on the blank canvas at left side.");
-        return false;
-      }
-    } 
-    return true;
-  }
-
-  function drawPoint()
-  {
-    gr.fillRectangle(new jsColor("green"),new jsPoint(mouseX-6,mouseY-6),6,6);
-    points[points.length]=new jsPoint(mouseX-3,mouseY-3);
-  }
-
-  function drawCurve()
-  {
-    if(!setPenColor())
-        return;
-    var ten=document.getElementById("tension").value;
-    d1=(new Date()).getTime();
-    gr.drawCurve(pen,points,ten);
-    d2=(new Date()).getTime();
-    msdiv.innerHTML=(d2-d1);
-    showPoints();
-    //points=new Array();
-  }
-
-  function drawClosedCurve()
-  {
-    if(!setPenColor())
-        return;
-    var ten=document.getElementById("tension").value;
-    d1=(new Date()).getTime();
-    gr.drawClosedCurve(pen,points,ten);
-    d2=(new Date()).getTime();
-    msdiv.innerHTML=(d2-d1);
-    showPoints();
-    //points=new Array();
-  }
-
-  function drawPolyBezier()
-  {
-    if(!setPenColor())
-        return;
-        
-      if(points.length==4)
-      {
-        d1=(new Date()).getTime();
-        gr.drawBezier(pen,points);
-      } 
-      else
-      {
-          d1=(new Date()).getTime();
-      gr.drawPolyBezier(pen,points);
-    }
-    d2=(new Date()).getTime();
-    msdiv.innerHTML=(d2-d1);
-      showPoints();
-    //points=new Array();
-  }
-
-  function fillClosedCurve()
-  {
-    if(!setPenColor())
-        return;
-    var ten= 0;
-    d1=(new Date()).getTime();
-    gr.fillClosedCurve(col,points,ten);
-    d2=(new Date()).getTime();
-    msdiv.innerHTML=(d2-d1);
-    showPoints();
-    //points=new Array();
-  }
-
-  function clearCanvas()
-  {
-    gr.clear();
-    points=new Array();
-  }
-
-  function clearPreviousPoints()
-  {
-    points=new Array();
-  }
-
-  function CheckTension()
-  {
-      var ten=document.getElementById("tension").value;
-      if(!isNaN(ten))
-      {
-        if(ten>10)
-          document.getElementById("tension").value=10;
-        else if(ten<-10)
-          document.getElementById("tension").value=-10;
-      }
-  }
-
-  function showPoints()
-  {
-    var txt=document.getElementById("txt");
-    txt.innerHTML="";
-    for(var i=0;i<points.length;i++)
-    {
-      txt.innerHTML=txt.innerHTML + "new jsPoint(" + points[i].x + "," + points[i].y + "),";
-    }
-  }
-
-
 });
 
 
