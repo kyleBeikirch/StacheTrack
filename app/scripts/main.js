@@ -21,6 +21,11 @@ $(document).ready(function(){
 
   var mouseX = 0, mouseY = 0;
 
+   $('#fillClosed').click(function()    
+    {
+      showPoints(); 
+    });
+
   //Mousedown event handler for circle
   function circleMouseDown(evt, obj) {
       drag = true;
@@ -81,6 +86,18 @@ $(document).ready(function(){
         }
     }
     return true;
+  }
+
+  function showPoints()    
+  {
+    console.log("show");
+    console.log(circles);
+    var txt=document.getElementById("txt");   
+    txt.innerHTML="";    
+    for(var i=0;i<circles.length;i++)   
+    {
+      txt.innerHTML=txt.innerHTML + "new jsPoint(" + circles[i].center.x + "," + circles[i].center.y + "),";
+    }
   }
 });
 

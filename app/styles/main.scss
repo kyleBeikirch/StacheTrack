@@ -56,9 +56,23 @@ body {
     width: 640px;
     height: 480px;
     margin: 0 auto;
+    cursor: pointer;
+}
+
+
+#fillClosed
+{
+    z-index: 10;
+    position: relative;
 }
 
 path
 {
     opacity: 0.5;
+    cursor: pointer;
+}
+
+circle
+{
+    cursor: pointer;
 }
