@@ -70,7 +70,7 @@ $(document).ready(function(){
     if (mouseY < 0){mouseY = 0}  
     
     mouseX =mouseX - graphicsDiv.offsetLeft;
-    mouseY = mouseY - graphicsDiv.offsetTop - 100;
+    mouseY = mouseY - graphicsDiv.offsetTop;
     
     //Redraw the curve with the changed point
     if (drag) {

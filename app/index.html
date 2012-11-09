@@ -7,16 +7,20 @@
     </head>
     <body>
         <link rel="stylesheet" href="styles/main.css"/>
-        <div id="contentArea"> 
-            <canvas id="output"></canvas>
-            <div id="imageHolder">  </div>
-            <div id="mustacheMolder">  </div>
-        </div>
-        <div id="converter"> Take picture </div>
-        
-        <input style="font-weight:bold" type="button" value="Fill Closed Curve" id="fillClosed">
+        <div id="contentArea">
+            <div id="pictureViewer">
+                <canvas id="output"></canvas>
+                <div id="imageHolder">  </div>
+                <div id="mustacheMolder">  </div>
+            </div>
+            <div id="converter"> Take picture </div>
+            <div id="feedback">
+                <input style="font-weight:bold" type="button" value="Get points Data" id="fillClosed">
                 <div id="timems"> </div>
                 <textarea style="height:50px;width:250px" id="txt" rows="1" cols="20"></textarea>
+            </div>
+        </div>
+        
         <script src="scripts/vendor/glasses/ccv.js"></script>
         <script src="scripts/vendor/glasses/face.js"></script>
         <script>
