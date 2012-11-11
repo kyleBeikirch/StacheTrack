@@ -39,7 +39,7 @@ $(document).ready(function(){
   }
 
   //Predefined curve points
-  var curvePoints = [new jxPoint(68, 187), new jxPoint(152, 94), new jxPoint(300, 128), new jxPoint(442, 67), new jxPoint(511, 213), new jxPoint(398, 275), new jxPoint(205, 277)];
+  var curvePoints = [new jxPoint(68, 187), new jxPoint(164, 105), new jxPoint(286, 84), new jxPoint(379, 88), new jxPoint(473, 108), new jxPoint(551, 192), new jxPoint(456, 160), new jxPoint(378, 145), new jxPoint(288, 141), new jxPoint(172, 155)];
 
   //Draw closed curve
   var curve = new jxClosedCurve(curvePoints, pen, brushRed)
