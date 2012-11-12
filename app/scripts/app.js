@@ -105,5 +105,3 @@ App.init = function() {
     App.video.loop = App.video.muted = true;
     App.video.load();
 };
-
-App.init();

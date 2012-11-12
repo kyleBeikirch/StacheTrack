@@ -5,11 +5,29 @@ window.StacheTrack = {
   Views: {},
   Routers: {},
   init: function() {
-    console.log('Hello from Backbone!');
+    console.log("Main init");
+    // init views
+    this.Views = {
+      AppView: new StacheTrack.Views.applicationView()
+    },
+    
+    // init router
+    this.Routers = {
+      PageRouter: new StacheTrack.Routers.ApplicationRouter()
+    };
+    
+    var that = this;
+    
+    // this.Routers.PageRouter.dateUpdated(function() {
+    //   that.onDateUpdated();
+    // });
+    
+    // Backbone.history.start();
   }
 };
 
 $(document).ready(function(){
+  
   StacheTrack.init();
   var graphicsDiv=document.getElementById("mustacheMolder");
   var gr = new jxGraphics(graphicsDiv);

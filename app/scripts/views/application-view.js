@@ -1,10 +1,14 @@
 StacheTrack.Views.applicationView = Backbone.View.extend({
   events: {
-    "click #converter": "dosomething",
+    
   },
   initialize: function() {
     
     $('#mustacheMolder').fadeOut();
+    $("#starter").click(function() 
+    {
+        App.init();
+    });
 
   },
   dosomething: function() {
