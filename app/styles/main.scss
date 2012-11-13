@@ -54,6 +54,17 @@ body {
 
 }
 
+#starter
+{
+    width: 180px;
+    z-index: 10;
+}
+
+#takePicture
+{
+    width: 120px;
+    display: none;
+}
 #contentArea{
     width: 960px;
     text-align: center;

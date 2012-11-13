@@ -11,11 +11,20 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         {
           App.init();
         });
+
+        $('#starter').fadeOut(300, function()
+        {
+          $('#takePicture').fadeIn(300);
+          $('#takePicture').click(function() {
+              StacheTrack.AppView.findMustacheImage();
+          });
+        });
+        
         
     });
 
   },
-  dosomething: function() {
+  findMustacheImage: function() {
     $('#imageHolder').fadeOut(0);
     var canvasImage = App.convertCanvasToImage();
     $('#imageHolder').append(canvasImage);
