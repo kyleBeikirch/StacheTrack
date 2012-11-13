@@ -7,7 +7,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     $('#mustacheMolder').fadeOut();
     $("#starter").click(function() 
     {
-        App.init();
+        $('#loadStache').fadeOut(300, function()
+        {
+          App.init();
+        });
+        
     });
 
   },

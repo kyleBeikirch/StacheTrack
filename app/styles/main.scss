@@ -102,10 +102,33 @@ body {
     height: 100%;
     position: relative;
     background: url(/images/homeStache.png) no-repeat center center;
-    -webkit-mask-image: url(/images/stacheMask.svg);
-    -webkit-mask-position: 0, 0, 0px 0px;
+    -webkit-mask-image: url(/images/stacheMasker3.svg);
+    -webkit-mask-position: 0px 0px;
+    -webkit-mask-size: 1280px 800px;
     -webkit-mask-composite: source-out;
+    animation: myfirst 5s;
+    -moz-animation:myfirst 5s; /* Firefox */
+    -webkit-animation:myfirst 5s; /* Safari and Chrome */
+
 }
+
+@keyframes myfirst
+{
+    from {mask-size: 0px 800px;}
+    to {mask-size: 1280px 800px;}
+}
+@-moz-keyframes myfirst /* Firefox */
+{
+    from {-moz-mask-size: 0px 800px;}
+    to {-moz-mask-size: 1280px 800px;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+    from {-webkit-mask-size: 0px 800px;}
+    to {-webkit-mask-size: 1200px 800px;}
+}
+
 
     
 
