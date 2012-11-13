@@ -97,6 +97,18 @@ body {
 #feedback {
 }
 
+#loadStache{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url(/images/homeStache.png) no-repeat center center;
+    -webkit-mask-image: url(/images/stacheMask.svg);
+    -webkit-mask-position: 0, 0, 0px 0px;
+    -webkit-mask-composite: source-out;
+}
+
+    
+
 
 #fillClosed
 {
