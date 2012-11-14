@@ -1,3 +1,6 @@
+@import "compass";
+@import "compass_twitter_bootstrap/mixins";
+
 body {
     font-family: sans-serif;
     font-size: 11px;
@@ -43,11 +46,7 @@ body {
     height: 26px;
     vertical-align: middle;
     margin: 0 auto;
-    background-image: linear-gradient(left , rgb(137,136,131) 4%, rgb(184,183,178) 52%);
-    background-image: -o-linear-gradient(left , rgb(137,136,131) 4%, rgb(184,183,178) 52%);
-    background-image: -moz-linear-gradient(left , rgb(137,136,131) 4%, rgb(184,183,178) 52%);
-    background-image: -webkit-linear-gradient(left , rgb(137,136,131) 4%, rgb(184,183,178) 52%);
-    background-image: -ms-linear-gradient(left , rgb(137,136,131) 4%, rgb(184,183,178) 52%);
+    @include gradient-horizontal( #b8b7b2, #898883)
 
 }
 
