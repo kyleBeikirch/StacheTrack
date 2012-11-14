@@ -38,10 +38,18 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     $('#imageHolder').fadeIn(500);
     StacheTrack.Views.AppView.createMolder(); 
     $('#mustacheMolder').fadeIn(500);
-    $('#fillClosed').click(function()    
+
+    $('#takePicture').fadeOut(400, function() 
     {
-      StacheTrack.Views.AppView.analyzePoints(); 
+      $('#getPoints').fadeIn(400, function() 
+      {
+        $('#getPoints').click(function()    
+        {
+          StacheTrack.Views.AppView.analyzePoints(); 
+        });
+      });
     });
+    
 
 
   },
