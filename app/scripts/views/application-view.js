@@ -16,7 +16,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         {
           $('#takePicture').fadeIn(300);
           $('#takePicture').click(function() {
-              StacheTrack.AppView.findMustacheImage();
+              StacheTrack.Views.AppView.findMustacheImage();
           });
         });
         
