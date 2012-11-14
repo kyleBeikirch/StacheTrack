@@ -5,7 +5,7 @@ var App = {
             App.video.removeEventListener('canplay');
             setTimeout(function() {
                 App.video.play();
-                $(App.canvas).fadeIn(1000);
+                StacheTrack.Views.AppView.addWebCam();
                 App.canvas.width = App.video.videoWidth;
                 App.canvas.height = App.video.videoHeight;
                 App.backCanvas.width = App.video.videoWidth / 4;
