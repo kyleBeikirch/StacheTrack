@@ -29,7 +29,7 @@ var Mixer = {
     };
     
   },
-  init: function() {
+  init: function(data ) {
     // audio data
     var audioFiles = [{
       id: 'drums',
@@ -68,13 +68,13 @@ var Mixer = {
       channel.audio.play();
     });
     channels.drums.audio.volume = 0.75;
-    Mixer.setVolumes();
+    Mixer.setVolumes( data );
 
   },
-  setVolumes: function() 
+  setVolumes: function( data) 
   {
 
-      
+    console.log( data );
     $.each(Mixer.channelsToRender, function(i, channel) {
       channel.audio.volume = .25;
   

@@ -146,11 +146,12 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       minX = Math.min( minX, dots[i].center.x);
       
     }
+    var mustacheData = {};
+    mustacheData.height = maxX - minX;
+    mustacheData.width = maxY - minY;
+    mustacheData.ratio = Math.round(mustacheData.width/mustacheData.height*1000)/1000;
 
-    var height = maxX - minX;
-    var width = maxY - minY;
-    var ratio = Math.round(width/height*1000)/1000;
-    Mixer.init();
+    Mixer.init(mustacheData);
 
 
   }
