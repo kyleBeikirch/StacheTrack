@@ -1,6 +1,7 @@
 
 var App = {
     start: function(stream) {
+        App.stream = stream;
         App.video.addEventListener('canplay', function() {
             App.video.removeEventListener('canplay');
             setTimeout(function() {

@@ -38,7 +38,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     $('#imageHolder').fadeIn(500);
     StacheTrack.Views.AppView.createMolder(); 
     $('#mustacheMolder').fadeIn(500);
-
+    App.stream.stop();
     $('#takePicture').fadeOut(400, function() 
     {
       $('#getPoints').fadeIn(400, function() 
