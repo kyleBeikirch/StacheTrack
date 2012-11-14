@@ -1,7 +1,4 @@
 StacheTrack.Views.applicationView = Backbone.View.extend({
-  events: {
-    
-  },
   circles: undefined,
   initialize: function() {
     
@@ -49,9 +46,6 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         });
       });
     });
-    
-
-
   },
   createMolder: function()
   {
@@ -156,6 +150,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     var height = maxX - minX;
     var width = maxY - minY;
     var ratio = Math.round(width/height*1000)/1000;
+    Mixer.init();
 
 
   }
