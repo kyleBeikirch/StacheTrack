@@ -90,7 +90,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
       //Check mouse position and redraw curve/circles
       function getMouseXY(e) {
-          if (document.all) //For IE
+
+        if (document.all) //For IE
         {
           mouseX = event.clientX + document.body.parentElement.scrollLeft;
           mouseY = event.clientY + document.body.parentElement.scrollTop;
@@ -102,11 +103,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         if (mouseX < 0){mouseX = 0}
         if (mouseY < 0){mouseY = 0}  
         
-        mouseX =mouseX - graphicsDiv.offsetLeft;
-        mouseY = mouseY - graphicsDiv.offsetTop;
-        console.log(mouseX, mouseY);
-        console.log(graphicsDiv.offsetLeft, graphicsDiv.offsetTop);
-        console.log("***********************");
+        mouseX = mouseX - $(graphicsDiv).offset().left;
+        mouseY = mouseY - $(graphicsDiv).offset().top;
         
         //Redraw the curve with the changed point
         if (drag) {
