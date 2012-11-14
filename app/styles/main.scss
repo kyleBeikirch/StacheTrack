@@ -114,13 +114,8 @@ body {
     height: 100%;
     position: relative;
     background: url(../images/homeStache.png) no-repeat center center;
-    -webkit-mask-image: url(../images/stacheMasker3.svg);
-    -webkit-mask-position: 0px 0px;
-    -webkit-mask-size: 1280px 800px;
-    -webkit-mask-composite: source-out;
-    animation: myfirst 5s;
-    -moz-animation:myfirst 5s; /* Firefox */
-    -webkit-animation:myfirst 5s; /* Safari and Chrome */
+    @include mask( "../images/stacheMasker3.svg" , 0px, 0px, 1280px, 800px, source-out);
+    @include animation(myfirst 5s);
 
 }
 

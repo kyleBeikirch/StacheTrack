@@ -241,11 +241,42 @@
   @include border-bottom-left-radius($radius);
 }
 
+// Masks
+@mixin mask($url, $posX, $posY, $sizeX, $sizeY, $composite) {
+  -webkit-mask-image: url($url);
+     -moz-mask-image: url($url);
+       -o-mask-image: url($url);
+          mask-image: url($url);
+
+  -webkit-mask-position: $posX $posY;
+     -moz-mask-position: $posX $posY;
+       -o-mask-position: $posX $posY;
+          mask-position: $posX $posY;
+
+  -webkit-mask-size: $sizeX $sizeY;
+     -moz-mask-size: $sizeX $sizeY;
+       -o-mask-size: $sizeX $sizeY;
+          mask-size: $sizeX $sizeY;
+
+  -webkit-mask-composite: $composite;
+     -moz-mask-composite: $composite;
+       -o-mask-composite: $composite;
+          mask-composite: $composite;
+}
+
 // Drop shadows
 @mixin box-shadow($shadow) {
   -webkit-box-shadow: $shadow;
      -moz-box-shadow: $shadow;
           box-shadow: $shadow;
+}
+
+// Animation
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+     -moz-animation: $animation;
+       -o-animation: $animation;
+          animation: $animation;
 }
 
 // Transitions
