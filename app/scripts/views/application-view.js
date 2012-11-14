@@ -2,6 +2,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   events: {
     
   },
+  circles: undefined,
   initialize: function() {
     
     $('#mustacheMolder').fadeOut();
@@ -88,6 +89,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
               circles[i] = cir;
           }
 
+      StacheTrack.Views.AppView.circles = circles;
+
       //Check mouse position and redraw curve/circles
       function getMouseXY(e) {
 
@@ -130,19 +133,22 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     var maxX = 0;
     var minY = 1000;
     var minX = 1000;
-     
-    for(var i=0;i<circles.length;i++)   
+    
+
+    var dots = StacheTrack.Views.AppView.circles;
+    for(var i=0;i<dots.length;i++)   
     {
-      maxY = Math.max( maxY, circles[i].center.y);
-      minY = Math.min( minY, circles[i].center.y);
-      maxX = Math.max( maxX, circles[i].center.x);
-      minX = Math.min( minX, circles[i].center.x);
+      maxY = Math.max( maxY, dots[i].center.y);
+      minY = Math.min( minY, dots[i].center.y);
+      maxX = Math.max( maxX, dots[i].center.x);
+      minX = Math.min( minX, dots[i].center.x);
       
     }
 
     var height = maxX - minX;
     var width = maxY - minY;
     var ratio = Math.round(width/height*1000)/1000;
+
 
   }
 
