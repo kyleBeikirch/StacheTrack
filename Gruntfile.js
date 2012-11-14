@@ -130,9 +130,7 @@ module.exports = function( grunt ) {
     // renames JS/CSS to prepend a hash of their contents for easier
     // versioning
     rev: {
-      js: 'scripts/**/*.js',
-      css: 'styles/**/*.css',
-      img: 'images/**'
+      
     },
 
     // usemin handler should point to the file containing
@@ -150,11 +148,13 @@ module.exports = function( grunt ) {
     // HTML minification
     html: {
       files: ['**/*.html']
+
     },
+
 
     // Optimizes JPGs and PNGs (with jpegtran & optipng)
     img: {
-      dist: '<config:rev.img>'
+
     },
 
     // rjs configuration. You don't necessarily need to specify the typical
