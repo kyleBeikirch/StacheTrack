@@ -121,13 +121,21 @@ body {
 
 @keyframes myfirst
 {
-    from {mask-size: 0px 800px;}
-    to {mask-size: 1280px 800px;}
+    0% {
+        mask-position: -1280px 0px;
+    }
+    100% {
+        mask-position: 0px 0px;
+    }
 }
 @-moz-keyframes myfirst /* Firefox */
 {
-    from {-moz-mask-size: 0px 800px;}
-    to {-moz-mask-size: 1280px 800px;}
+    0% {
+        -moz-mask-position: -1280px 0px;
+    }
+    100% {
+        -moz-mask-position: 0px 0px;
+    }
 }
 
 @-webkit-keyframes myfirst /* Safari and Chrome */
