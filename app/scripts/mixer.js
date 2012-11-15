@@ -31,33 +31,62 @@ var Mixer = {
   },
   init: function(data ) {
     // audio data
-    var audioFiles = [{
-      id: 'drums',
+    var rockGroup = [{
+      id: 'rockDrums',
       source: 'audio/drums'
     },
     {
-      id: 'classy',
+      id: 'rockGuitar',
       source: 'audio/classy'
     },
     {
-      id: 'hillbilly',
+      id: 'rockBass',
       source: 'audio/hillbilly'
+    }];
+
+    var funkGroup = [{
+      id: 'funkDrums',
+      source: 'audio/drums'
     },
     {
-      id: 'porno',
-      source: 'audio/porno'
+      id: 'funkGuitar',
+      source: 'audio/classy'
     },
     {
-      id: 'rocknroll',
-      source: 'audio/rocknroll'
-    } ,
+      id: 'funkBrass',
+      source: 'audio/hillbilly'
+    }];
+
+    var acousticGroup = [{
+      id: 'acousticDrums',
+      source: 'audio/drums'
+    },
     {
-      id: 'smooth',
-      source: 'audio/smooth'
+      id: 'acousticGuitar',
+      source: 'audio/classy'
+    },
+    {
+      id: 'acousticSound',
+      source: 'audio/hillbilly'
     }];
     
+    var soundGroup;
+    if(data.shape > 1.3)
+    {
+      soundGroup = rockGroup;
+    }
+    else if(data.shape < -1.3)
+    {
+      soundGroup = acousticGroup;
+    }
+    else
+    {
+      soundGroup = funkGroup ;
+    }
+
+    console.log(soundGroup);
     var mixerView = $('#mixer-view');
-    var channels = Mixer.setup(audioFiles);
+    var channels = Mixer.setup(soundGroup);
     var i = 0;
     
     Mixer.channelsToRender = [channels.classy, channels.hillbilly, channels.porno, channels.rocknroll, channels.smooth];
@@ -67,7 +96,6 @@ var Mixer = {
       channel.audio.volume = 0;
       channel.audio.play();
     });
-    channels.drums.audio.volume = 0.75;
     Mixer.setVolumes( data );
 
   },
