@@ -242,7 +242,7 @@
 }
 
 // Masks
-@mixin mask($url, $posX, $posY, $sizeX, $sizeY, $composite) {
+@mixin mask($url, $posX, $posY, $sizeX, $sizeY, $repeat) {
   -webkit-mask-image: url($url);
      -moz-mask-image: url($url);
        -o-mask-image: url($url);
@@ -253,15 +253,20 @@
        -o-mask-position: $posX $posY;
           mask-position: $posX $posY;
 
+  -webkit-mask-origin: $posX $posY;
+     -moz-mask-origin: $posX $posY;
+       -o-mask-origin: $posX $posY;
+          mask-origin: $posX $posY;
+
   -webkit-mask-size: $sizeX $sizeY;
      -moz-mask-size: $sizeX $sizeY;
        -o-mask-size: $sizeX $sizeY;
           mask-size: $sizeX $sizeY;
 
-  -webkit-mask-composite: $composite;
-     -moz-mask-composite: $composite;
-       -o-mask-composite: $composite;
-          mask-composite: $composite;
+  -webkit-mask-repeat: $repeat;
+     -moz-mask-repeat: $repeat;
+       -o-mask-repeat: $repeat;
+          mask-repeat: $repeat;
 }
 
 // Drop shadows
