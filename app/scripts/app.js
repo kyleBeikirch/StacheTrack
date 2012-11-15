@@ -41,7 +41,7 @@ var App = {
     },
     drawToCanvas: function() {
 
-        if(App.running === true)
+        if(App.running !== "no")
         {
             requestAnimationFrame(App.drawToCanvas);
         
@@ -53,7 +53,8 @@ var App = {
                 i,
                 comp;
             
-            ctx.drawImage(video, 0, 0, App.canvas.width, App.canvas.height);
+                ctx.drawImage(video, 0, 0, App.canvas.width, App.canvas.height);
+            
             
             backCtx.drawImage(video, 0, 0, App.backCanvas.width, App.backCanvas.height);
             
@@ -70,27 +71,39 @@ var App = {
             
 
             for (i = App.comp.length; i--; ) {
-                console.log((App.comp[i].x - w / 2) * m, (App.comp[i].y - w / 2) * m, (App.comp[i].width + w) * m, (App.comp[i].height + w) * m);
+                
                 ctx.drawImage(App.glasses, (App.comp[i].x - w / 2) * m, (App.comp[i].y - w / 2) * m, (App.comp[i].width + w) * m, (App.comp[i].height + w) * m);
+                if(App.running === "last")
+                {
+                    App.videoScale = (App.comp[i].height + w) * m;
+                    App.videoCenterX = (App.comp[i].x - w / 2) * m;
+                    App.videoCenterY = (App.comp[i].y - w / 2) * m;
+                    console.log(App.videoScale, App.videoCenterX, App.videoCenterY);
+                }
             }
 
         }        
     },
     convertCanvasToImage: function() {
+
         App.glasses.src = 'images/clear.gif';
+        App.running = "last";
         setTimeout(function() 
         {
             var image = new Image();
             var canvas = App.canvas;
             image.src = canvas.toDataURL("image/png");
             StacheTrack.Views.AppView.setMustacheImage( image );
-            App.running = false;
+            App.running = "no";
 
         }, 100);
         
     }
 };
-App.running = true;
+App.videoScale = 0;
+App.videoCenterX = 0;
+App.videoCenterY = 0;
+App.running = "yes";
 App.glasses = new Image();
 App.glasses.src = 'images/glasses.png';
 

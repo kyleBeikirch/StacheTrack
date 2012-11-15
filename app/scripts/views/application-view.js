@@ -35,21 +35,29 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   },
   setMustacheImage: function ( canvasImage)
   {
-    $('#imageHolder').append(canvasImage);
-    $('#imageHolder').fadeIn(500);
-    StacheTrack.Views.AppView.createMolder(); 
-    $('#mustacheMolder').fadeIn(500);
-    App.stream.stop();
-    $('#takePicture').fadeOut(400, function() 
+    var scale = 7 - ((App.videoScale-100)/30);
+    canvasImage.onload = function() 
     {
-      $('#getPoints').fadeIn(400, function() 
+      console.log(canvasImage.width + 'x' + canvasImage.height);
+      canvasImage.width = canvasImage.width * scale;
+      $('#imageHolder').append(canvasImage);
+      var camImage = $('#imageHolder img')[0];
+      $('#imageHolder').fadeIn(500);
+      StacheTrack.Views.AppView.createMolder(); 
+      $('#mustacheMolder').fadeIn(500);
+      App.stream.stop();
+      $('#takePicture').fadeOut(400, function() 
       {
-        $('#getPoints').click(function()    
+        $('#getPoints').fadeIn(400, function() 
         {
-          StacheTrack.Views.AppView.analyzePoints(); 
+          $('#getPoints').click(function()    
+          {
+            StacheTrack.Views.AppView.analyzePoints(); 
+          });
         });
       });
-    });
+    }
+    
   },
   createMolder: function()
   {
