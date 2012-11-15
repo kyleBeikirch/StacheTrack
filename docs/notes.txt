@@ -1,0 +1,3 @@
+length of stache determines lenght of song
+thinkness of stache determines amount of channels
+y point on tips vs center determiens genre 
