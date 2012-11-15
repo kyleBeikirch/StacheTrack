@@ -152,7 +152,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     mustacheData.height = maxX - minX;
     mustacheData.width = maxY - minY;
     mustacheData.ratio = Math.round(mustacheData.width/mustacheData.height*1000)/1000;
-    mustacheData.thickness = ((dots[2].center.y - dots[8].center.y) + (dots[3].center.y - dots[7].center.y))/2;
+    mustacheData.thickness = -((dots[2].center.y - dots[8].center.y) + (dots[3].center.y - dots[7].center.y))/2;
     mustacheData.shape = (centerY - endsY) / mustacheData.thickness;
 
     Mixer.init(mustacheData);
