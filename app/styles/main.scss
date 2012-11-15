@@ -115,7 +115,7 @@ body {
     position: relative;
     background: url(../images/homeStache.png) no-repeat center center;
     @include mask( "../images/stacheMasker3.svg" , 0px, 0px, 1280px, 800px, no-repeat);
-    @include animation(myfirst 5s);
+    @include animation(myfirst 10s);
 
 }
 
@@ -132,8 +132,12 @@ body {
 
 @-webkit-keyframes myfirst /* Safari and Chrome */
 {
-    0% {-webkit-mask-size: 0px 0px;}
-    100% {-webkit-mask-size: 1280px 800px;}
+    0% {
+        -webkit-mask-position: -1280px 0px;
+    }
+    100% {
+        -webkit-mask-position: 0px 0px;
+    }
 }
 
 
