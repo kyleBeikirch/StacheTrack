@@ -70,10 +70,16 @@ var App = {
         }
     },
     convertCanvasToImage: function() {
-        var image = new Image();
-        var canvas = App.canvas;
-        image.src = canvas.toDataURL("image/png");
-        return image;
+        App.glasses.src = 'images/clear.gif';
+        setTimeout(function() 
+        {
+            var image = new Image();
+            var canvas = App.canvas;
+            image.src = canvas.toDataURL("image/png");
+            StacheTrack.Views.AppView.setMustacheImage( image );
+
+        }, 100);
+        
     }
 };
 

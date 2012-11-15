@@ -30,7 +30,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   },
   findMustacheImage: function() {
     $('#imageHolder').fadeOut(0);
-    var canvasImage = App.convertCanvasToImage();
+    App.convertCanvasToImage();
+    
+  },
+  setMustacheImage: function ( canvasImage)
+  {
     $('#imageHolder').append(canvasImage);
     $('#imageHolder').fadeIn(500);
     StacheTrack.Views.AppView.createMolder(); 
