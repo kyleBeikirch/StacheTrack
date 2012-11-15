@@ -40,34 +40,41 @@ var App = {
         App.info.innerHTML = 'Please go to about:flags in Google Chrome and enable the &quot;MediaStream&quot; flag.';
     },
     drawToCanvas: function() {
-        requestAnimationFrame(App.drawToCanvas);
+
+        if(App.running === true)
+        {
+            requestAnimationFrame(App.drawToCanvas);
         
-        var video = App.video,
-            ctx = App.context,
-            backCtx = App.backContext,
-            m = 4,
-            w = 4,
-            i,
-            comp;
-        
-        ctx.drawImage(video, 0, 0, App.canvas.width, App.canvas.height);
-        
-        backCtx.drawImage(video, 0, 0, App.backCanvas.width, App.backCanvas.height);
-        
-        comp = ccv.detect_objects(App.ccv = App.ccv || {
-            canvas: App.backCanvas,
-            cascade: cascade,
-            interval: 4,
-            min_neighbors: 1
-        });
-        
-        if (comp.length) {
-            App.comp = comp;
-        }
-        
-        for (i = App.comp.length; i--; ) {
-            ctx.drawImage(App.glasses, (App.comp[i].x - w / 2) * m, (App.comp[i].y - w / 2) * m, (App.comp[i].width + w) * m, (App.comp[i].height + w) * m);
-        }
+            var video = App.video,
+                ctx = App.context,
+                backCtx = App.backContext,
+                m = 4,
+                w = 4,
+                i,
+                comp;
+            
+            ctx.drawImage(video, 0, 0, App.canvas.width, App.canvas.height);
+            
+            backCtx.drawImage(video, 0, 0, App.backCanvas.width, App.backCanvas.height);
+            
+            comp = ccv.detect_objects(App.ccv = App.ccv || {
+                canvas: App.backCanvas,
+                cascade: cascade,
+                interval: 4,
+                min_neighbors: 1
+            });
+            
+            if (comp.length) {
+                App.comp = comp;
+            }
+            
+
+            for (i = App.comp.length; i--; ) {
+                console.log((App.comp[i].x - w / 2) * m, (App.comp[i].y - w / 2) * m, (App.comp[i].width + w) * m, (App.comp[i].height + w) * m);
+                ctx.drawImage(App.glasses, (App.comp[i].x - w / 2) * m, (App.comp[i].y - w / 2) * m, (App.comp[i].width + w) * m, (App.comp[i].height + w) * m);
+            }
+
+        }        
     },
     convertCanvasToImage: function() {
         App.glasses.src = 'images/clear.gif';
@@ -77,12 +84,13 @@ var App = {
             var canvas = App.canvas;
             image.src = canvas.toDataURL("image/png");
             StacheTrack.Views.AppView.setMustacheImage( image );
+            App.running = false;
 
         }, 100);
         
     }
 };
-
+App.running = true;
 App.glasses = new Image();
 App.glasses.src = 'images/glasses.png';
 
