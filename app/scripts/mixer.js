@@ -32,52 +32,52 @@ var Mixer = {
   init: function(data ) {
     // audio data
     var rockGroup = [{
-      id: 'rockDrums',
+      id: 'drums',
       source: 'audio/drums'
     },
     {
-      id: 'rockGuitar',
+      id: 'guitar',
       source: 'audio/classy'
     },
     {
-      id: 'rockBass',
+      id: 'other',
       source: 'audio/hillbilly'
     }];
 
     var funkGroup = [{
-      id: 'funkDrums',
+      id: 'drums',
       source: 'audio/drums'
     },
     {
-      id: 'funkGuitar',
+      id: 'guitar',
       source: 'audio/classy'
     },
     {
-      id: 'funkBrass',
+      id: 'other',
       source: 'audio/hillbilly'
     }];
 
     var acousticGroup = [{
-      id: 'acousticDrums',
+      id: 'drums',
       source: 'audio/drums'
     },
     {
-      id: 'acousticGuitar',
+      id: 'guitar',
       source: 'audio/classy'
     },
     {
-      id: 'acousticSound',
+      id: 'other',
       source: 'audio/hillbilly'
     }];
     
     var soundGroup;
     if(data.shape > 1.3)
     {
-      soundGroup = rockGroup;
+      soundGroup = acousticGroup;
     }
     else if(data.shape < -1.3)
     {
-      soundGroup = acousticGroup;
+      soundGroup = rockGroup;
     }
     else
     {
@@ -88,8 +88,16 @@ var Mixer = {
     var mixerView = $('#mixer-view');
     var channels = Mixer.setup(soundGroup);
     var i = 0;
-    
-    Mixer.channelsToRender = [channels.classy, channels.hillbilly, channels.porno, channels.rocknroll, channels.smooth];
+    Mixer.channelsToRender = [];
+    Mixer.channelsToRender.push(channels.guitar);
+    if(data.thickness > 40)
+    {
+      Mixer.channelsToRender.push(channels.drums);
+    }
+    if(data.thickness > 75)
+    {
+      Mixer.channelsToRender.push(channels.other);
+    }
 
    // play all track
     $.each(channels, function(key, channel){
