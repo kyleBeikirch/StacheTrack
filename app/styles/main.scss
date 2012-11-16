@@ -111,11 +111,23 @@ body {
 #mustacheMolder {
     overflow: hidden;
     position: relative;
-    top: -1000px;
+    top: -960px;
     width: 640px;
     height: 480px;
     margin: 0 auto;
     cursor: pointer;
+    z-index: 8;
+}
+
+#mustacheWave {
+    overflow: hidden;
+    position: relative;
+    top: -1450px;
+    width: 640px;
+    height: 480px;
+    margin: 0 auto;
+    cursor: pointer;
+    z-index: 6;
 }
 
 

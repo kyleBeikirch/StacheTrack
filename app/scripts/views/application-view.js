@@ -55,7 +55,9 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         {
           $('#getPoints').click(function()    
           {
-            StacheTrack.Views.AppView.analyzePoints(); 
+            StacheTrack.Views.AppView.analyzePoints();
+            StacheTrack.Views.AppView.drawWave();
+            
           });
         });
       });
@@ -95,6 +97,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       //Draw closed curve
       var curve = new jxClosedCurve(curvePoints, pen, brushRed)
       curve.draw(gr);
+
 
       //Draw circles at the curve points
       var circles = new Array(), drag = false, activeCircle;;
@@ -173,6 +176,34 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     Mixer.init(mustacheData);
 
 
+  },
+  drawWave: function() 
+  {
+    var graphicsDiv=document.getElementById("mustacheWave");
+    var gr = new jxGraphics(graphicsDiv);
+    var pen = new jxPen(new jxColor("red"),1);
+    var lineObject = new Array();
+    var path = $('path')[0];
+    var pathLength = Math.round(path.getTotalLength());
+    for( var i=0; i < pathLength; i++)
+    {
+      var pt = path.getPointAtLength(i);
+      var xVert = Math.floor(pt.x);
+      var yVert = Math.floor(pt.y);
+      console.log(lineObject[xVert]);
+      if(lineObject[xVert] === undefined)
+      {
+        lineObject[xVert] = yVert;
+      }
+      else
+      {
+          var randOff1 = Math.floor(Math.random() * 40 - 20);
+          var randOff2 = Math.floor(Math.random() * 40 - 20);
+          var line = new jxLine(new jxPoint(xVert, yVert + randOff1), new jxPoint(xVert, lineObject[xVert] + randOff2), pen);
+          line.draw(gr);
+      }
+      
+    }
   }
 
 });
