@@ -46,31 +46,31 @@ var Mixer = {
 
     var funkGroup = [{
       id: 'drums',
-      source: 'audio/drums'
+      source: 'audio/sets/disco-drum'
     },
     {
       id: 'guitar',
-      source: 'audio/classy'
+      source: 'audio/sets/disco-lead-0'
     },
     {
       id: 'other',
-      source: 'audio/hillbilly'
+      source: 'audio/sets/disco-misc-0'
     }];
 
     var acousticGroup = [{
       id: 'drums',
-      source: 'audio/drums'
+      source: 'audio/sets/acoustic-drum'
     },
     {
       id: 'guitar',
-      source: 'audio/classy'
+      source: 'audio/sets/acoustic-lead-0'
     },
     {
       id: 'other',
-      source: 'audio/hillbilly'
+      source: 'audio/sets/acoustic-misc-0'
     }];
     
-    var soundGroup;
+    var soundGroup = [];
     if(data.shape > 1.3)
     {
       soundGroup = acousticGroup;
@@ -84,7 +84,6 @@ var Mixer = {
       soundGroup = funkGroup ;
     }
 
-    console.log(soundGroup);
     var mixerView = $('#mixer-view');
     var channels = Mixer.setup(soundGroup);
     var i = 0;
