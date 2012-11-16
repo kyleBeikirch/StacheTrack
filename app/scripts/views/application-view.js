@@ -38,8 +38,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     var scale = 7 - ((App.videoScale-100)/30);
     canvasImage.onload = function() 
     {
-      console.log(canvasImage.width + 'x' + canvasImage.height);
-      canvasImage.width = canvasImage.width * scale;
+      
+      var offsetLeft = Math.round(App.videoCenterX * -scale) + "px";
+      var offsetTop = Math.round(App.videoCenterY * -scale) + "px";
+
+      $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
       $('#imageHolder').append(canvasImage);
       var camImage = $('#imageHolder img')[0];
       $('#imageHolder').fadeIn(500);

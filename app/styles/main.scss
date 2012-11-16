@@ -98,7 +98,15 @@ body {
     top: -490px;
     margin: 0 auto;
     -webkit-transform: scale(-1, 1);
+
 }
+
+#imageHolder img{
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+        
 
 #mustacheMolder {
     overflow: hidden;
