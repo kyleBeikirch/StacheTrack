@@ -90,7 +90,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       }
 
       //Predefined curve points
-      var curvePoints = [new jxPoint(68, 187), new jxPoint(164, 105), new jxPoint(286, 84), new jxPoint(379, 88), new jxPoint(473, 108), new jxPoint(551, 192), new jxPoint(456, 160), new jxPoint(378, 145), new jxPoint(288, 141), new jxPoint(172, 155)];
+      var curvePoints = [new jxPoint(68, 287), new jxPoint(164, 205), new jxPoint(286, 184), new jxPoint(379, 188), new jxPoint(473, 208), new jxPoint(551, 292), new jxPoint(456, 260), new jxPoint(378, 245), new jxPoint(288, 241), new jxPoint(172, 255)];
 
       //Draw closed curve
       var curve = new jxClosedCurve(curvePoints, pen, brushRed)
