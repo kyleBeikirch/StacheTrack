@@ -190,7 +190,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       var pt = path.getPointAtLength(i);
       var xVert = Math.floor(pt.x);
       var yVert = Math.floor(pt.y);
-      console.log(lineObject[xVert]);
+
       if(lineObject[xVert] === undefined)
       {
         lineObject[xVert] = yVert;
@@ -204,6 +204,9 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       }
       
     }
+    
+    $('path').fadeOut(500);
+    $('circle').fadeOut(500);
   }
 
 });

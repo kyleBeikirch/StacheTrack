@@ -15,8 +15,6 @@ var Mixer = {
     
   },
   Channel: function(audioData) {
-    
-    console.log(audioData);
       
     var audioTmpl = '<audio id="mixer-channel-{{id}}" preload="auto"><source src="{{source}}.mp3" type="audio/mpeg"><source src="{{source}}.ogg" type="audio/ogg"></audio><br/>';
     
@@ -109,7 +107,6 @@ var Mixer = {
   setVolumes: function( data) 
   {
 
-    console.log( data );
     $.each(Mixer.channelsToRender, function(i, channel) {
       channel.audio.volume = .25;
   
