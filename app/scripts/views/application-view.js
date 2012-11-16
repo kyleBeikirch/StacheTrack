@@ -39,12 +39,12 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     canvasImage.onload = function() 
     {
       
+
       var offsetLeft = Math.round(App.videoCenterX * -scale) + "px";
       var offsetTop = Math.round(App.videoCenterY * -scale) + "px";
-
-      $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
       $('#imageHolder').append(canvasImage);
-      var camImage = $('#imageHolder img')[0];
+      canvasImage.width = 640;
+      $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
       $('#imageHolder').fadeIn(500);
       StacheTrack.Views.AppView.createMolder(); 
       $('#mustacheMolder').fadeIn(500);
