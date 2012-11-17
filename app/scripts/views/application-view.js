@@ -70,8 +70,9 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       var graphicsDiv=document.getElementById("mustacheMolder");
       var gr = new jxGraphics(graphicsDiv);
       var pen = new jxPen(new jxColor("black"),1);
-      var brushYellow = new jxBrush(new jxColor('yellow'));
-      var brushRed = new jxBrush(new jxColor('663300'));
+      var brushWhite = new jxBrush(new jxColor('white'));
+      var brushBlack = new jxBrush(new jxColor('black'));
+
 
       graphicsDiv.onmousemove = getMouseXY;
 
@@ -95,14 +96,14 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       var curvePoints = [new jxPoint(68, 287), new jxPoint(164, 205), new jxPoint(286, 184), new jxPoint(379, 188), new jxPoint(473, 208), new jxPoint(551, 292), new jxPoint(456, 260), new jxPoint(378, 245), new jxPoint(288, 241), new jxPoint(172, 255)];
 
       //Draw closed curve
-      var curve = new jxClosedCurve(curvePoints, pen, brushRed)
+      var curve = new jxClosedCurve(curvePoints, pen, brushBlack)
       curve.draw(gr);
 
 
       //Draw circles at the curve points
       var circles = new Array(), drag = false, activeCircle;;
       for (var i in curvePoints) {
-          var cir = new jxCircle(curvePoints[i], 5, pen, brushYellow);
+          var cir = new jxCircle(curvePoints[i], 5, pen, brushWhite);
               cir.draw(gr);
               cir.addEventListener('mousedown', circleMouseDown);
               cir.addEventListener('mouseup', circleMouseUp);
@@ -204,7 +205,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       }
       
     }
-    
+
     $('path').fadeOut(500);
     $('circle').fadeOut(500);
   }
