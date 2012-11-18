@@ -236,6 +236,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       
     }
 
+    $('div#mustacheWave line').tsort({attr:'x1'});
     $('path').fadeOut(500);
     $('circle').fadeOut(500);
   }
