@@ -30,6 +30,11 @@ var App = {
         var domURL = window.URL || window.webkitURL;
         App.video.src = domURL ? domURL.createObjectURL(stream) : stream;
     },
+    restart: function() {
+        App.running = "yes";
+        App.glasses.src = 'images/glasses.png';
+        App.drawToCanvas();
+    },
     denied: function() {
         App.info.innerHTML = 'Camera access denied!<br>Please reload and try again.';
     },

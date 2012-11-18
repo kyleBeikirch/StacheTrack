@@ -42,25 +42,44 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
       var offsetLeft = Math.round(App.videoCenterX * -scale) + "px";
       var offsetTop = Math.round(App.videoCenterY * -scale) + "px";
-      $('#imageHolder').append(canvasImage);
+      $('#imageHolder').html(canvasImage);
       canvasImage.width = 640;
       $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
       $('#imageHolder').fadeIn(500);
-      StacheTrack.Views.AppView.createMolder(); 
-      $('#mustacheMolder').fadeIn(500);
-      App.stream.stop();
-      $('#takePicture').fadeOut(400, function() 
+      $('#takePicture').fadeOut(400);
+      $('#acceptImage, #retakePic').fadeIn(400);
+      
+
+      $('#retakePic').click(function() 
       {
-        $('#getPoints').fadeIn(400, function() 
-        {
-          $('#getPoints').click(function()    
+        App.restart();
+        $('#acceptImage, #retakePic, #imageHolder').fadeOut(400, function()
           {
-            StacheTrack.Views.AppView.analyzePoints();
-            StacheTrack.Views.AppView.drawWave();
-            
+            $('#imageHolder').html('');
           });
-        });
+        $('#takePicture').fadeIn(400);
+
       });
+
+      $('#acceptImage').click(function() {
+          StacheTrack.Views.AppView.createMolder(); 
+          $('#mustacheMolder').fadeIn(500);
+          App.stream.stop();
+          $('#retakePic').fadeOut(400);
+          $('#acceptImage').fadeOut(400, function() 
+          {
+            $('#getPoints').fadeIn(400, function() 
+            {
+              $('#getPoints').click(function()    
+              {
+                StacheTrack.Views.AppView.analyzePoints();
+                StacheTrack.Views.AppView.drawWave();
+                
+              });
+            });
+          });
+      });
+      
     }
     
   },
@@ -69,8 +88,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
       var graphicsDiv=document.getElementById("mustacheMolder");
       var gr = new jxGraphics(graphicsDiv);
-      var pen = new jxPen(new jxColor("black"),1);
-      var brushWhite = new jxBrush(new jxColor('white'));
+      var pen = new jxPen(new jxColor("black"), 2);
       var brushBlack = new jxBrush(new jxColor('black'));
 
 
@@ -99,16 +117,28 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       var curve = new jxClosedCurve(curvePoints, pen, brushBlack)
       curve.draw(gr);
 
+      $('path').attr('fill-opacity', 0);
 
       //Draw circles at the curve points
       var circles = new Array(), drag = false, activeCircle;;
       for (var i in curvePoints) {
-          var cir = new jxCircle(curvePoints[i], 5, pen, brushWhite);
+          var cir = new jxCircle(curvePoints[i], 4, pen, brushBlack);
               cir.draw(gr);
               cir.addEventListener('mousedown', circleMouseDown);
               cir.addEventListener('mouseup', circleMouseUp);
               circles[i] = cir;
           }
+      $('circle').mousedown(function() {
+        $(this).attr("r",  8);
+        $(this).attr("fill",  "white");
+        $(this).attr("stroke",  "white");
+
+      });
+      $('circle').mouseup(function() {
+        $(this).attr("r",  4);
+        $(this).attr("fill",  "black");
+        $(this).attr("stroke",  "black");
+      });
 
       StacheTrack.Views.AppView.circles = circles;
 
