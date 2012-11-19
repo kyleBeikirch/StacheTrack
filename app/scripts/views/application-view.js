@@ -42,17 +42,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     canvasImage.onload = function() 
     {
       
-      var canvasImage2 = canvasImage;
-      var offsetLeft = Math.round(App.videoCenterX * -scale) + "px";
-      var offsetTop = Math.round(App.videoCenterY * -scale) + "px";
-      var offsetLeft2 = Math.round(App.videoCenterX * -scale2) + "px";
-      var offsetTop2 = Math.round(App.videoCenterY * -scale2) + "px";
-      $('#imageHolder').html(canvasImage);
-      $('#yourPic').html($(canvasImage).clone());
-      canvasImage.width = 533;
-      $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
-      $('#yourPic img').animate({"left" : offsetLeft2, "top" : offsetTop2, width: 533 * scale2}, 1200);
-      $('#imageHolder').fadeIn(500);
+      
       $('#takePicture').fadeOut(400, function() 
         {
           $('#redoPicture').fadeIn(400);
@@ -75,6 +65,17 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       $('#acceptImage').click(function() {
           if($('#acceptImage').hasClass('getPoints') === false)
           {
+            var canvasImage2 = canvasImage;
+            var offsetLeft = Math.round(App.videoCenterX * -scale) + "px";
+            var offsetTop = Math.round(App.videoCenterY * -scale) + "px";
+            var offsetLeft2 = Math.round(App.videoCenterX * -scale2) + "px";
+            var offsetTop2 = Math.round(App.videoCenterY * -scale2) + "px";
+            $('#imageHolder').html(canvasImage);
+            $('#yourPic').html($(canvasImage).clone());
+            canvasImage.width = 533;
+            $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
+            $('#yourPic img').animate({"left" : offsetLeft2, "top" : offsetTop2, width: 533 * scale2}, 1200);
+            $('#imageHolder').fadeIn(500);
             if($(this).hasClass('inactive') === false)
             {
               StacheTrack.Views.AppView.createMolder(); 
