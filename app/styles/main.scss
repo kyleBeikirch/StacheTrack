@@ -168,9 +168,17 @@ body {
     background: url(../images/camCorner.png) no-repeat center center;
 }
 
-
+#canvasHolder{
+    width: 294px;
+    height: 374px;
+    overflow: hidden;
+    padding: 12px;
+    padding-left: 92px;
+}
 #output {
     -webkit-transform: scale(-1, 1);
+    position: relative;
+    left: -80px;
 }
 
 #imageHolder {

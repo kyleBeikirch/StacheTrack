@@ -7,10 +7,10 @@ var App = {
             setTimeout(function() {
                 App.video.play();
                 StacheTrack.Views.AppView.addWebCam();
-                App.canvas.width = App.video.videoWidth;
-                App.canvas.height = App.video.videoHeight;
-                App.backCanvas.width = App.video.videoWidth / 4;
-                App.backCanvas.height = App.video.videoHeight / 4;
+                App.canvas.width = 533;
+                App.canvas.height = 400;
+                App.backCanvas.width = 133;
+                App.backCanvas.height = 100;
                 App.backContext = App.backCanvas.getContext('2d');
             
                 var w = 300 / 4 * 0.8,
