@@ -277,12 +277,13 @@ body {
 
 #yourInfo
 {
-    display: none;
     margin: 0 auto;
     font-family:'ApexNew-Medium';
     text-align: left;
     position: relative;
     left: 250px;
+    display: none;
+    z-index: 50;
 }
 
 #yourPic
@@ -306,6 +307,33 @@ body {
 {
     font-size: 12px;
 }
+
+#playPause
+{
+    height: 60px;
+    width: 60px;
+    overflow: hidden;
+    background: url(../images/playPause.png) no-repeat;
+    cursor: pointer;
+    z-index: 20;
+}
+
+#playPause:hover
+{
+    background-position: 0 -60px;
+}
+
+#playPause.pause
+{
+    background-position: -60px 0;
+}
+
+#playPause.pause:hover
+{
+    background-position: -60px -60px;
+}
+
+
 
 @keyframes myfirst
 {
@@ -366,33 +394,33 @@ circle
 
 @font-face {
     font-family: 'ApexNew-Light';
-    src: url('ApexNew-Light.eot');
-    src: url('ApexNew-Light.eot?#iefix') format('embedded-opentype'),
-             url('ApexNew-Light.woff') format('woff'),
-             url('ApexNew-Light.ttf') format('truetype'),
-             url('ApexNew-Light.svg#ApexNew-Light') format('svg');
+    src: url('../fonts/ApexNew-Light.eot');
+    src: url('../fonts/ApexNew-Light.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/ApexNew-Light.woff') format('woff'),
+             url('../fonts/ApexNew-Light.ttf') format('truetype'),
+             url('../fonts/ApexNew-Light.svg#ApexNew-Light') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'ApexNew-Medium';
-    src: url('ApexNew-Medium.eot');
-    src: url('ApexNew-Medium.eot?#iefix') format('embedded-opentype'),
-             url('ApexNew-Medium.woff') format('woff'),
-             url('ApexNew-Medium.ttf') format('truetype'),
-             url('ApexNew-Medium.svg#ApexNew-Medium') format('svg');
+    src: url('../fonts/ApexNew-Medium.eot');
+    src: url('../fonts/ApexNew-Medium.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/ApexNew-Medium.woff') format('woff'),
+             url('../fonts/ApexNew-Medium.ttf') format('truetype'),
+             url('../fonts/ApexNew-Medium.svg#ApexNew-Medium') format('svg');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'ApexNew-Thin';
-    src: url('ApexNew-Thin.eot');
-    src: url('ApexNew-Thin.eot?#iefix') format('embedded-opentype'),
-             url('ApexNew-Thin.woff') format('woff'),
-             url('ApexNew-Thin.ttf') format('truetype'),
-             url('ApexNew-Thin.svg#ApexNew-Thin') format('svg');
+    src: url('../fonts/ApexNew-Thin.eot');
+    src: url('../fonts/ApexNew-Thin.eot?#iefix') format('embedded-opentype'),
+             url('../fonts/ApexNew-Thin.woff') format('woff'),
+             url('../fonts/ApexNew-Thin.ttf') format('truetype'),
+             url('../fonts/$(ApexNew-Thin.svg#ApexNew-Thin') format('svg');
     font-weight: normal;
     font-style: normal;
 }

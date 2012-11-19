@@ -273,8 +273,15 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     $('#acceptImage, #retakePic, #imageHolder, #adjust').fadeOut(400, function() 
     {
       $('#pictureViewer').css("background", "none");
-      $('#yourInfo').fadeIn(500);
+      $('#yourInfo').fadeIn(500, function() 
+      {
+        $('#playPause').click(function() 
+        {     
+          $('#playPause').toggleClass('pause');
+        });
+      });
     });
+    
   }
 
 });
