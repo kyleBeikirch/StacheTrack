@@ -213,7 +213,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   {
     var graphicsDiv=document.getElementById("mustacheWave");
     var gr = new jxGraphics(graphicsDiv);
-    var pen = new jxPen(new jxColor("red"),1);
+    var pen = new jxPen(new jxColor("#333"),1);
     var lineObject = new Array();
     var path = $('path')[0];
     var pathLength = Math.round(path.getTotalLength());
@@ -238,6 +238,13 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     }
 
     $('div#mustacheWave line').tsort({attr:'x1'});
+    $('line').each(function(indexInArray)
+    {
+        setTimeout( function () {
+          var currentLine = $('line')[indexInArray];
+          $(currentLine).attr( "stroke", "#ff007e");
+        }, indexInArray * 25);
+});
     $('path').fadeOut(500);
     $('circle').fadeOut(500);
   }
