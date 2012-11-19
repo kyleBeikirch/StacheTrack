@@ -38,7 +38,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   setMustacheImage: function ( canvasImage)
   {
     var scale = 7 - ((App.videoScale-100)/30);
-    var scale2 = scale / 15;
+    var scale2 = scale / 13;
     canvasImage.onload = function() 
     {
       
@@ -273,6 +273,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     $('#acceptImage, #retakePic, #imageHolder, #adjust').fadeOut(400, function() 
     {
       $('#pictureViewer').css("background", "none");
+      $('#yourInfo').fadeIn(500);
     });
   }
 

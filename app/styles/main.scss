@@ -73,6 +73,7 @@ body {
     font-size: 26px;
     height: 62px;
     padding-top: 50px;
+    font-family:'ApexNew-Light';
     background: url(../images/bigArrowRight.png) no-repeat center right;
 }
 
@@ -278,6 +279,10 @@ body {
 {
     display: none;
     margin: 0 auto;
+    font-family:'ApexNew-Medium';
+    text-align: left;
+    position: relative;
+    left: 250px;
 }
 
 #yourPic
@@ -287,6 +292,19 @@ body {
     overflow: hidden;
     -webkit-transform: scale(-1, 1);
     border: 1px solid #666;
+    float: left;
+    margin-right: 15px;
+}
+
+#yourSongName
+{
+    font-size: 18px;
+    color: #ff007e;
+}
+
+#yourName
+{
+    font-size: 12px;
 }
 
 @keyframes myfirst
@@ -336,12 +354,45 @@ circle
 }
 
 @font-face {
-        font-family: 'ApexNew-Book';
-        src: url('../fonts/font.eot');
-        src: url('../fonts/font.eot?#iefix') format('embedded-opentype'),
-            url('../fonts/font.woff') format('woff'),
-            url('../fonts/font.ttf') format('truetype'),
-            url('../fonts/font.svg#font') format('svg');
-        font-weight: normal;
-        font-style: normal;
+    font-family: 'ApexNew-Book';
+    src: url('../fonts/ApexNew-Book.eot');
+    src: url('../fonts/ApexNew-Book.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/ApexNew-Book.woff') format('woff'),
+        url('../fonts/ApexNew-Book.ttf') format('truetype'),
+        url('../fonts/ApexNew-Book.svg#ApexNew-Book') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ApexNew-Light';
+    src: url('ApexNew-Light.eot');
+    src: url('ApexNew-Light.eot?#iefix') format('embedded-opentype'),
+             url('ApexNew-Light.woff') format('woff'),
+             url('ApexNew-Light.ttf') format('truetype'),
+             url('ApexNew-Light.svg#ApexNew-Light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ApexNew-Medium';
+    src: url('ApexNew-Medium.eot');
+    src: url('ApexNew-Medium.eot?#iefix') format('embedded-opentype'),
+             url('ApexNew-Medium.woff') format('woff'),
+             url('ApexNew-Medium.ttf') format('truetype'),
+             url('ApexNew-Medium.svg#ApexNew-Medium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ApexNew-Thin';
+    src: url('ApexNew-Thin.eot');
+    src: url('ApexNew-Thin.eot?#iefix') format('embedded-opentype'),
+             url('ApexNew-Thin.woff') format('woff'),
+             url('ApexNew-Thin.ttf') format('truetype'),
+             url('ApexNew-Thin.svg#ApexNew-Thin') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
