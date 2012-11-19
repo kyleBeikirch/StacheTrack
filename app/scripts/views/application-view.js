@@ -73,15 +73,21 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             StacheTrack.Views.AppView.createMolder(); 
             $('#mustacheMolder').fadeIn(500);
             App.stream.stop();
-            //$('#retakePic').fadeOut(400);
-            $('#getPoints').fadeIn(400, function() 
+            
+            $('#redoPicture').fadeOut(400, function() 
             {
-                $('#getPoints').click(function()    
+                $('#adjust').fadeIn(400);
+                $('#getPoints').fadeIn(400, function() 
                 {
-                  StacheTrack.Views.AppView.analyzePoints();
-                  StacheTrack.Views.AppView.drawWave(); 
+                    $('#getPoints').click(function()    
+                    {
+                      StacheTrack.Views.AppView.analyzePoints();
+                      StacheTrack.Views.AppView.drawWave(); 
+                    });
                 });
             });
+
+            
           }
           
       });
