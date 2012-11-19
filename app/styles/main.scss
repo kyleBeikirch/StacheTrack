@@ -93,12 +93,19 @@ body {
     text-align: center;
     margin: 0 auto;
     margin-top: 100px;
+    overflow: hidden;
+}
+
+#pictureViewer.ready
+{
+    height: 410px;
+    width: 410px;
+    padding: 10px;
+    background: url(../images/camCorner.png) no-repeat center center;
 }
 
 
 #output {
-    background: white;
-    border: #999 1px solid;
     -webkit-transform: scale(-1, 1);
 }
 

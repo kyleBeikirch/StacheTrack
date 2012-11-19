@@ -8,6 +8,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         $('#loadStache').fadeOut(300, function()
         {
           App.init();
+          $('#pictureViewer').addClass('ready');
         });
         $('#starter').fadeOut(300);
         $('#amp').fadeOut(300);
@@ -43,7 +44,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       var offsetLeft = Math.round(App.videoCenterX * -scale) + "px";
       var offsetTop = Math.round(App.videoCenterY * -scale) + "px";
       $('#imageHolder').html(canvasImage);
-      canvasImage.width = 640;
+      canvasImage.width = 533;
       $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
       $('#imageHolder').fadeIn(500);
       $('#takePicture').fadeOut(400);
