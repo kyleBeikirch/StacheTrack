@@ -48,10 +48,13 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       canvasImage.width = 533;
       $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
       $('#imageHolder').fadeIn(500);
-      $('#takePicture').fadeOut(400);
+      $('#takePicture').fadeOut(400, function() 
+        {
+          $('#redoPicture').fadeIn(400);
+        });
       
 
-      $('#retakePic').click(function() 
+      $('#retakePic, #redoPicture').click(function() 
       {
         App.restart();
         $('#acceptImage, #retakePic, #imageHolder').fadeOut(400, function()

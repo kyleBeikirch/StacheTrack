@@ -101,6 +101,25 @@ body {
     background: url(../images/cameraOver.png) no-repeat bottom center;
 }
 
+#redoPicture
+{
+    display: none;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 120px;
+    cursor: pointer;
+    background: url(../images/redoOut.png) no-repeat bottom center;
+}
+
+#redoPicture:hover
+{
+    display: none;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 120px;
+    background: url(../images/redoOver.png) no-repeat bottom center;
+}
+
 #getPoints
 {
     width: 145px;
