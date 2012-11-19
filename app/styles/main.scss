@@ -143,18 +143,24 @@ body {
     display: none;
     margin: 0 auto;
     margin-top: 40px;
-    height: 120px;
+    width: 120px;
     cursor: pointer;
-    background: url(../images/redoOut.png) no-repeat bottom center;
+
 }
 
-#redoPicture:hover
+#redoPic
 {
-    display: none;
+    height: 106px;
+    width: 106px;
     margin: 0 auto;
-    margin-top: 40px;
-    height: 120px;
-    background: url(../images/redoOver.png) no-repeat bottom center;
+    overflow: hidden;
+    cursor: pointer;
+    background: url(../images/redoBoth.png) no-repeat;
+}
+
+#redoPic:hover
+{
+    background-position: 0 -106px;
 }
 
 #getPoints
