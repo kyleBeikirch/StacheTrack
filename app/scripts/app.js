@@ -55,7 +55,7 @@ var App = {
                 backCtx = App.backContext,
                 m = 4,
                 w = 4,
-                s = 1.4,
+                s = 1.1,
                 i,
                 comp;
             
@@ -82,7 +82,7 @@ var App = {
                 if(App.running === "last")
                 {
                     App.videoScale = (App.comp[i].height + w) * m;
-                    App.videoCenterX = ((App.comp[i].x - w / 2) * m) + 15;
+                    App.videoCenterX = ((App.comp[i].x - w / 2) * m) + 40;
                     App.videoCenterY = ((App.comp[i].y - w / 2) * m) + 75;
                 }
             }

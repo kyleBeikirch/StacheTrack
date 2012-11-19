@@ -56,6 +56,7 @@ body {
     margin: 0 auto;
     font-size: 20px;
     padding: 5px;
+    padding-top: 10px;
     background: url(../images/arrowSmall.png) no-repeat center right;
     font-family:'ApexNew-Book';
 
@@ -70,6 +71,8 @@ body {
 {
     float: right;
     font-size: 26px;
+    height: 62px;
+    padding-top: 50px;
     background: url(../images/bigArrowRight.png) no-repeat center right;
 }
 
@@ -89,14 +92,22 @@ body {
 {
     width: 650px;
     position: relative;
-    top: -220px;
+    top: -270px;
     margin: 0 auto;
+}
+
+#amp
+{
+    position: relative;
+    top: -70px;
 }
 
 #starter
 {
-    width: 170px;
+    width: 120px;
     z-index: 10;
+    position: relative;
+    top: -55px;
 }
 
 #takePicture
@@ -218,9 +229,9 @@ body {
 #mustacheMolder {
     overflow: hidden;
     position: relative;
-    top: -960px;
-    width: 640px;
-    height: 480px;
+    top: -386px;
+    width: 386px;
+    height: 386px;
     margin: 0 auto;
     cursor: pointer;
     z-index: 8;
