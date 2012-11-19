@@ -19,8 +19,8 @@ body {
 
 #logo{
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 20px;
+    left: 20px;
 }
 
 #footer {
@@ -34,18 +34,19 @@ body {
 
 .stacheButton
 {
-    border-top-style:solid;
-    border-top-width:1px;
-    border-top-color:#b5b4b2;
     cursor: pointer;
-    color: #191919;
-    font-weight: bold;
+    color: #ff007e;
     text-transform:uppercase;
-    padding-top: 4px;
-    height: 26px;
-    vertical-align: middle;
     margin: 0 auto;
-    @include gradient-horizontal( #b8b7b2, #898883)
+    font-size: 20px;
+    padding: 5px;
+    background: url(../images/arrowSmall.png) no-repeat center right;
+
+}
+
+.stacheButton.small
+{
+    font-size: 15px;
 
 }
 
@@ -146,9 +147,9 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
-    background: url(../images/homeStache.png) no-repeat center center;
+    background: url(../images/homeStache2.png) no-repeat center center;
     @include mask( "../images/stacheMask.png" , 0px, 0px, 1280px, 800px, no-repeat);
-    @include animation(myfirst 10s);
+    @include animation(myfirst 15s);
 
 }
 
