@@ -58,8 +58,21 @@ body {
 
 #takePicture
 {
-    width: 120px;
     display: none;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 120px;
+    cursor: pointer;
+    background: url(../images/cameraUp.png) no-repeat bottom center;
+}
+
+#takePicture:hover
+{
+    display: none;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 120px;
+    background: url(../images/cameraOver.png) no-repeat bottom center;
 }
 
 #getPoints
