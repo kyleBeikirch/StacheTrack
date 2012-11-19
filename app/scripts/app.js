@@ -36,13 +36,13 @@ var App = {
         App.drawToCanvas();
     },
     denied: function() {
-        App.info.innerHTML = 'Camera access denied!<br>Please reload and try again.';
+        console.log('Camera access denied!<br>Please reload and try again.');
     },
     error: function(e) {
         if (e) {
             console.error(e);
         }
-        App.info.innerHTML = 'Please go to about:flags in Google Chrome and enable the &quot;MediaStream&quot; flag.';
+        console.log('Please go to about:flags in Google Chrome and enable the &quot;MediaStream&quot; flag.');
     },
     drawToCanvas: function() {
 
