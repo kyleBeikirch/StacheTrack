@@ -255,9 +255,9 @@ body {
 #mustacheWave {
     overflow: hidden;
     position: relative;
-    top: -490px;
-    width: 640px;
-    height: 480px;
+    top: -790px;
+    width: 386px;
+    height: 386px;
     margin: 0 auto;
     cursor: pointer;
     z-index: 6;
@@ -272,6 +272,21 @@ body {
     @include mask( "../images/stacheMask.png" , 0px, 0px, 1280px, 800px, no-repeat);
     @include animation(myfirst 15s);
 
+}
+
+#yourInfo
+{
+    display: none;
+    margin: 0 auto;
+}
+
+#yourPic
+{
+    height: 130px;
+    width: 130px;
+    overflow: hidden;
+    -webkit-transform: scale(-1, 1);
+    border: 1px solid #666;
 }
 
 @keyframes myfirst

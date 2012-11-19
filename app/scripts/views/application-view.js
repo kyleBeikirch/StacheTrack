@@ -38,15 +38,20 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   setMustacheImage: function ( canvasImage)
   {
     var scale = 7 - ((App.videoScale-100)/30);
+    var scale2 = scale / 15;
     canvasImage.onload = function() 
     {
       
-
+      var canvasImage2 = canvasImage;
       var offsetLeft = Math.round(App.videoCenterX * -scale) + "px";
       var offsetTop = Math.round(App.videoCenterY * -scale) + "px";
+      var offsetLeft2 = Math.round(App.videoCenterX * -scale2) + "px";
+      var offsetTop2 = Math.round(App.videoCenterY * -scale2) + "px";
       $('#imageHolder').html(canvasImage);
+      $('#yourPic').html($(canvasImage).clone());
       canvasImage.width = 533;
       $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
+      $('#yourPic img').animate({"left" : offsetLeft2, "top" : offsetTop2, width: 533 * scale2}, 1200);
       $('#imageHolder').fadeIn(500);
       $('#takePicture').fadeOut(400, function() 
         {
@@ -68,26 +73,29 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       });
 
       $('#acceptImage').click(function() {
-          if($(this).hasClass('inactive') === false)
+          if($('#acceptImage').hasClass('getPoints') === false)
           {
-            StacheTrack.Views.AppView.createMolder(); 
-            $('#mustacheMolder').fadeIn(500);
-            App.stream.stop();
-            
-            $('#redoPicture').fadeOut(400, function() 
+            if($(this).hasClass('inactive') === false)
             {
-                $('#adjust').fadeIn(400);
-                $('#getPoints').click(function()    
-                {
-                  StacheTrack.Views.AppView.analyzePoints();
-                  StacheTrack.Views.AppView.drawWave();
-                  StacheTrack.Views.AppView.finalView();
+              StacheTrack.Views.AppView.createMolder(); 
+              $('#mustacheMolder').fadeIn(500);
+              App.stream.stop();
+              
+              $('#redoPicture').fadeOut(400, function() 
+              {
+                  $('#adjust').fadeIn(400);
+                  $('#acceptImage').addClass('getPoints');
+                  $('.getPoints').click(function()    
+                  {
+                    StacheTrack.Views.AppView.analyzePoints();
+                    StacheTrack.Views.AppView.drawWave();
+                    StacheTrack.Views.AppView.finalView();
 
-                });
-            });
-
-            
+                  });
+              });
+            }
           }
+        
           
       });
       
@@ -260,9 +268,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   },
   finalView: function()
   {
-    $('canvas, #imageHolder').fadeOut();
-    $('#pictureViewer').removeClass("ready");
-    $('#acceptImage, #retakePic').fadeOut(400);
+    $('canvas').fadeOut();
+    $('#acceptImage, #retakePic, #imageHolder, #adjust').fadeOut(400, function() 
+    {
+      $('#pictureViewer').css("background", "none");
+    });
   }
 
 });
