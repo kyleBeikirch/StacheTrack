@@ -19,8 +19,8 @@ body {
 
 #logo{
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 20px;
+    left: 20px;
 }
 
 #footer {
@@ -50,19 +50,46 @@ body {
 
 .stacheButton
 {
-    border-top-style:solid;
-    border-top-width:1px;
-    border-top-color:#b5b4b2;
     cursor: pointer;
-    color: #191919;
-    font-weight: bold;
+    color: #ff007e;
     text-transform:uppercase;
-    padding-top: 4px;
-    height: 26px;
-    vertical-align: middle;
     margin: 0 auto;
-    @include gradient-horizontal( #b8b7b2, #898883)
+    font-size: 20px;
+    padding: 5px;
+    background: url(../images/arrowSmall.png) no-repeat center right;
 
+}
+
+.stacheButton.small
+{
+    font-size: 15px;
+}
+
+.stacheButton.big
+{
+    float: right;
+    font-size: 26px;
+    background: url(../images/bigArrowRight.png) no-repeat center right;
+}
+
+.stacheButton.big.inactive
+{
+    background: url(../images/bigArrowRightGray.png) no-repeat center right;
+    color: #333;
+}
+
+.stacheButton.big.left
+{
+    float: left;
+    background: url(../images/bigArrowLeft.png) no-repeat center left;
+}
+
+#nextBack
+{
+    width: 650px;
+    position: relative;
+    top: -220px;
+    margin: 0 auto;
 }
 
 #starter
@@ -73,14 +100,64 @@ body {
 
 #takePicture
 {
-    width: 120px;
     display: none;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 120px;
+    cursor: pointer;
+    background: url(../images/cameraUp.png) no-repeat bottom center;
+}
+
+#takePicture:hover
+{
+    display: none;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 120px;
+    background: url(../images/cameraOver.png) no-repeat bottom center;
+}
+
+#redoPicture
+{
+    display: none;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 120px;
+    cursor: pointer;
+    background: url(../images/redoOut.png) no-repeat bottom center;
+}
+
+#redoPicture:hover
+{
+    display: none;
+    margin: 0 auto;
+    margin-top: 40px;
+    height: 120px;
+    background: url(../images/redoOver.png) no-repeat bottom center;
 }
 
 #getPoints
 {
     width: 145px;
     display: none;
+}
+
+#acceptImage
+{
+    width: 100px;
+    display: none;
+}
+
+#retakePic
+{
+    width: 100px;
+    display: none;
+}
+
+#adjust
+{
+    display: none;
+    margin: 0 auto;
 }
 
 #contentArea{
@@ -96,22 +173,36 @@ body {
     text-align: center;
     margin: 0 auto;
     margin-top: 100px;
+    overflow: hidden;
 }
 
+#pictureViewer.ready
+{
+    height: 410px;
+    width: 410px;
+    padding: 10px;
+    background: url(../images/camCorner.png) no-repeat center center;
+}
 
+#canvasHolder{
+    width: 294px;
+    height: 374px;
+    overflow: hidden;
+    padding: 12px;
+    padding-left: 92px;
+}
 #output {
-    background: white;
-    border: #999 1px solid;
     -webkit-transform: scale(-1, 1);
+    position: relative;
+    left: -80px;
 }
 
 #imageHolder {
     overflow: hidden;
-    position: relative;
-    width: 640px;
-    height: 480px;
-    top: -490px;
+    width: 386px;
+    height: 386px;
     margin: 0 auto;
+    margin-top: -386px;
     -webkit-transform: scale(-1, 1);
 
 }
@@ -137,7 +228,7 @@ body {
 #mustacheWave {
     overflow: hidden;
     position: relative;
-    top: -1450px;
+    top: -490px;
     width: 640px;
     height: 480px;
     margin: 0 auto;
@@ -150,9 +241,9 @@ body {
     width: 100%;
     height: 100%;
     position: relative;
-    background: url(../images/homeStache.png) no-repeat center center;
+    background: url(../images/homeStache2.png) no-repeat center center;
     @include mask( "../images/stacheMask.png" , 0px, 0px, 1280px, 800px, no-repeat);
-    @include animation(myfirst 10s);
+    @include animation(myfirst 15s);
 
 }
 

@@ -11,14 +11,24 @@
             <div id="pictureViewer">
                 <div id="loadStache">
                 </div>
-                <canvas id="output" style="display: none"></canvas>
+                <div id="canvasHolder">
+                    <canvas id="output" style="display: none"></canvas>
+                </div>
                 <div id="imageHolder">  </div>
                 <div id="mustacheMolder">  </div>
                 <div id="mustacheWave">  </div>
             </div>
-            <div class="stacheButton" id="starter"> Make my stache track </div>
-            <div class="stacheButton" id="takePicture" > Take Picture </div>
+            <div id="nextBack">
+                <div class="stacheButton big inactive" id="acceptImage" > Next </div>
+                <div class="stacheButton big left" id="retakePic" > Back </div>
+            </div>
+            <div id ="amp"><img src="images/amp.png"/></div>
+            <div class="stacheButton small" id="starter"> Get Started </div>
+            <div id="takePicture" > <img src="images/photoFace.png"/></div>
+            <div id="redoPicture" > <img src="images/tryAgain.png"/></div>
+            <div id="adjust" > <img src="images/adjustStache.png"/></div>
             <div class="stacheButton" id="getPoints" > Analyze Mustache </div>
+
             
         </div>
         <div id="footer">
@@ -36,6 +46,7 @@
         <script src="scripts/vendor/jquery.min.js"></script>
         <script src="scripts/vendor/lodash.min.js"></script>
         <script src="scripts/vendor/backbone-min.js"></script>
+        <script src="scripts/vendor/jquery.tinysort.min.js"></script> 
         <script src="scripts/vendor/jsDraw2DX.js"></script>
         <script src="scripts/main.js"></script>
         <script src="scripts/app.js"></script>

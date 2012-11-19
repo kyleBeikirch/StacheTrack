@@ -7,10 +7,10 @@ var App = {
             setTimeout(function() {
                 App.video.play();
                 StacheTrack.Views.AppView.addWebCam();
-                App.canvas.width = App.video.videoWidth;
-                App.canvas.height = App.video.videoHeight;
-                App.backCanvas.width = App.video.videoWidth / 4;
-                App.backCanvas.height = App.video.videoHeight / 4;
+                App.canvas.width = 533;
+                App.canvas.height = 400;
+                App.backCanvas.width = 133;
+                App.backCanvas.height = 100;
                 App.backContext = App.backCanvas.getContext('2d');
             
                 var w = 300 / 4 * 0.8,
@@ -30,14 +30,19 @@ var App = {
         var domURL = window.URL || window.webkitURL;
         App.video.src = domURL ? domURL.createObjectURL(stream) : stream;
     },
+    restart: function() {
+        App.running = "yes";
+        App.glasses.src = 'images/glasses.png';
+        App.drawToCanvas();
+    },
     denied: function() {
-        App.info.innerHTML = 'Camera access denied!<br>Please reload and try again.';
+        console.log('Camera access denied!<br>Please reload and try again.');
     },
     error: function(e) {
         if (e) {
             console.error(e);
         }
-        App.info.innerHTML = 'Please go to about:flags in Google Chrome and enable the &quot;MediaStream&quot; flag.';
+        console.log('Please go to about:flags in Google Chrome and enable the &quot;MediaStream&quot; flag.');
     },
     drawToCanvas: function() {
 
