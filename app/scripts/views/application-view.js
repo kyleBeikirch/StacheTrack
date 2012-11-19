@@ -82,7 +82,9 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
                     $('#getPoints').click(function()    
                     {
                       StacheTrack.Views.AppView.analyzePoints();
-                      StacheTrack.Views.AppView.drawWave(); 
+                      StacheTrack.Views.AppView.drawWave();
+                      StacheTrack.Views.AppView.finalView();
+
                     });
                 });
             });
@@ -258,6 +260,12 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 });
     $('path').fadeOut(500);
     $('circle').fadeOut(500);
+  },
+  finalView: function()
+  {
+    $('canvas, #imageHolder').fadeOut();
+    $('#pictureViewer').removeClass("ready");
+    $('#acceptImage, #retakePic').fadeOut(400);
   }
 
 });
