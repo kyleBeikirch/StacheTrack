@@ -77,15 +77,12 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             $('#redoPicture').fadeOut(400, function() 
             {
                 $('#adjust').fadeIn(400);
-                $('#getPoints').fadeIn(400, function() 
+                $('#getPoints').click(function()    
                 {
-                    $('#getPoints').click(function()    
-                    {
-                      StacheTrack.Views.AppView.analyzePoints();
-                      StacheTrack.Views.AppView.drawWave();
-                      StacheTrack.Views.AppView.finalView();
+                  StacheTrack.Views.AppView.analyzePoints();
+                  StacheTrack.Views.AppView.drawWave();
+                  StacheTrack.Views.AppView.finalView();
 
-                    });
                 });
             });
 
@@ -125,7 +122,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       }
 
       //Predefined curve points
-      var curvePoints = [new jxPoint(68, 287), new jxPoint(164, 205), new jxPoint(286, 184), new jxPoint(379, 188), new jxPoint(473, 208), new jxPoint(551, 292), new jxPoint(456, 260), new jxPoint(378, 245), new jxPoint(288, 241), new jxPoint(172, 255)];
+      var curvePoints = [new jxPoint(31, 231), new jxPoint(82, 177), new jxPoint(155, 152), new jxPoint(250, 155), new jxPoint(321, 182), new jxPoint(364, 234), new jxPoint(321, 226), new jxPoint(250, 213), new jxPoint(165, 212), new jxPoint(91, 225)];
 
       //Draw closed curve
       var curve = new jxClosedCurve(curvePoints, pen, brushBlack)

@@ -114,20 +114,29 @@ body {
 {
     display: none;
     margin: 0 auto;
-    margin-top: 40px;
-    height: 120px;
+    margin-top: 40px; 
+    width: 260px;
     cursor: pointer;
-    background: url(../images/cameraUp.png) no-repeat bottom center;
 }
 
-#takePicture:hover
+
+#cameraPic
 {
-    display: none;
+    height: 106px;
+    width: 106px;
     margin: 0 auto;
-    margin-top: 40px;
-    height: 120px;
-    background: url(../images/cameraOver.png) no-repeat bottom center;
+    overflow: hidden;
+    cursor: pointer;
+    background: url(../images/cameraBoth.png) no-repeat;
+    z-index: 20;
 }
+
+
+#cameraPic:hover
+{
+    background-position: 0 -106px;
+}
+
 
 #redoPicture
 {
