@@ -47,7 +47,27 @@ body {
 .stacheButton.small
 {
     font-size: 15px;
+}
 
+.stacheButton.big
+{
+    float: right;
+    font-size: 26px;
+    background: url(../images/bigArrowRight.png) no-repeat center right;
+}
+
+.stacheButton.big.left
+{
+    float: left;
+    background: url(../images/bigArrowLeft.png) no-repeat center left;
+}
+
+#nextBack
+{
+    width: 650px;
+    position: relative;
+    top: -220px;
+    margin: 0 auto;
 }
 
 #starter
