@@ -21,10 +21,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   {
     $(App.canvas).fadeIn(800);
     $('#takePicture').fadeIn(300);
-    
+    $('#acceptImage, #retakePic').fadeIn(400);
     $('#takePicture').click(function() 
     {
       StacheTrack.Views.AppView.findMustacheImage();
+      $('#acceptImage').removeClass('inactive');
     });
 
     
@@ -48,7 +49,6 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
       $('#imageHolder').fadeIn(500);
       $('#takePicture').fadeOut(400);
-      $('#acceptImage, #retakePic').fadeIn(400);
       
 
       $('#retakePic').click(function() 
@@ -66,10 +66,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
           StacheTrack.Views.AppView.createMolder(); 
           $('#mustacheMolder').fadeIn(500);
           App.stream.stop();
-          $('#retakePic').fadeOut(400);
-          $('#acceptImage').fadeOut(400, function() 
-          {
-            $('#getPoints').fadeIn(400, function() 
+          //$('#retakePic').fadeOut(400);
+          $('#getPoints').fadeIn(400, function() 
             {
               $('#getPoints').click(function()    
               {
@@ -78,7 +76,6 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
                 
               });
             });
-          });
       });
       
     }
