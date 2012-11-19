@@ -183,11 +183,10 @@ body {
 
 #imageHolder {
     overflow: hidden;
-    position: relative;
-    width: 640px;
-    height: 480px;
-    top: -490px;
+    width: 386px;
+    height: 386px;
     margin: 0 auto;
+    margin-top: -386px;
     -webkit-transform: scale(-1, 1);
 
 }
