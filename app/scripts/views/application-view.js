@@ -9,8 +9,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         {
           App.init();
         });
-
         $('#starter').fadeOut(300);
+        $('#amp').fadeOut(300);
         
         
     });
