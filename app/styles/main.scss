@@ -57,6 +57,7 @@ body {
     font-size: 20px;
     padding: 5px;
     background: url(../images/arrowSmall.png) no-repeat center right;
+    font-family:'ApexNew-Book';
 
 }
 
@@ -277,9 +278,6 @@ body {
 }
 
 
-    
-
-
 #fillClosed
 {
     z-index: 10;
@@ -294,4 +292,15 @@ path
 circle
 {
     cursor: pointer;
+}
+
+@font-face {
+        font-family: 'ApexNew-Book';
+        src: url('../fonts/font.eot');
+        src: url('../fonts/font.eot?#iefix') format('embedded-opentype'),
+            url('../fonts/font.woff') format('woff'),
+            url('../fonts/font.ttf') format('truetype'),
+            url('../fonts/font.svg#font') format('svg');
+        font-weight: normal;
+        font-style: normal;
 }
