@@ -121,10 +121,17 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
       if(App.deepLink === true)
       {
-        $('#mustacheWave').css('top', '-390px');
+        var offsetLeft2 = Math.round(App.videoCenterX * -scale2) + "px";
+        var offsetTop2 = Math.round(App.videoCenterY * -scale2) + "px";
+        $('#yourPic').html($(canvasImage).clone());
+        $('#yourPic img').css({"left" : offsetLeft2, "top" : offsetTop2, width: 533 * scale2});
+        $('#mustacheMolder').fadeIn(0);
+        $('#yourInfo').css('top', '-100px');
         StacheTrack.Views.AppView.analyzePoints();
         StacheTrack.Views.AppView.drawWave();
         StacheTrack.Views.AppView.finalView();
+        $('#startOver').hide();
+        $('#makeOwn').show();
       }
 
       $('#acceptImage').click(function() {
@@ -352,7 +359,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     $('#acceptImage, #retakePic, #imageHolder, #adjust').fadeOut(400, function() 
     {
       $('#pictureViewer').css("background", "none");
-      $('#yourInfo, #startOver').fadeIn(500);
+      $('#yourInfo').fadeIn(500);
+      if(App.deepLink !== true)
+      {
+        $('#startOver').fadeIn(500);
+      }
     });
 
     $('#startOver').click(function() 
