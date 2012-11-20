@@ -277,8 +277,13 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     $('#acceptImage, #retakePic, #imageHolder, #adjust').fadeOut(400, function() 
     {
       $('#pictureViewer').css("background", "none");
-      $('#yourInfo').fadeIn(500)
+      $('#yourInfo, #startOver').fadeIn(500);
     });
+
+    $('#startOver').click(function() 
+      {
+          App.init();
+      });
 
     $('#playPause').click(function() 
     {     
@@ -308,6 +313,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             var twitterLink = "https://twitter.com/intent/tweet?text=Share%20your%20mustache"
         });
     });
+
+
     $('#export').hover(
       function () {
         $('#shareBubble').fadeIn(700);
