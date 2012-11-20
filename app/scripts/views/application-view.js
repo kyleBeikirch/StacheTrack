@@ -308,7 +308,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             var twitterLink = "https://twitter.com/intent/tweet?text=Share%20your%20mustache"
         });
     });
-    $('#shareSong').hover(
+    $('#export').hover(
       function () {
         $('#shareBubble').fadeIn(700);
       }, 
