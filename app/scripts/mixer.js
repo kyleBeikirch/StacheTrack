@@ -197,7 +197,6 @@ var Mixer = {
   updateTimer: function()
   {
     var channels = Mixer.channels;
-    console.log('run');
     setTimeout(function()
     {
       StacheTrack.Views.AppView.playWave(channels.guitar.audio.currentTime/ channels.guitar.audio.duration);

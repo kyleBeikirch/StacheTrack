@@ -1,5 +1,6 @@
 StacheTrack.Views.applicationView = Backbone.View.extend({
   circles: undefined,
+  deepLinkPoints: [],
   initialize: function() {
     
     $("#starter").click(function() 
@@ -41,13 +42,27 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     {
         App.deepLink = true;
         $('#loadStache').fadeOut(0);
-        $.post("http://kylebeikirch.com/stacheTrack/getData.php?id=" + deepLinkID,
-        { 
+        // $.post("http://kylebeikirch.com/stacheTrack/getData.php?id=" + deepLinkID,
+        // { 
 
-        },
-        function(data){
-           console.log(data);
-        });
+        // },
+        // function(data){
+        //    console.log(data);
+        //    //var points
+        // });
+        setTimeout(function() 
+        {
+            var data = "31,231,82,177,155,152,250,155,321,182,364,234,321,226,250,213,165,212,91,225,$$../uploads/1353395908813.png";
+            var fields = data.split('$$');
+            var pointString = fields[0];
+            StacheTrack.Views.AppView.deepLinkPoints = pointString.split(',');
+            var url = fields[1];
+            var image = new Image();
+            image.src = url;
+            StacheTrack.Views.AppView.createMolder();
+            StacheTrack.Views.AppView.setMustacheImage( image );
+        }, 100);
+        
     }
     else
     {
@@ -83,7 +98,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       
       $('#takePicture').fadeOut(400, function() 
         {
-          $('#redoPicture').fadeIn(400);
+          if(App.deepLink !== true)
+          {
+            $('#redoPicture').fadeIn(400);
+          }
+          
         });
       
 
@@ -99,6 +118,14 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
           });
 
       });
+
+      if(App.deepLink === true)
+      {
+        $('#mustacheWave').css('top', '-390px');
+        StacheTrack.Views.AppView.analyzePoints();
+        StacheTrack.Views.AppView.drawWave();
+        StacheTrack.Views.AppView.finalView();
+      }
 
       $('#acceptImage').click(function() {
           if($('#acceptImage').hasClass('getPoints') === false)
@@ -126,6 +153,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
                   $('#acceptImage').addClass('getPoints');
                   $('.getPoints').click(function()    
                   {
+
                     StacheTrack.Views.AppView.analyzePoints();
                     StacheTrack.Views.AppView.drawWave();
                     StacheTrack.Views.AppView.finalView();
@@ -167,9 +195,18 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
           drag = false;
           activeCircle = null;
       }
-
+      var curvePoints;
       //Predefined curve points
-      var curvePoints = [new jxPoint(31, 231), new jxPoint(82, 177), new jxPoint(155, 152), new jxPoint(250, 155), new jxPoint(321, 182), new jxPoint(364, 234), new jxPoint(321, 226), new jxPoint(250, 213), new jxPoint(165, 212), new jxPoint(91, 225)];
+      if(App.deepLink === true)
+      {
+          var refPoints = StacheTrack.Views.AppView.deepLinkPoints;
+          curvePoints = [new jxPoint(refPoints[0], refPoints[1]), new jxPoint(refPoints[2], refPoints[3]), new jxPoint(refPoints[4], refPoints[5]), new jxPoint(refPoints[6], refPoints[7]), new jxPoint(refPoints[8], refPoints[9]), new jxPoint(refPoints[10], refPoints[11]), new jxPoint(refPoints[12], refPoints[13]), new jxPoint(refPoints[14], refPoints[15])];
+      }
+      else
+      {
+         curvePoints = [new jxPoint(31, 231), new jxPoint(82, 177), new jxPoint(155, 152), new jxPoint(250, 155), new jxPoint(321, 182), new jxPoint(364, 234), new jxPoint(165, 212), new jxPoint(91, 225)];
+      }
+     
 
       //Draw closed curve
       var curve = new jxClosedCurve(curvePoints, pen, brushBlack)
@@ -253,13 +290,13 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       minX = Math.min( minX, dots[i].center.x);
       
     }
-    var centerY = (dots[2].center.y + dots[8].center.y + dots[3].center.y + dots[7].center.y)/4;
-    var endsY = (dots[0].center.y + dots[5].center.y) / 2;
+    var centerY = (dots[2].center.y + dots[6].center.y)/2; 
+    var endsY = (dots[0].center.y + dots[4].center.y) / 2;
     var mustacheData = {};
     mustacheData.height = maxX - minX;
     mustacheData.width = maxY - minY;
     mustacheData.ratio = Math.round(mustacheData.width/mustacheData.height*1000)/1000;
-    mustacheData.thickness = -((dots[2].center.y - dots[8].center.y) + (dots[3].center.y - dots[7].center.y))/2;
+    mustacheData.thickness = -(dots[2].center.y - dots[6].center.y);
     mustacheData.shape = (centerY - endsY) / mustacheData.thickness;
 
     Mixer.init(mustacheData);
