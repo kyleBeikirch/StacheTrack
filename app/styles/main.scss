@@ -333,6 +333,14 @@ body {
     background-position: -60px -60px;
 }
 
+#timer, #downloadSong, #shareSong, #shareDivider{
+    float: left;
+    padding-top: 4px;
+    padding-right: 5px;
+}
+#timer{
+    padding-right: 10px;
+}
 
 
 @keyframes myfirst

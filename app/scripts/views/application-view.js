@@ -279,6 +279,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     $('#playPause').click(function() 
     {     
       $('#playPause').toggleClass('pause');
+      Mixer.togglePlayer();
     });
     
   }

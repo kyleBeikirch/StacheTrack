@@ -102,15 +102,33 @@ var Mixer = {
       channel.audio.play();
     });
     
-    Mixer.updateTimer(channels);
+    Mixer.updateTimer();
     
     Mixer.setVolumes( data );
 
 
   },
-  updateTimer: function(channels)
+  togglePlayer: function()
   {
-    
+      var channels = Mixer.channels;
+      if(channels.guitar.audio.paused === false)
+      {
+        // play all track
+        $.each(channels, function(key, channel){
+          channel.audio.pause();
+        });
+      }
+      else
+      {
+        $.each(channels, function(key, channel){
+          channel.audio.play();
+          Mixer.updateTimer();
+        });
+      }
+  },
+  updateTimer: function()
+  {
+    var channels = Mixer.channels;
     setTimeout(function()
     {
       if(channels.guitar.audio.paused === false)
