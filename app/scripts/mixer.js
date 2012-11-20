@@ -197,22 +197,19 @@ var Mixer = {
   updateTimer: function()
   {
     var channels = Mixer.channels;
+    console.log('run');
     setTimeout(function()
     {
-      if(channels.guitar.audio.paused === false)
+      StacheTrack.Views.AppView.playWave(channels.guitar.audio.currentTime/ channels.guitar.audio.duration);
+      var current = Mixer.checkSingle(Math.floor(channels.guitar.audio.currentTime));
+      var total = Mixer.checkSingle(Math.floor(channels.guitar.audio.duration));
+      $('#timer').html( "0:" + current + " | 0:" + total);
+
+      if(channels.guitar.audio.currentTime < channels.guitar.audio.duration || isNaN(channels.guitar.audio.duration) === true)
       {
-        StacheTrack.Views.AppView.playWave(channels.guitar.audio.currentTime/ channels.guitar.audio.duration);
-        var current = Mixer.checkSingle(Math.floor(channels.guitar.audio.currentTime));
-        var total = Mixer.checkSingle(Math.floor(channels.guitar.audio.duration));
-        Mixer.updateTimer(channels);
-        $('#timer').html( "0:" + current + " | 0:" + total);
-      }
-      else
-      {
-        Mixer.updateTimer(channels);
+        Mixer.updateTimer();
       }
 
-      
     }, 100);
 
   },
