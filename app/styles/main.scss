@@ -48,6 +48,22 @@ body {
     float: right;
 }
 
+#moLogo, #twitterCount, #fbCount, #gCount{
+    float: right;
+}
+
+#twitterCount, #fbCount, #gCount{
+    margin-top: 7px;
+}
+
+#fbCount, #gCount{
+    margin-right: 15px;
+}
+
+#twitterCount{
+    margin-right: -15px;
+}
+
 .stacheButton
 {
     cursor: pointer;
@@ -333,6 +349,10 @@ body {
     background-position: -60px -60px;
 }
 
+#export{
+    z-index: 25;
+}
+
 #timer, #downloadSong, #shareSong, #shareDivider{
     float: left;
     padding-top: 4px;
@@ -340,6 +360,28 @@ body {
 }
 #timer{
     padding-right: 10px;
+}
+
+#shareBubble
+{
+    width: 158px;
+    height:36px;
+    background: url(../images/shareBubble.png) no-repeat;
+    float: left;
+    position: relative;
+    left: -99px;
+    top: -25px;
+    z-index: 100;
+    display: none;
+    padding-top: 5px;
+    padding-left: 5px;
+
+}
+
+#fbShare, #twitterShare, #googleShare
+{
+    float: left;
+    cursor: pointer;
 }
 
 

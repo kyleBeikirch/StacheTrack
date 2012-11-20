@@ -34,9 +34,15 @@
                 <div id="playPause"></div>
                 <div id="timer"></div>
                 <div id="export">
-                    <div id="downloadSong">Download</div>
-                    <div id="shareDivider"> | </div>
                     <div id="shareSong">Share</div>
+                    <div id="shareBubble">
+                        <div id="fbShare"><img src="images/fbShare.png"/></div>
+                        <div id="googleShare"><img src="images/googleShare.png"/></div>
+                        <div id="tweetShare">
+                            <a href="https://twitter.com/intent/tweet?text=Share%20your%20mustache" class="twitter-hashtag-button" data-url="http://test.com">Tweet</a>
+                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -46,6 +52,24 @@
             <div id="footerContent">
                 <div id="footerContentRight">
                     <div id="moLogo"><a href="http://us.movember.com/" target="_blank"><img src="images/movemberLogo.png" /></a></div>
+                    <!-- Place this tag where you want the share button to render. -->
+                    <div id="gCount">
+                        <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://kylebeikirch.com/stacheTrack/"></div>
+                    </div>
+
+                    <!-- Place this tag after the last share tag. -->
+                    <script type="text/javascript">
+                      (function() {
+                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                        po.src = 'https://apis.google.com/js/plusone.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                      })();
+                    </script>
+                    <div id="twitterCount">
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Turn your movember mustache into a sweet track">Tweet</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                    </div>
+                    <div id="fbCount" class="fb-like" data-href="http://www.stachetrack.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
                  </div>
             </div>
         </div>
@@ -67,7 +91,14 @@
         <script src="scripts/collections/application-collection.js"></script>
         <script src="scripts/routes/application-router.js"></script>
         <!-- endbuild -->
-
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
  
         <script>
             var _gaq=[['_setAccount','UA-36271855-1'],['_setDomainName', 'stachetrack.com'], ['_setAllowLinker', true], ['_trackPageview']];
