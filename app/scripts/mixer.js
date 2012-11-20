@@ -31,18 +31,70 @@ var Mixer = {
     // audio data
     var rockGroup = [{
       id: 'drums',
-      source: 'audio/drums'
+      source: 'audio/sets/rock-drum'
     },
     {
       id: 'guitar',
-      source: 'audio/classy'
+      source: 'audio/sets/rock-lead-0'
     },
     {
       id: 'other',
-      source: 'audio/hillbilly'
+      source: 'audio/sets/rock-misc-0'
     }];
 
-    var funkGroup = [{
+    var industrialGroup = [{
+      id: 'drums',
+      source: 'audio/sets/industrial-drum'
+    },
+    {
+      id: 'guitar',
+      source: 'audio/sets/industrial-lead-0'
+    },
+    {
+      id: 'other',
+      source: 'audio/sets/industrial-misc-0'
+    }];
+
+    var jazzGroup = [{
+      id: 'drums',
+      source: 'audio/sets/jazz-drum'
+    },
+    {
+      id: 'guitar',
+      source: 'audio/sets/jazz-lead-0'
+    },
+    {
+      id: 'other',
+      source: 'audio/sets/jazz-misc-0'
+    }];
+
+    var modernGroup = [{
+      id: 'drums',
+      source: 'audio/sets/modern-drum'
+    },
+    {
+      id: 'guitar',
+      source: 'audio/sets/modern-lead-0'
+    },
+    {
+      id: 'other',
+      source: 'audio/sets/modern-misc-0'
+    }];
+
+    var tranceGroup = [{
+      id: 'drums',
+      source: 'audio/sets/trance-drum'
+    },
+    {
+      id: 'guitar',
+      source: 'audio/sets/trance-lead-0'
+    },
+    {
+      id: 'other',
+      source: 'audio/sets/trance-misc-0'
+    }];
+
+    var discoGroup = [{
       id: 'drums',
       source: 'audio/sets/disco-drum'
     },
