@@ -302,12 +302,9 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             src: App.imageDataURI
         },
         function(data){
-            if(data == "OK"){
-                alert("success");
-        }
-        else{
-            alert("fail");
-            }
+            var mustacheID = data;
+            var deepLink = "http://kylebeikirch.com/stacheTrack/?uid=" mustacheID;
+
         });
     });
     

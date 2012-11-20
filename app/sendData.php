@@ -17,6 +17,8 @@ mysql_connect('mysql50-58.wc1.dfw1.stabletransit.com',$user,$password);
 $points = $_GET["points"]; 
 $query = "INSERT INTO mustache VALUES ('', '$points', '$filename')";
 mysql_query($query);
+$id = mysql_insert_id();
+echo $id;
 mysql_close();
 
 
