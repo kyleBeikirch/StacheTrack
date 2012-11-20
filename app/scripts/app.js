@@ -103,8 +103,7 @@ var App = {
             image.src = App.imageData;
             StacheTrack.Views.AppView.setMustacheImage( image );
             App.running = "no";
-            var strDataURI = canvas.toDataURL();
-            App.imageDataURI = strDataURI.substr(22, strDataURI.length);
+            App.imageDataURI = canvas.toDataURL("image/png");
 
         }, 100);
         

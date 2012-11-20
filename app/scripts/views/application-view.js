@@ -288,10 +288,18 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
     $('#shareSong').click(function() 
     {
-        alert('clicked');
-        $.post("http://kylebeikirch.com/stacheTrack/sendData.php?points=5,27,54",
+        var dots = StacheTrack.Views.AppView.circles;
+        var pointString = ''
+        for(var i=0;i<dots.length;i++)   
+        {
+          pointString += (dots[i].center.x + "," + dots[i].center.y + ",");       
+        }
+
+        var d = new Date();
+        var n = d.getTime();
+        $.post("http://kylebeikirch.com/stacheTrack/sendData.php?points=" + pointString + "&time="+ n,
         { 
-            str: App.imageDataURI
+            src: App.imageDataURI
         },
         function(data){
             if(data == "OK"){

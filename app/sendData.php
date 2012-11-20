@@ -1,33 +1,23 @@
 <?
 
-$data = base64_decode($_POST["str"]);
+$src     = $_POST['src'];
+$src2     = substr($src, strpos($src, ",") + 1);
+$decoded = base64_decode($src2);
+$urlUploadImages = "../uploads/";
+$filename = $urlUploadImages . $_GET['time'] . '.png';   
+$fp = fopen($filename,'wb');
+fwrite($fp, $decoded);
+fclose($fp);
 
-$urlUploadImages = "/uploads/";
-$nameImage = "test.png";
+$user="664746_kyle";
+$password="beckham2579";
+$database="664746_wordpress";
+mysql_connect('mysql50-58.wc1.dfw1.stabletransit.com',$user,$password);
+@mysql_select_db($database) or die( "Unable to select database");
+$points = $_GET["points"]; 
+$query = "INSERT INTO mustache VALUES ('', '$points', '$filename')";
+mysql_query($query);
+mysql_close();
 
-$img = imagecreatefromstring($data);
-header('Content-type: image/png');
-
-if($img) {
-    imagepng($img, $urlUploadImages.$nameImage, 0);
-    imagedestroy($img);
-
-    // [database code]
-
-    echo "OK";
-    $user="664746_kyle";
-    $password="beckham2579";
-    $database="664746_wordpress";
-    mysql_connect('mysql50-58.wc1.dfw1.stabletransit.com',$user,$password);
-    @mysql_select_db($database) or die( "Unable to select database");
-    $points = $_GET["points"]; 
-    echo 'Hello ' . htmlspecialchars($_GET["points"]) . '!';
-    $query = "INSERT INTO mustache VALUES ('', '$points', 'http://testURL2.com')";
-    mysql_query($query);
-    mysql_close();
-}
-else {
-    echo 'error';
-}
 
 ?>
