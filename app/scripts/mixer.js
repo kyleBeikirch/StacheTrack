@@ -121,17 +121,33 @@ var Mixer = {
     }];
     
     var soundGroup = [];
-    if(data.shape > 1.3)
+    if(data.shape > 1.5)
     {
       soundGroup = acousticGroup;
     }
-    else if(data.shape < -1.3)
+    else if(data.shape > 1)
     {
       soundGroup = rockGroup;
     }
+    else if(data.shape > .5)
+    {
+      soundGroup = discoGroup;
+    }
+    else if(data.shape > 0)
+    {
+      soundGroup = tranceGroup;
+    }
+    else if(data.shape > -.5)
+    {
+      soundGroup = modernGroup;
+    }
+    else if(data.shape > -1)
+    {
+      soundGroup = industrialGroup;
+    }
     else
     {
-      soundGroup = funkGroup ;
+      soundGroup = jazzGroup ;
     }
 
     var mixerView = $('#mixer-view');
