@@ -101,8 +101,39 @@ var Mixer = {
       channel.audio.volume = 0;
       channel.audio.play();
     });
+    
+    Mixer.updateTimer(channels);
+    
     Mixer.setVolumes( data );
 
+
+  },
+  updateTimer: function(channels)
+  {
+    
+    setTimeout(function()
+    {
+      if(channels.guitar.audio.paused === false)
+      {
+        var current = Mixer.checkSingle(Math.floor(channels.guitar.audio.currentTime));
+        var total = Mixer.checkSingle(Math.floor(channels.guitar.audio.duration));
+        Mixer.updateTimer(channels);
+        $('#timer').html( "0:" + current + " | 0:" + total);
+      }
+      
+    }, 500);
+
+  },
+  checkSingle: function(num)
+  {
+    if(num < 10)
+      {
+        return "0" + num;
+      }
+      else
+      {
+        return num;
+      }
   },
   setVolumes: function( data) 
   {
