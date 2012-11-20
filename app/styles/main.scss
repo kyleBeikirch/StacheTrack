@@ -115,6 +115,7 @@ body {
 
 #amp
 {
+    display: none;
     position: relative;
     top: -70px;
 }
@@ -126,10 +127,12 @@ body {
     position: relative;
     top: -900px;
     display: none;
+    z-index: 30;
 }
 
 #starter
 {
+    display: none;
     width: 120px;
     z-index: 10;
     position: relative;
@@ -268,6 +271,7 @@ body {
         
 
 #mustacheMolder {
+    display:none;
     overflow: hidden;
     position: relative;
     top: -386px;

@@ -2,7 +2,6 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   circles: undefined,
   initialize: function() {
     
-    $('#mustacheMolder').fadeOut();
     $("#starter").click(function() 
     {
         $('#loadStache').fadeOut(300, function()
@@ -12,9 +11,37 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         });
         $('#starter').fadeOut(300);
         $('#amp').fadeOut(300);
-        
-        
+   
     });
+
+    function getParameterByName(name)
+    {
+      name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+      var regexS = "[\\?&]" + name + "=([^&#]*)";
+      var regex = new RegExp(regexS);
+      var results = regex.exec(window.location.search);
+      if(results == null)
+        return "";
+      else
+        return decodeURIComponent(results[1].replace(/\+/g, " "));
+    }
+
+    var quickStart = getParameterByName('quickStart');
+    if(quickStart === "true")
+    {
+      $('#loadStache').fadeOut(0, function()
+        {
+          App.init();
+          $('#pictureViewer').addClass('ready');
+        });
+        $('#starter').fadeOut();
+        $('#amp').fadeOut();
+    }
+
+    else
+    {
+      $('#amp, #starter').fadeIn(500);
+    }
 
   },
   addWebCam: function()
@@ -282,7 +309,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
     $('#startOver').click(function() 
       {
-          App.init();
+          window.location.href = window.location.pathname + "?quickStart=true";
       });
 
     $('#playPause').click(function() 
