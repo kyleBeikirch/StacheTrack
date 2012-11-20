@@ -289,7 +289,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     $('#shareSong').click(function() 
     {
         var dots = StacheTrack.Views.AppView.circles;
-        var pointString = ''
+        var pointString = '';
         for(var i=0;i<dots.length;i++)   
         {
           pointString += (dots[i].center.x + "," + dots[i].center.y + ",");       
@@ -303,8 +303,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         },
         function(data){
             var mustacheID = data;
-            var deepLink = "http://kylebeikirch.com/stacheTrack/?uid=" mustacheID;
-
+            var deepLink = "http://kylebeikirch.com/stacheTrack/?uid=" + mustacheID;
         });
     });
     
