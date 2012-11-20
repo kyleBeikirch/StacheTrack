@@ -133,13 +133,19 @@ var Mixer = {
     {
       if(channels.guitar.audio.paused === false)
       {
+        StacheTrack.Views.AppView.playWave(channels.guitar.audio.currentTime/ channels.guitar.audio.duration);
         var current = Mixer.checkSingle(Math.floor(channels.guitar.audio.currentTime));
         var total = Mixer.checkSingle(Math.floor(channels.guitar.audio.duration));
         Mixer.updateTimer(channels);
         $('#timer').html( "0:" + current + " | 0:" + total);
       }
+      else
+      {
+        Mixer.updateTimer(channels);
+      }
+
       
-    }, 500);
+    }, 100);
 
   },
   checkSingle: function(num)

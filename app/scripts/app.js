@@ -1,5 +1,7 @@
 
 var App = {
+    imageData: undefined,
+    imageDataURI: undefined,
     start: function(stream) {
         App.stream = stream;
         App.video.addEventListener('canplay', function() {
@@ -97,9 +99,12 @@ var App = {
         {
             var image = new Image();
             var canvas = App.canvas;
-            image.src = canvas.toDataURL("image/png");
+            App.imageData = canvas.toDataURL("image/png");
+            image.src = App.imageData;
             StacheTrack.Views.AppView.setMustacheImage( image );
             App.running = "no";
+            var strDataURI = canvas.toDataURL();
+            App.imageDataURI = strDataURI.substr(22, strDataURI.length);
 
         }, 100);
         

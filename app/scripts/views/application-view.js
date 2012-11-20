@@ -257,15 +257,19 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     }
 
     $('div#mustacheWave line').tsort({attr:'x1'});
-    $('line').each(function(indexInArray)
-    {
-        setTimeout( function () {
-          var currentLine = $('line')[indexInArray];
-          $(currentLine).attr( "stroke", "#ff007e");
-        }, indexInArray * 25);
-});
+    
     $('path').fadeOut(500);
     $('circle').fadeOut(500);
+  },
+  playWave: function(percent)
+  {
+      var lineLength = $('line').length;
+      var highlightedLines = Math.round(lineLength * percent);
+      for(var i =0; i <= highlightedLines; i++)
+      {
+        var currentLine = $('line')[i];
+        $(currentLine).attr( "stroke", "#ff007e");
+      }
   },
   finalView: function()
   {
@@ -280,6 +284,23 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     {     
       $('#playPause').toggleClass('pause');
       Mixer.togglePlayer();
+    });
+
+    $('#shareSong').click(function() 
+    {
+        alert('clicked');
+        $.post("http://kylebeikirch.com/stacheTrack/sendData.php?points=5,27,54",
+        { 
+            str: App.imageDataURI
+        },
+        function(data){
+            if(data == "OK"){
+                alert("success");
+        }
+        else{
+            alert("fail");
+            }
+        });
     });
     
   }
