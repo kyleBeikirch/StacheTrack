@@ -146,7 +146,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             $('#yourPic').html($(canvasImage).clone());
             canvasImage.width = 533;
             $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
-            $('#yourPic img').animate({"left" : offsetLeft2, "top" : offsetTop2, width: 533 * scale2}, 1200);
+            $('#yourPic img').css({"left" : offsetLeft2, "top" : offsetTop2, width: 533 * scale2});
             $('#imageHolder').fadeIn(500);
             if($(this).hasClass('inactive') === false)
             {
@@ -366,7 +366,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       }
     });
 
-    $('#startOver').click(function() 
+    $('#startOver, #makeOwn').click(function() 
       {
           window.location.href = window.location.pathname + "?quickStart=true";
       });
