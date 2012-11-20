@@ -2,6 +2,7 @@
 var App = {
     imageData: undefined,
     imageDataURI: undefined,
+    deepLink: false,
     start: function(stream) {
         App.stream = stream;
         App.video.addEventListener('canplay', function() {

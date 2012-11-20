@@ -27,6 +27,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     }
 
     var quickStart = getParameterByName('quickStart');
+    var deepLinkID = getParameterByName('uid');
+
     if(quickStart === "true")
     {
       $('#loadStache').fadeOut(0, function()
@@ -34,10 +36,19 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
           App.init();
           $('#pictureViewer').addClass('ready');
         });
-        $('#starter').fadeOut();
-        $('#amp').fadeOut();
     }
+    else if(deepLinkID !== "")
+    {
+        App.deepLink = true;
+        $('#loadStache').fadeOut(0);
+        $.post("http://kylebeikirch.com/stacheTrack/getData.php?id=" + deepLinkID,
+        { 
 
+        },
+        function(data){
+           console.log(data);
+        });
+    }
     else
     {
       $('#amp, #starter').fadeIn(500);
