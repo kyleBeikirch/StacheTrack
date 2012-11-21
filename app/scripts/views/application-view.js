@@ -16,6 +16,18 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
    
     });
 
+    $('#aboutLink').click(function() 
+    {
+        $('#whyPage').fadeIn(600);
+        $('#contentArea').fadeOut(600);
+    });
+
+    $('#closeAbout').click(function() 
+    {
+        $('#whyPage').fadeOut(600);
+        $('#contentArea').fadeIn(600);
+    });
+
     var el = $('input[type=text], textarea');
     el.focus(function(e) {
         if (e.target.value == e.target.defaultValue)
