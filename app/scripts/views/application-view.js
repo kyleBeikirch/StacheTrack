@@ -391,7 +391,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
     $('#startOver, #makeOwn').click(function() 
       {
-          window.location.href = window.location.pathname + "?quickStart=true";
+          window.location.href = window.location.pathname;
       });
 
     $('#playPause').click(function() 
