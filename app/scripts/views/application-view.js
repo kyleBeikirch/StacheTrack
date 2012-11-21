@@ -103,7 +103,6 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   setMustacheImage: function ( canvasImage)
   {
     var scale = 7 - ((App.videoScale-100)/30);
-    var scale2 = scale / 13;
     canvasImage.onload = function() 
     {
       
@@ -133,10 +132,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
       if(App.deepLink === true)
       {
-        var offsetLeft2 = Math.round(App.videoCenterX * -scale2) + "px";
-        var offsetTop2 = Math.round(App.videoCenterY * -scale2) + "px";
         $('#yourPic').html($(canvasImage).clone());
-        $('#yourPic img').css({"left" : offsetLeft2, "top" : offsetTop2, width: 533 * scale2});
+        $('#yourPic img').css({width: 172});
         $('#mustacheMolder').fadeIn(0);
         $('#yourInfo').css('top', '-100px');
         StacheTrack.Views.AppView.analyzePoints();
@@ -152,13 +149,13 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             var canvasImage2 = canvasImage;
             var offsetLeft = Math.round(App.videoCenterX * -scale) + "px";
             var offsetTop = Math.round(App.videoCenterY * -scale) + "px";
-            var offsetLeft2 = Math.round(App.videoCenterX * -scale2) + "px";
-            var offsetTop2 = Math.round(App.videoCenterY * -scale2) + "px";
             $('#imageHolder').html(canvasImage);
             $('#yourPic').html($(canvasImage).clone());
+            $('#formPic').html($(canvasImage).clone());
             canvasImage.width = 533;
             $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
-            $('#yourPic img').css({"left" : offsetLeft2, "top" : offsetTop2, width: 533 * scale2});
+            $('#yourPic img').css({ width: 172});
+            $('#formPic img').css({ width: 80}); 
             $('#imageHolder').fadeIn(500);
             if($(this).hasClass('inactive') === false)
             {

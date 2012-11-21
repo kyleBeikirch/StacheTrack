@@ -72,8 +72,8 @@ input{
     color: #999;
     background: #333;
     border: 0;
-    height: 27px;
-    width: 315px;
+    height: 26px;
+    width: 312px;
     margin: 3px;
     padding-left: 10px;
 }
@@ -349,6 +349,19 @@ input{
     border: 1px solid #666;
     float: left;
     margin-right: 15px;
+}
+
+#formPic
+{
+    height: 60px;
+    width: 60px;
+    overflow: hidden;
+    -webkit-transform: scale(-1, 1);
+    border: 1px solid #666;
+    float: left;
+    margin-right: -13px;
+    margin-top: 3px;
+    margin-left: 21px;
 }
 
 #yourSongName
