@@ -374,8 +374,24 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   {
     if(App.deepLink !== true)
     {
-          $('#yourSongName').html($('#trackField').val());
-          $('#yourName').html($('#nameField').val());
+          if($('#trackField').val() === "Enter your track name")
+          {
+              $('#yourSongName').html("Stache Track");
+          }
+          else
+          {
+            $('#yourSongName').html($('#trackField').val());
+          }
+          if($('#nameField').val() === "Enter your name")
+          {
+            $('#yourName').html("Unknown User");
+          }
+          else
+          {
+            $('#yourName').html($('#nameField').val());
+          }
+          
+          
     }
 
     $('canvas').fadeOut();
