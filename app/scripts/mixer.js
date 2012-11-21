@@ -166,15 +166,16 @@ var Mixer = {
 
    // play all track
     $.each(channels, function(key, channel){
-      channel.audio.volume = 0;
-      channel.audio.play();
+      channel.audio.volume = .25;
+    });
+
+    // manually looping cause the loop attrib is inaccurate
+    channels.guitar.el.bind('ended', function() {
+      $('#playPause').removeClass('pause');
     });
     
     Mixer.updateTimer();
     
-    Mixer.setVolumes( data );
-
-
   },
   togglePlayer: function()
   {
@@ -184,6 +185,7 @@ var Mixer = {
         // play all track
         $.each(channels, function(key, channel){
           channel.audio.pause();
+          $('#playPause').removeClass('pause');
         });
       }
       else
@@ -191,6 +193,7 @@ var Mixer = {
         $.each(channels, function(key, channel){
           channel.audio.play();
           Mixer.updateTimer();
+          $('#playPause').addClass('pause');
         });
       }
   },
@@ -223,11 +226,11 @@ var Mixer = {
         return num;
       }
   },
-  setVolumes: function( data) 
+  setVolumes: function( num) 
   {
 
     $.each(Mixer.channelsToRender, function(i, channel) {
-      channel.audio.volume = .25;
+      channel.audio.volume = num;
   
     });
   }

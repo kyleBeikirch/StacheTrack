@@ -53,6 +53,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     {
         App.deepLink = true;
         $('#loadStache').fadeOut(0);
+        $('hr').fadeOut(0);
         // $.post("http://kylebeikirch.com/stacheTrack/getData.php?id=" + deepLinkID,
         // { 
 
@@ -357,10 +358,16 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   {
       var lineLength = $('line').length;
       var highlightedLines = Math.round(lineLength * percent);
+
       for(var i =0; i <= highlightedLines; i++)
       {
         var currentLine = $('line')[i];
         $(currentLine).attr( "stroke", "#ff007e");
+      }
+      for(var j = lineLength; j > highlightedLines; j--)
+      {
+        var currentLine = $('line')[j];
+        $(currentLine).attr( "stroke", "#333");
       }
   },
   finalView: function()
@@ -386,7 +393,6 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
     $('#playPause').click(function() 
     {     
-      $('#playPause').toggleClass('pause');
       Mixer.togglePlayer();
     });
 
