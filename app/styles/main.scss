@@ -64,6 +64,20 @@ body {
     margin-right: -15px;
 }
 
+#nameForm{
+    display: none;
+}
+
+input{
+    color: #999;
+    background: #333;
+    border: 0;
+    height: 27px;
+    width: 315px;
+    margin: 3px;
+    padding-left: 10px;
+}
+
 .stacheButton
 {
     cursor: pointer;

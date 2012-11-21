@@ -10,5 +10,9 @@ $row = mysql_fetch_row($result);
 echo $row[1]; // the email value
 echo "$$";
 echo $row[2];
+echo "$$";
+echo $row[3];
+echo "$$";
+echo $row[4];
 mysql_close();
 ?>

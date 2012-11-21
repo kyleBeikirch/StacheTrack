@@ -15,6 +15,16 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
    
     });
 
+    var el = $('input[type=text], textarea');
+    el.focus(function(e) {
+        if (e.target.value == e.target.defaultValue)
+            e.target.value = '';
+    });
+    el.blur(function(e) {
+        if (e.target.value == '')
+            e.target.value = e.target.defaultValue;
+    });
+
     function getParameterByName(name)
     {
       name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
@@ -52,11 +62,13 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         // });
         setTimeout(function() 
         {
-            var data = "31,231,82,177,155,152,250,155,321,182,364,234,321,226,250,213,165,212,91,225,$$../uploads/1353395908813.png";
+            var data = "31,231,82,177,155,152,250,155,321,182,364,234,321,226,250,213,165,212,91,225,$$../uploads/1353395908813.png$$Super Track Name$$The User";
             var fields = data.split('$$');
             var pointString = fields[0];
             StacheTrack.Views.AppView.deepLinkPoints = pointString.split(',');
             var url = fields[1];
+            $('#yourSongName').html(fields[2]);
+            $('#yourName').html(fields[3]);
             var image = new Image();
             image.src = url;
             StacheTrack.Views.AppView.createMolder();
@@ -156,7 +168,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
               
               $('#redoPicture').fadeOut(400, function() 
               {
-                  $('#adjust').fadeIn(400);
+                  $('#adjust, #nameForm').fadeIn(400);
                   $('#acceptImage').addClass('getPoints');
                   $('.getPoints').click(function()    
                   {
@@ -355,8 +367,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   },
   finalView: function()
   {
+
+    $('#yourSongName').html($('#trackField').val());
+    $('#yourName').html($('#nameField').val());
     $('canvas').fadeOut();
-    $('#acceptImage, #retakePic, #imageHolder, #adjust').fadeOut(400, function() 
+    $('#acceptImage, #retakePic, #imageHolder, #adjust, #nameForm').fadeOut(400, function() 
     {
       $('#pictureViewer').css("background", "none");
       $('#yourInfo').fadeIn(500);
@@ -388,7 +403,10 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
         var d = new Date();
         var n = d.getTime();
-        $.post("http://kylebeikirch.com/stacheTrack/sendData.php?points=" + pointString + "&time="+ n,
+        var trackName = $('#trackField').val();
+        var userName = $('#nameField').val();
+        console.log(trackName, userName);
+        $.post("http://kylebeikirch.com/stacheTrack/sendData.php?points=" + pointString + "&track=" + trackName + "&user=" + userName + "&time="+ n,
         { 
             src: App.imageDataURI
         },
