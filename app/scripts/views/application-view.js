@@ -12,6 +12,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         });
         $('#starter').fadeOut(300);
         $('#amp').fadeOut(300);
+        $('hr').fadeOut(300);
    
     });
 
@@ -220,7 +221,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       }
       else
       {
-         curvePoints = [new jxPoint(31, 231), new jxPoint(82, 177), new jxPoint(155, 152), new jxPoint(250, 155), new jxPoint(321, 182), new jxPoint(364, 234), new jxPoint(165, 212), new jxPoint(91, 225)];
+         curvePoints = [new jxPoint(35, 265), new jxPoint(100, 190), new jxPoint(200, 170), new jxPoint(300, 190), new jxPoint(365, 265), new jxPoint(290, 235), new jxPoint(200, 230), new jxPoint(110, 235)];
       }
      
 
