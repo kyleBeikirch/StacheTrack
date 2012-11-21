@@ -58,7 +58,7 @@ var App = {
                 backCtx = App.backContext,
                 m = 4,
                 w = 4,
-                s = 1.1,
+                s = 1.5,
                 i,
                 comp;
             
@@ -81,7 +81,7 @@ var App = {
 
             for (i = App.comp.length; i--; ) {
                 
-                ctx.drawImage(App.glasses, (App.comp[i].x - w / 2) * m - 20, (App.comp[i].y - w / 2) * m - 45, (App.comp[i].width + w) * m * s, (App.comp[i].height + w) * m * s);
+                ctx.drawImage(App.glasses, (App.comp[i].x - w / 2- 10) * m, (App.comp[i].y - w / 2 - 12) * m, (App.comp[i].width + w) * m * s, (App.comp[i].height + w) * m * s);
                 if(App.running === "last")
                 {
                     App.videoScale = (App.comp[i].height + w) * m;
