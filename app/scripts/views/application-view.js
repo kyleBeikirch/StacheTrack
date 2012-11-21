@@ -372,9 +372,12 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   },
   finalView: function()
   {
+    if(App.deepLink !== true)
+    {
+          $('#yourSongName').html($('#trackField').val());
+          $('#yourName').html($('#nameField').val());
+    }
 
-    $('#yourSongName').html($('#trackField').val());
-    $('#yourName').html($('#nameField').val());
     $('canvas').fadeOut();
     $('#acceptImage, #retakePic, #imageHolder, #adjust, #nameForm').fadeOut(400, function() 
     {
