@@ -55,6 +55,20 @@ hr{
     float: right;
 }
 
+#footerContentLeft
+{
+    padding-left: 20px;
+    float: left;
+}
+
+#aboutLink{
+    position: absolute;
+    color: #999;
+    text-decoration: underline;
+    font-size: 10px;
+    margin-top: 10px;
+}
+
 #moLogo, #twitterCount, #fbCount, #gCount{
     float: right;
 }
