@@ -129,6 +129,18 @@ input{
     background: url(../images/arrowSmall.png) no-repeat center right;
     font-family:'ApexNew-Book';
 
+    /*Transition Parameters*/
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    -ms-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+
+}
+
+.stacheButton:hover
+{
+    background-position: 200px 0px;
 }
 
 .stacheButton.small
@@ -156,6 +168,13 @@ input{
 {
     float: left;
     background: url(../images/bigArrowLeft.png) no-repeat center left;
+}
+
+.stacheButton.big.left:hover
+{
+    float: left;
+    background: url(../images/bigArrowLeft.png) no-repeat center left;
+    background-position: -20px 50px;
 }
 
 #nextBack
