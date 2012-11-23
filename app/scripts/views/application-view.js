@@ -7,12 +7,36 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     {
         $('#loadStache').fadeOut(300, function()
         {
-          App.init();
+          if(App.running === false)
+          {
+            App.init();
+          }
+          else
+          {
+            StacheTrack.Views.AppView.addWebCam();
+          }
+          
           $('#pictureViewer').addClass('ready');
         });
         $('#starter').fadeOut(300);
         $('#amp').fadeOut(300);
         $('hr').fadeOut(300);
+
+        $('#retakePic').bind('click.startFromBegin', function() 
+        {
+         
+          $(App.canvas).fadeOut(500, function() {
+            $('#pictureViewer').removeClass('ready');
+            $('#loadStache').fadeIn(300);
+            $('#starter').fadeIn(300);
+            $('#amp').fadeIn(300);
+            $('hr').fadeIn(300);
+
+          });
+          $('#takePicture').fadeOut(300);
+          $('#acceptImage, #retakePic').fadeOut(400);
+
+        });
    
     });
 
@@ -131,7 +155,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         });
       
 
-      $('#retakePic, #redoPicture').click(function() 
+      $('#redoPicture').click(function() 
       {
         App.restart();
         $('#acceptImage').addClass('inactive');
@@ -143,6 +167,20 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
           });
 
       });
+
+      $('#retakePic').unbind('click.startFromBegin');
+      $('#retakePic').bind('click.retkePhoto', function() 
+        {
+          App.restart();
+          $('#acceptImage').addClass('inactive');
+          $('#redoPicture, #imageHolder').fadeOut(400, function()
+            {
+              $('#imageHolder').html('');
+              $('#takePicture').fadeIn(400);
+
+            });
+
+        });
 
       if(App.deepLink === true)
       {

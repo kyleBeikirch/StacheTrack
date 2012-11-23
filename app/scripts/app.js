@@ -78,7 +78,7 @@ var App = {
                 App.comp = comp;
             }
             
-
+            console.log(App.comp.length);
             for (i = App.comp.length; i--; ) {
                 
                 ctx.drawImage(App.glasses, (App.comp[i].x - w / 2- 10) * m, (App.comp[i].y - w / 2 - 12) * m, (App.comp[i].width + w) * m * s, (App.comp[i].height + w) * m * s);
@@ -116,9 +116,11 @@ App.videoCenterY = 0;
 App.running = "yes";
 App.glasses = new Image();
 App.glasses.src = 'images/glasses.png';
+App.running = false;
 
 App.init = function() {
     App.video = document.createElement('video');
+    console.log($('video'));
     App.backCanvas = document.createElement('canvas');
     App.canvas = document.querySelector('#output');
     $(App.canvas).fadeOut();
@@ -142,4 +144,5 @@ App.init = function() {
     
     App.video.loop = App.video.muted = true;
     App.video.load();
+    App.running = true;
 };
