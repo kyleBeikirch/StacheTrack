@@ -128,19 +128,22 @@ input{
     padding-top: 10px;
     background: url(../images/arrowSmall.png) no-repeat center right;
     font-family:'ApexNew-Book';
+    padding-right: 10px;
+    text-align: left;
+    width: 200px;
 
     /*Transition Parameters*/
-    -webkit-transition: all .5s ease-in-out;
-    -moz-transition: all .5s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-    -ms-transition: all .5s ease-in-out;
-    transition: all .5s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -ms-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
 
 }
 
 .stacheButton:hover
 {
-    background-position: 200px 0px;
+    width: 220px;
 }
 
 .stacheButton.small
@@ -167,6 +170,7 @@ input{
 .stacheButton.big.left
 {
     float: left;
+    text-align: right;
     background: url(../images/bigArrowLeft.png) no-repeat center left;
 }
 
@@ -174,7 +178,6 @@ input{
 {
     float: left;
     background: url(../images/bigArrowLeft.png) no-repeat center left;
-    background-position: -20px 50px;
 }
 
 #nextBack
@@ -216,10 +219,15 @@ input{
 #starter
 {
     display: none;
-    width: 120px;
+    width: 100px;
     z-index: 10;
     position: relative;
     top: -55px;
+}
+
+#starter:hover
+{
+    width: 120px;
 }
 
 #takePicture
@@ -281,17 +289,18 @@ input{
     display: none;
 }
 
-#acceptImage
+#acceptImage, #retakePic
 {
     width: 100px;
     display: none;
 }
 
-#retakePic
+#acceptImage:hover, #retakePic:hover
 {
-    width: 100px;
-    display: none;
+    width: 120px;
+    padding-right: 40px;
 }
+
 
 #adjust
 {
