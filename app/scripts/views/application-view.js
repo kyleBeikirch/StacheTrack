@@ -127,6 +127,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     $('#acceptImage, #retakePic').fadeIn(400);
     $('#takePicture').click(function() 
     {
+      $('#retakePic').unbind('click.startFromBegin');
       StacheTrack.Views.AppView.findMustacheImage();
       $('#acceptImage').removeClass('inactive');
     });
@@ -169,7 +170,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       });
 
       $('#retakePic').unbind('click.startFromBegin');
-      $('#retakePic').bind('click.retkePhoto', function() 
+      $('#retakePic').bind('click.retakePhoto', function() 
         {
           App.restart();
           $('#acceptImage').addClass('inactive');
@@ -177,7 +178,6 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             {
               $('#imageHolder').html('');
               $('#takePicture').fadeIn(400);
-
             });
 
         });
@@ -211,6 +211,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             $('#imageHolder').fadeIn(500);
             if($(this).hasClass('inactive') === false)
             {
+              $('#retakePic').unbind('click.retakePhoto');
+              $('#retakePic').addClass('inactive');
               StacheTrack.Views.AppView.createMolder(); 
               $('#mustacheMolder').fadeIn(500);
               App.stream.stop();

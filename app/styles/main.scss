@@ -161,7 +161,7 @@ input{
     background: url(../images/bigArrowRight.png) no-repeat center right;
 }
 
-.stacheButton.big.inactive
+.stacheButton.big.right.inactive
 {
     background: url(../images/bigArrowRightGray.png) no-repeat center right;
     color: #333;
@@ -174,11 +174,12 @@ input{
     background: url(../images/bigArrowLeft.png) no-repeat center left;
 }
 
-.stacheButton.big.left:hover
+.stacheButton.big.left.inactive
 {
-    float: left;
-    background: url(../images/bigArrowLeft.png) no-repeat center left;
+    background: url(../images/bigArrowLeftGray.png) no-repeat center left;
+    color: #333;
 }
+
 
 #nextBack
 {
@@ -298,7 +299,6 @@ input{
 #acceptImage:hover, #retakePic:hover
 {
     width: 120px;
-    padding-right: 40px;
 }
 
 
@@ -322,6 +322,7 @@ input{
     margin: 0 auto;
     margin-top: 100px;
     overflow: hidden;
+    z-index: -2;
 }
 
 #pictureViewer.ready
