@@ -5,7 +5,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     
     $("#starter").click(function() 
     {
-        _trackEvent('view', 'startApp');
+        _gaq.push(['_trackEvent', 'view', 'startApp']);
         $('#loadStache').fadeOut(300, function()
         {
           if(App.running === false)
@@ -43,7 +43,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
     $('#aboutLink').click(function() 
     {
-        _trackEvent('view', 'aboutPage');
+        _gaq.push(['_trackEvent', 'view', 'aboutPage']);
+
         $('#whyPage').fadeIn(600);
         $('#contentArea').fadeOut(600);
     });
@@ -89,7 +90,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     }
     else if(deepLinkID !== "")
     {
-        _trackEvent('view', 'fromDeepLink');
+        _gaq.push(['_trackEvent', 'view', 'fromDeepLink']);
+
         App.deepLink = true;
         $('#loadStache').fadeOut(0);
         $('hr').fadeOut(0);
@@ -125,7 +127,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   },
   addWebCam: function()
   {
-    _trackEvent('view', 'allowWebcam');
+    _gaq.push(['_trackEvent', 'view', 'allowWebcam']);
     $(App.canvas).fadeIn(800);
     $('#takePicture').fadeIn(300);
     $('#acceptImage, #retakePic').fadeIn(400);
@@ -141,7 +143,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   findMustacheImage: function() {
     $('#imageHolder').fadeOut(0);
     App.convertCanvasToImage();
-    _trackEvent('view', 'takePicture');
+    _gaq.push(['_trackEvent', 'view', 'takePicture']);
     
   },
   setMustacheImage: function ( canvasImage)
@@ -203,7 +205,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       $('#acceptImage').click(function() {
           if($('#acceptImage').hasClass('getPoints') === false)
           {
-            _trackEvent('view', 'acceptPicture');
+            _gaq.push(['_trackEvent', 'view', 'acceptPicture']);
             var canvasImage2 = canvasImage;
             var offsetLeft = Math.round(App.videoCenterX * -scale) + "px";
             var offsetTop = Math.round(App.videoCenterY * -scale) + "px";
@@ -365,8 +367,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     mustacheData.shape = (centerY - endsY) / mustacheData.thickness;
 
     Mixer.init(mustacheData);
-    _trackEvent('view', 'completeMustache');
-
+    _gaq.push(['_trackEvent', 'view', 'completeMustache']);
 
   },
   drawWave: function() 
@@ -460,7 +461,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
     $('#playPause').click(function() 
     {  
-      _trackEvent('view', 'playSong');   
+      _gaq.push(['_trackEvent', 'view', 'playSong']);  
       Mixer.togglePlayer();
     });
 
