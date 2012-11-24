@@ -95,17 +95,12 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         App.deepLink = true;
         $('#loadStache').fadeOut(0);
         $('hr').fadeOut(0);
-        // $.post("http://kylebeikirch.com/stacheTrack/getData.php?id=" + deepLinkID,
-        // { 
+        $.post("http://kylebeikirch.com/stacheTrack/getData.php?id=" + deepLinkID,
+        { 
 
-        // },
-        // function(data){
-        //    console.log(data);
-        //    //var points
-        // });
-        setTimeout(function() 
-        {
-            var data = "31,231,82,177,155,152,250,155,321,182,364,234,321,226,250,213,165,212,91,225,$$../uploads/1353395908813.png$$Super Track Name$$The User";
+        },
+        function(data){
+           var data = "31,231,82,177,155,152,250,155,321,182,364,234,321,226,250,213,165,212,91,225,$$../uploads/1353395908813.png$$Super Track Name$$The User";
             var fields = data.split('$$');
             var pointString = fields[0];
             StacheTrack.Views.AppView.deepLinkPoints = pointString.split(',');
@@ -116,8 +111,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             image.src = url;
             StacheTrack.Views.AppView.createMolder();
             StacheTrack.Views.AppView.setMustacheImage( image );
-        }, 100);
-        
+        });
     }
     else
     {
