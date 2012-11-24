@@ -2,6 +2,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   circles: undefined,
   deepLinkPoints: [],
   initialize: function() {
+
+     setTimeout(function() 
+      {
+        $('#loadStache').css('background-size', '1280px 800px');
+      }, 800);
     
     $("#starter").click(function() 
     {
@@ -117,6 +122,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     {
       $('#amp, #starter').fadeIn(500);
     }
+
 
   },
   addWebCam: function()
