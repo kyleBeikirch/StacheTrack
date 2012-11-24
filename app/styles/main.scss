@@ -153,7 +153,6 @@ input{
 
 .stacheButton.big
 {
-    float: right;
     font-size: 26px;
     height: 62px;
     padding-top: 50px;
@@ -161,7 +160,7 @@ input{
     background: url(../images/bigArrowRight.png) no-repeat center right;
 }
 
-.stacheButton.big.right.inactive
+.stacheButton.big.inactive
 {
     background: url(../images/bigArrowRightGray.png) no-repeat center right;
     color: #333;
@@ -169,7 +168,6 @@ input{
 
 .stacheButton.big.left
 {
-    float: left;
     text-align: right;
     background: url(../images/bigArrowLeft.png) no-repeat center left;
 }
@@ -187,6 +185,7 @@ input{
     position: relative;
     top: -270px;
     margin: 0 auto;
+    z-index: 200;
 }
 
 #amp
@@ -235,7 +234,7 @@ input{
 {
     display: none;
     margin: 0 auto;
-    margin-top: 40px; 
+    margin-top: -200px; 
     width: 260px;
     cursor: pointer;
 }
@@ -263,7 +262,7 @@ input{
 {
     display: none;
     margin: 0 auto;
-    margin-top: 40px;
+    margin-top: -200px;
     width: 120px;
     cursor: pointer;
 
@@ -301,11 +300,25 @@ input{
     width: 120px;
 }
 
+#acceptImage
+{
+    position: relative;
+    left: 300px;
+}
+
+#retakePic
+{
+    position: relative;
+    top: -117px;
+    left: -300px;
+}
+
 
 #adjust
 {
     display: none;
     margin: 0 auto;
+    margin-top: -200px;
 }
 
 #contentArea{
@@ -313,6 +326,7 @@ input{
     text-align: center;
     margin: 0 auto;
     position: relative;
+    z-index: 5;
 }
 
 #pictureViewer
@@ -430,6 +444,8 @@ input{
     margin-right: -13px;
     margin-top: 3px;
     margin-left: 21px;
+    position: relative;
+    left: 260px;
 }
 
 #yourSongName
