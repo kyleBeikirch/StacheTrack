@@ -52,17 +52,15 @@
                     <div id="shareSong">Share</div>
                     <div id="shareBubble">
                         <div id="fbShare">
-                            <fb:share-button class='meta'>
-                            </fb:share-button> 
+                            <div id="fbCount" class="fb-like" data-href="http://www.stachetrack.com/?uid=" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
                         </div>
 
                         <div id="googleShare">
-                            <!-- Place this tag where you want the share button to render. -->
-                            <div class="g-plus" data-action="share" data-annotation="none" data-href="www.stachetrack.com?uid="></div>
+                            <div class="g-plus" data-action="share" data-annotation="none" data-href="www.stachetrack.com?uid=" data-expandTo="bottom"></div>
                         </div>
 
                         <div id="tweetShare">
-                            <a href="https://twitter.com/intent/tweet?text=Turn%20your%20movember%20mustache%20into%20a%20sweet%20track" class="twitter-hashtag-button" data-url="http://stachetrack.com">Tweet</a>
+                            <a href="https://twitter.com/intent/tweet?text=Just%20turned%20my%20Movember%20'stache%20into%20a%20hair-raising%20track.%20Boom.%20Check%20it%20out." class="twitter-hashtag-button" data-url="http://stachetrack.com?uid=">Tweet</a>
                         </div>
                     </div>
                 </div>
@@ -83,18 +81,9 @@
                     <!-- Place this tag where you want the share button to render. -->
                     <div id="gCount">
                         <div class="g-plus" data-action="share" data-annotation="bubble" data-href="http://stachetrack.com"></div>
-
-                        <!-- Place this tag after the last +1 button tag. -->
-                        <script type="text/javascript">
-                          (function() {
-                            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-                            po.src = 'https://apis.google.com/js/plusone.js';
-                            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-                          })();
-                        </script>
                     </div>
                     <div id="twitterCount">
-                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Turn your movember mustache into a sweet track http://stachetrack.com">Tweet</a>
+                        <a href="https://twitter.com/share" class="twitter-share-button" data-text="Turn your Movember ‘stache into a hair-raising track with a stache-to-soundbyte converter. http://stachetrack.com">Tweet</a>
                         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
                     </div>
                     <div id="fbCount" class="fb-like" data-href="http://www.stachetrack.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
@@ -105,7 +94,8 @@
             <img src="images/aboutText.png">
             <div class="stacheButton big left" id="closeAbout" > Back </div>
         </div>
-        
+
+        <script type="text/javascript" src="https://apis.google.com/js/plusone.js"/>
         <script src="scripts/vendor/glasses/ccv.js"></script>
         <script src="scripts/vendor/glasses/face.js"></script>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.0/mustache.min.js"></script>
@@ -124,15 +114,16 @@
         <script src="scripts/routes/application-router.js"></script>
         <!-- endbuild -->
         <div id="fb-root"></div>
+
         <script>(function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
             js = d.createElement(s); js.id = id;
             js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
             fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
+            }(document, 'script', 'facebook-jssdk'));
+        </script>
 
- 
         <script>
             var _gaq=[['_setAccount','UA-36271855-1'],['_setDomainName', 'stachetrack.com'], ['_setAllowLinker', true], ['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
