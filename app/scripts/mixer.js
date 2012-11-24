@@ -5,6 +5,7 @@ var Mixer = {
   setup: function(audioFiles) {
     var that = this
     $.each(audioFiles, function(i, audioData){
+      audioData.randomTrack = Math.floor(Math.random()*audioData.numTracks) + 1;
       var channel= new Mixer.Channel(audioData);
       $('body').append(channel.render());
       that.channels[audioData.id] = channel;
@@ -16,7 +17,8 @@ var Mixer = {
   },
   Channel: function(audioData) {
       
-    var audioTmpl = '<audio id="mixer-channel-{{id}}" preload="auto"><source src="{{source}}.mp3" type="audio/mpeg"><source src="{{source}}.ogg" type="audio/ogg"></audio><br/>';
+    
+    var audioTmpl = '<audio id="mixer-channel-{{id}}" preload="auto"><source src="audio/{{source}}{{randomTrack}}.mp3" type="audio/mpeg"><source src="{{source}}.ogg" type="audio/ogg"></audio><br/>';
     
     this.data = audioData;
     
@@ -31,123 +33,124 @@ var Mixer = {
     // audio data
     var rockGroup = [{
       id: 'drums',
-      source: 'audio/sets/rock-drum'
+      source: 'rock_drums',
+      numTracks: 3
     },
     {
       id: 'guitar',
-      source: 'audio/sets/rock-lead-0'
+      source: 'rock_guitar',
+      numTracks: 4
     },
     {
-      id: 'other',
-      source: 'audio/sets/rock-misc-0'
+      id: 'bass',
+      source: 'rock_bass',
+      numTracks: 3
     }];
 
-    var industrialGroup = [{
+    var hardRockGroup = [{
       id: 'drums',
-      source: 'audio/sets/industrial-drum'
+      source: 'hrock_drums',
+      numTracks: 5
     },
     {
       id: 'guitar',
-      source: 'audio/sets/industrial-lead-0'
+      source: 'hrock_guitar',
+      numTracks: 4
     },
     {
-      id: 'other',
-      source: 'audio/sets/industrial-misc-0'
+      id: 'bass',
+      source: 'hrock_bass',
+      numTracks: 5
     }];
 
-    var jazzGroup = [{
+    var metalGroup = [{
       id: 'drums',
-      source: 'audio/sets/jazz-drum'
+      source: 'metal_drums',
+      numTracks: 3
     },
     {
       id: 'guitar',
-      source: 'audio/sets/jazz-lead-0'
+      source: 'metal_guitar',
+      numTracks: 5
     },
     {
-      id: 'other',
-      source: 'audio/sets/jazz-misc-0'
+      id: 'bass',
+      source: 'metal_bass',
+      numTracks: 3
     }];
 
-    var modernGroup = [{
+    var fusionGroup = [{
       id: 'drums',
-      source: 'audio/sets/modern-drum'
+      source: 'fusion_drums',
+      numTracks: 3
     },
     {
       id: 'guitar',
-      source: 'audio/sets/modern-lead-0'
+      source: 'fusion_guitar',
+      numTracks: 3
     },
     {
-      id: 'other',
-      source: 'audio/sets/modern-misc-0'
+      id: 'bass',
+      source: 'fusion_bass',
+      numTracks: 3
     }];
 
-    var tranceGroup = [{
+    var funkGroup = [{
       id: 'drums',
-      source: 'audio/sets/trance-drum'
+      source: 'funk_drums',
+      numTracks: 5
     },
     {
       id: 'guitar',
-      source: 'audio/sets/trance-lead-0'
+      source: 'funk_guitar',
+      numTracks: 6
     },
     {
-      id: 'other',
-      source: 'audio/sets/trance-misc-0'
-    }];
-
-    var discoGroup = [{
-      id: 'drums',
-      source: 'audio/sets/disco-drum'
-    },
-    {
-      id: 'guitar',
-      source: 'audio/sets/disco-lead-0'
-    },
-    {
-      id: 'other',
-      source: 'audio/sets/disco-misc-0'
+      id: 'bass',
+      source: 'funk_bass',
+      numTracks: 4
     }];
 
     var acousticGroup = [{
       id: 'drums',
-      source: 'audio/sets/acoustic-drum'
+      source: 'acoustic_drums',
+      numTracks: 3
     },
     {
       id: 'guitar',
-      source: 'audio/sets/acoustic-lead-0'
+      source: 'acoustic_guitar',
+      numTracks: 5
     },
     {
-      id: 'other',
-      source: 'audio/sets/acoustic-misc-0'
+      id: 'bass',
+      source: 'acoustic_bass',
+      numTracks: 3
     }];
     
     var soundGroup = [];
-    if(data.shape > 1.5)
+    if(data.shape > .9)
+    {
+      soundGroup = funkGroup;
+    }
+    else if(data.shape > .1)
+    {
+      soundGroup = fusionGroup;
+    }
+    else if(data.shape > -.4)
     {
       soundGroup = acousticGroup;
     }
-    else if(data.shape > 1)
+    else if(data.shape > -1.1)
     {
       soundGroup = rockGroup;
     }
-    else if(data.shape > .5)
+    else if(data.shape > -1.4)
     {
-      soundGroup = discoGroup;
-    }
-    else if(data.shape > 0)
-    {
-      soundGroup = tranceGroup;
-    }
-    else if(data.shape > -.5)
-    {
-      soundGroup = modernGroup;
-    }
-    else if(data.shape > -1)
-    {
-      soundGroup = industrialGroup;
+      soundGroup = hardRockGroup;
     }
     else
     {
-      soundGroup = jazzGroup ;
+      soundGroup = metalGroup;
     }
 
     var mixerView = $('#mixer-view');
