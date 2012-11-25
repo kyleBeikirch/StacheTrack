@@ -234,7 +234,6 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
                     StacheTrack.Views.AppView.analyzePoints();
                     StacheTrack.Views.AppView.drawWave();
-                    StacheTrack.Views.AppView.finalView();
 
                   });
               });
@@ -372,6 +371,13 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   },
   drawWave: function() 
   {
+    $('#analyzing').fadeIn(400);
+    $('canvas').fadeOut();
+    $('#acceptImage, #retakePic, #imageHolder, #adjust, #nameForm').fadeOut(400, function() 
+    {
+      $('#pictureViewer').css("background", "none");
+      
+    });
     var graphicsDiv=document.getElementById("mustacheWave");
     var gr = new jxGraphics(graphicsDiv);
     var pen = new jxPen(new jxColor("#333"),0);
@@ -415,9 +421,40 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         {
           delayedLoop();
         }
+        else
+        {
+          StacheTrack.Views.AppView.finalView();
+        }
       }, 8); 
-      
+    }
 
+    var phraseCount = 0;
+    var phraseLength = 5;
+    phraseLoop();
+    function phraseLoop ()
+    {
+      for( var i = 0; i < phraseLength; i++)
+      {
+        var currentPhrase = $('#analyzing img')[i];
+        if(i === phraseCount)
+        {
+          $(currentPhrase).css( "display", "block");
+        }
+        else
+        {
+          $(currentPhrase).css( "display", "none");
+        }
+      }
+
+      
+      phraseCount++;
+      if(phraseCount < phraseLength)
+      {
+        setTimeout(function() 
+        {
+          phraseLoop();
+        }, 1000);
+      } 
     }
        
     
@@ -464,16 +501,17 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
           
     }
 
-    $('canvas').fadeOut();
-    $('#acceptImage, #retakePic, #imageHolder, #adjust, #nameForm').fadeOut(400, function() 
+    $("#analyzing").fadeOut(400, function() 
     {
-      $('#pictureViewer').css("background", "none");
-      $('#yourInfo').fadeIn(500);
-      if(App.deepLink !== true)
-      {
-        $('#startOver').fadeIn(500);
-      }
+        if(App.deepLink !== true)
+        {
+          $('#startOver').fadeIn(500);
+        }
+        $('#yourInfo').fadeIn(500);
     });
+
+    
+      
 
     $('#startOver, #makeOwn').click(function() 
       {

@@ -396,12 +396,22 @@ input{
 #mustacheWave {
     overflow: hidden;
     position: relative;
-    top: -790px;
+    top: -820px;
     width: 386px;
     height: 386px;
     margin: 0 auto;
     cursor: pointer;
     z-index: 6;
+}
+
+#analyzing{
+    position: relative;
+    top: -820px;
+    display: none;
+}
+
+#analyzing img{
+    display: none;
 }
 
 
