@@ -156,6 +156,7 @@ var Mixer = {
     var mixerView = $('#mixer-view');
     var channels = Mixer.setup(soundGroup);
     var i = 0;
+    Mixer.lengthMod = data.width / 378;
     Mixer.channelsToRender = [];
     Mixer.channelsToRender.push(channels.guitar);
     if(data.thickness > 40)
@@ -203,14 +204,24 @@ var Mixer = {
   updateTimer: function()
   {
     var channels = Mixer.channels;
+    var adjustedDuration = channels.guitar.audio.duration * Mixer.lengthMod;
     setTimeout(function()
     {
-      StacheTrack.Views.AppView.playWave(channels.guitar.audio.currentTime/ channels.guitar.audio.duration);
+      StacheTrack.Views.AppView.playWave(channels.guitar.audio.currentTime/ adjustedDuration);
+      if(adjustedDuration - channels.guitar.audio.currentTime < 1)
+      {
+        var timeLeft = (adjustedDuration - channels.guitar.audio.currentTime) *.25;
+        Mixer.setVolumes(timeLeft);
+      }
+      else
+      {
+        Mixer.setVolumes(.25);
+      }
       var current = Mixer.checkSingle(Math.floor(channels.guitar.audio.currentTime));
-      var total = Mixer.checkSingle(Math.floor(channels.guitar.audio.duration));
+      var total = Mixer.checkSingle(Math.floor(adjustedDuration));
       $('#timer').html( "0:" + current + " | 0:" + total);
 
-      if(channels.guitar.audio.currentTime < channels.guitar.audio.duration || isNaN(channels.guitar.audio.duration) === true)
+      if(channels.guitar.audio.currentTime < adjustedDuration|| isNaN(adjustedDuration) === true)
       {
         Mixer.updateTimer();
       }
