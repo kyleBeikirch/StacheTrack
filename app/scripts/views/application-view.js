@@ -132,7 +132,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         App.deepLink = true;
         $('#loadStache').fadeOut(0);
         $('hr').fadeOut(0);
-        $.post("http://kylebeikirch.com/stacheTrack/getData.php?id=" + deepLinkID,
+        $.post("http://stachetrack.com/getData.php?id=" + deepLinkID,
         { 
 
         },
@@ -573,7 +573,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     var trackName = $('#trackField').val();
     var userName = $('#nameField').val();
     console.log(trackName, userName);
-    $.post("http://kylebeikirch.com/stacheTrack/sendData.php?points=" + pointString + "&track=" + trackName + "&user=" + userName + "&time="+ n,
+    $.post("http://stachetrack.com/sendData.php?points=" + pointString + "&track=" + trackName + "&user=" + userName + "&time="+ n,
     { 
         src: App.imageDataURI
     },
