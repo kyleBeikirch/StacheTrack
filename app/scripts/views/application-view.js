@@ -231,7 +231,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         $('#yourInfo').css('top', '-100px');
         StacheTrack.Views.AppView.analyzePoints();
         StacheTrack.Views.AppView.drawWave();
-        StacheTrack.Views.AppView.finalView();
+        //StacheTrack.Views.AppView.finalView();
         $('#startOver').hide();
         $('#makeOwn').show();
       }
@@ -408,7 +408,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   },
   drawWave: function() 
   {
-    $('#analyzing').fadeIn(400);
+    if(App.deepLink !== true)
+    {
+      $('#analyzing').fadeIn(400);
+    }
+    
     $('canvas').fadeOut();
     $('#acceptImage, #retakePic, #imageHolder, #adjust, #nameForm').fadeOut(400, function() 
     {
@@ -445,6 +449,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     $('div#mustacheWave line').attr( "stroke-width", "0");
 
     var lineLength = $('line').length;
+    var delayLength = 8;
+    if(App.deepLink === true)
+    {
+      delayLength = 0;
+    }
     var count = 0
     delayedLoop();
     function delayedLoop ()
@@ -462,7 +471,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         {
           StacheTrack.Views.AppView.finalView();
         }
-      }, 8); 
+      }, delayLength); 
     }
 
     var phraseCount = 0;
