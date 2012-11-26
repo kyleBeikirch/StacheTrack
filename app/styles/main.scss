@@ -239,7 +239,7 @@ input{
     margin: 0 auto;
     width: 200px;
     position: relative;
-    top: -900px;
+    top: -860px;
     display: none;
     z-index: 30;
 }
@@ -439,9 +439,10 @@ input{
     font-family:'ApexNew-Medium';
     text-align: left;
     position: relative;
-    left: 300px;
     display: none;
     z-index: 50;
+    top: -24px;
+    width: 350px;
 }
 
 
@@ -538,8 +539,8 @@ input{
     background: url(../images/shareBubble.png) no-repeat;
     float: left;
     position: relative;
-    left: -113px;
-    top: -25px;
+    left: 143px;
+    top: -58px;
     z-index: 100;
     display: none;
     padding-top: 5px;

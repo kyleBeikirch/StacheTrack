@@ -578,19 +578,13 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         src: App.imageDataURI
     },
     function(data){
-        var mustacheID = data;
-        var deepLink = "http://kylebeikirch.com/stacheTrack/?uid=" + mustacheID;
-        var fbLink = "https://www.facebook.com/dialog/feed?app_id=458358780877780&link=https://developers.facebook.com/docs/reference/dialogs/&picture=http://fbrell.com/f8.jpg&name=Facebook%20Dialogs&caption=Reference%20Documentation&description=Using%20Dialogs%20to%20interact%20with%20users.&redirect_uri=" + deepLink;
-        var twitterLink = "https://twitter.com/intent/tweet?text=Share%20your%20mustache"
+        var testData = [];
+        testData.UID = data;
+        var template = $('#shareTemplate').html();
+        var html = Mustache.to_html(template, testData);
+        $('#shareBubble').html(html);
     });
-    var testData = [];
-    testData.UID = 66;
-    var template = $('#shareTemplate').html();
-    var html = Mustache.to_html(template, testData);
-    $('#shareBubble').html(html);
-
-
-
+    
     $('#export').hover(
       function () {
         $('#shareBubble').fadeIn(700);
