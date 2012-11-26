@@ -1,11 +1,11 @@
 <?
-$user="664746_kyle";
-$password="beckham2579";
-$database="664746_wordpress";
-mysql_connect('mysql50-58.wc1.dfw1.stabletransit.com',$user,$password);
+$user="stacheTracks";
+$password="aKq@2012stache";
+$database="stacheTracks";
+mysql_connect('stacheTracks.db.10120714.hostedresource.com',$user,$password);
 @mysql_select_db($database) or die( "Unable to select database");
 $lookid = $_GET["id"]; 
-$result = mysql_query("SELECT *  FROM `mustache`  WHERE `id` = '$lookid'");
+$result = mysql_query("SELECT *  FROM `mustaches`  WHERE `id` = '$lookid'");
 $row = mysql_fetch_row($result);
 echo $row[1]; // the email value
 echo "$$";
