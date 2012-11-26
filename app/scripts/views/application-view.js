@@ -181,7 +181,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   },
   setMustacheImage: function ( canvasImage)
   {
-    var scale = 7 - ((App.videoScale-100)/30);
+    var scale = 5 - ((App.videoScale-100)/30);
     canvasImage.onload = function() 
     {
       

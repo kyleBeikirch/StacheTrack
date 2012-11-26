@@ -356,16 +356,17 @@ input{
 }
 
 #canvasHolder{
-    width: 294px;
+    width: 282px;
     height: 374px;
     overflow: hidden;
     padding: 12px;
     padding-left: 92px;
+    margin-left: 12px; 
 }
 #output {
     -webkit-transform: scale(-1, 1);
     position: relative;
-    left: -80px;
+    left: -147px;
 }
 
 #imageHolder {
