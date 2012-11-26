@@ -590,7 +590,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         $('#shareBubble').fadeIn(700);
       }, 
       function () {
-        //$('#shareBubble').fadeOut(400);
+        $('#shareBubble').fadeOut(400);
       }
     );
     
