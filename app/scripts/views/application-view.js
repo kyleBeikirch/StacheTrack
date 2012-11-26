@@ -578,12 +578,14 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       pointString += (dots[i].center.x + "," + dots[i].center.y + ",");       
     }
 
+    var songs = Mixer.songsPlayed.toString();
+    console.log(songs);
     var d = new Date();
     var n = d.getTime();
     var trackName = $('#yourSongName').html();
     var userName = $('#yourName').html();
     console.log(trackName, userName);
-    $.post("http://stachetrack.com/api/sendData.php?points=" + pointString + "&track=" + trackName + "&user=" + userName + "&time="+ n,
+    $.post("http://stachetrack.com/api/sendData.php?points=" + pointString + "&track=" + trackName + "&user=" + userName + "&time="+ n + "&songs=" + songs,
     { 
         src: App.imageDataURI
     },

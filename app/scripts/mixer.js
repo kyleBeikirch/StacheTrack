@@ -2,10 +2,12 @@ var Mixer = {
   channels: {},
   numChannels: 0,
   channelsToRender: undefined,
+  songsPlayed: [],
   setup: function(audioFiles) {
     var that = this
     $.each(audioFiles, function(i, audioData){
       audioData.randomTrack = Math.floor(Math.random()*audioData.numTracks) + 1;
+      Mixer.songsPlayed.push(audioData.randomTrack);
       var channel= new Mixer.Channel(audioData);
       $('body').append(channel.render());
       that.channels[audioData.id] = channel;
