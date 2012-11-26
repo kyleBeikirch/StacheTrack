@@ -85,7 +85,7 @@ var App = {
                 {
                     App.videoScale = (App.comp[i].height + w) * m;
                     App.videoCenterX = ((App.comp[i].x - w / 2) * m) + 15;
-                    App.videoCenterY = ((App.comp[i].y - w / 2) * m) + 75;
+                    App.videoCenterY = Math.min(((App.comp[i].y - w / 2) * m) + 75, 300);
                 }
             }
 
