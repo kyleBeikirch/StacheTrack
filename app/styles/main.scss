@@ -113,9 +113,10 @@ input{
     background: #333;
     border: 0;
     height: 26px;
-    width: 312px;
+    width: 307px;
     margin: 3px;
     padding-left: 10px;
+    float: left;
 }
 
 .stacheButton
@@ -325,7 +326,6 @@ input{
 {
     display: none;
     margin: 0 auto;
-    margin-top: -200px;
 }
 
 #contentArea{
@@ -462,9 +462,8 @@ input{
     float: left;
     margin-right: -13px;
     margin-top: 3px;
-    margin-left: 21px;
-    position: relative;
-    left: 260px;
+    margin-left: 86px;
+    margin-right: 5px;
 }
 
 #yourSongName
