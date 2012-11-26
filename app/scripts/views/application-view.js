@@ -7,6 +7,34 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       {
         $('#loadStache').css('background-size', '1280px 800px');
       }, 800);
+
+     $('.stacheButton').hover(
+      function () {
+
+        if(!$(this).hasClass('inactive'))
+        {
+          if($(this).hasClass('left'))
+          {
+            $(this).find('.arrow').css('padding-right', '17px');
+          }
+          else
+          {
+            $(this).find('.arrow').css('padding-left', '17px');
+          }
+        }
+        
+      }, 
+      function () {
+        if($(this).hasClass('left'))
+        {
+          $(this).find('.arrow').css('padding-right', '7px');
+        }
+        else
+        {
+          $(this).find('.arrow').css('padding-left', '7px');
+        }
+      }
+    );
     
     $("#starter").click(function() 
     {
@@ -136,6 +164,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       $('#retakePic').unbind('click.startFromBegin');
       StacheTrack.Views.AppView.findMustacheImage();
       $('#acceptImage').removeClass('inactive');
+      $('#acceptImage img').attr('src', 'images/bigArrowRight.png');
     });
 
     
@@ -167,6 +196,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       {
         App.restart();
         $('#acceptImage').addClass('inactive');
+        $('#acceptImage img').attr('src', 'images/bigArrowRightGray.png');
         $('#redoPicture, #imageHolder').fadeOut(400, function()
           {
             $('#imageHolder').html('');
@@ -181,6 +211,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         {
           App.restart();
           $('#acceptImage').addClass('inactive');
+          $('#acceptImage img').attr('src', 'images/bigArrowRightGray.png');
           $('#redoPicture, #imageHolder').fadeOut(400, function()
             {
               $('#imageHolder').html('');
@@ -221,6 +252,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             {
               $('#retakePic').unbind('click.retakePhoto');
               $('#retakePic').addClass('inactive');
+              $('#retakePic img').attr('src', 'images/bigArrowLeftGray.png');
               StacheTrack.Views.AppView.createMolder(); 
               $('#mustacheMolder').fadeIn(500);
               App.stream.stop();

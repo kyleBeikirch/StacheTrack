@@ -120,31 +120,46 @@ input{
 
 .stacheButton
 {
+    letter-spacing: 1px;
     cursor: pointer;
     color: #ff007e;
     text-transform:uppercase;
     margin: 0 auto;
     font-size: 20px;
-    padding: 5px;
-    padding-top: 10px;
-    background: url(../images/arrowSmall.png) no-repeat center right;
     font-family:'ApexNew-Book';
-    padding-right: 10px;
     text-align: left;
     width: 200px;
 
+}
+
+.buttonContent
+{
+    float: left;
+    padding-top: 5px;
+}
+
+.buttonContent.big
+{
+    padding-top: 23px;
+}
+
+
+.arrow
+{
     /*Transition Parameters*/
     -webkit-transition: all .4s ease-in-out;
     -moz-transition: all .4s ease-in-out;
     -o-transition: all .4s ease-in-out;
     -ms-transition: all .4s ease-in-out;
     transition: all .4s ease-in-out;
-
+    width: 20px;
+    padding-left: 7px;
+    float: left;
 }
 
-.stacheButton:hover
+.arrow.left
 {
-    width: 220px;
+    padding-right: 7px;
 }
 
 .stacheButton.small
@@ -156,26 +171,48 @@ input{
 {
     font-size: 26px;
     height: 62px;
-    padding-top: 50px;
     font-family:'ApexNew-Light';
-    background: url(../images/bigArrowRight.png) no-repeat center right;
+}
+
+#acceptImage, #retakePic
+{
+    display: none;
+    position: relative;
+    top: -242px;
+}
+
+#acceptImage
+{
+    float: right;
+    position: relative;
+    left: 9px;
+}
+
+#retakePic{
+    float: left;
+    position: relative;
+    left: 6px;
+    width: 200px;
+    text-align: right;
+}
+
+#retakePic > div{
+    float: right;
 }
 
 .stacheButton.big.inactive
 {
-    background: url(../images/bigArrowRightGray.png) no-repeat center right;
     color: #333;
+    cursor: pointer;
 }
 
 .stacheButton.big.left
 {
     text-align: right;
-    background: url(../images/bigArrowLeft.png) no-repeat center left;
 }
 
 .stacheButton.big.left.inactive
 {
-    background: url(../images/bigArrowLeftGray.png) no-repeat center left;
     color: #333;
 }
 
@@ -205,11 +242,6 @@ input{
     z-index: 30;
 }
 
-#startOver:hover
-{
-    width: 220px;
-}
-
 #makeOwn
 {
     float: none;
@@ -224,22 +256,17 @@ input{
 #starter
 {
     display: none;
-    width: 100px;
+    width: 150px;
     z-index: 10;
     position: relative;
     top: -55px;
 }
 
-#starter:hover
-{
-    width: 120px;
-}
 
 #takePicture
 {
     display: none;
     margin: 0 auto;
-    margin-top: -200px; 
     width: 260px;
     cursor: pointer;
 }
@@ -267,7 +294,6 @@ input{
 {
     display: none;
     margin: 0 auto;
-    margin-top: -200px;
     width: 120px;
     cursor: pointer;
 
@@ -292,30 +318,6 @@ input{
 {
     width: 145px;
     display: none;
-}
-
-#acceptImage, #retakePic
-{
-    width: 100px;
-    display: none;
-}
-
-#acceptImage:hover, #retakePic:hover
-{
-    width: 120px;
-}
-
-#acceptImage
-{
-    position: relative;
-    left: 300px;
-}
-
-#retakePic
-{
-    position: relative;
-    top: -117px;
-    left: -300px;
 }
 
 
