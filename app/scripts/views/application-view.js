@@ -247,6 +247,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             $('#yourPic').html($(canvasImage).clone());
             $('#formPic').html($(canvasImage).clone());
             canvasImage.width = 533;
+            offsetLeft = "-" + Math.max(-1 * parseInt(offsetLeft), canvasImage.width * -scale - 390) + "px";
+            offsetTop = "-" + Math.min(-1*parseInt(offsetTop), canvasImage.width * scale * .75 - 386) + "px";
             $(canvasImage).animate({"left" : offsetLeft, "top" : offsetTop, width: canvasImage.width * scale}, 1200);
             $('#yourPic img').css({ width: 172});
             $('#formPic img').css({ width: 80}); 
