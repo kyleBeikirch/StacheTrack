@@ -444,6 +444,7 @@ input{
     z-index: 50;
 }
 
+
 #yourPic
 {
     height: 130px;
@@ -453,6 +454,12 @@ input{
     border: 1px solid #666;
     float: left;
     margin-right: 15px;
+}
+
+#yourPic > img
+{
+    position: relative;
+    left: -25px;
 }
 
 #formPic
