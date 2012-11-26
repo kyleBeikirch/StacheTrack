@@ -147,11 +147,12 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             var image = new Image();
             image.src = url;
             StacheTrack.Views.AppView.createMolder();
+
             StacheTrack.Views.AppView.setMustacheImage( image );
         });
         // setTimeout(function()
         // {
-        //   var data = "35,265,100,190,200,170,300,190,365,265,290,235,200,230,110,235,$$../uploads/1353395908813.png$$Stache Track$$Unknown User$$3,1,1";
+        //   var data = "76,295,90,120,230,170,300,190,365,265,290,235,200,230,110,235,$$../uploads/1353395908813.png$$Stache Track$$Unknown User$$3,1,1";
         //   var fields = data.split('$$');
         //     var pointString = fields[0];
         //     StacheTrack.Views.AppView.deepLinkPoints = pointString.split(',');
@@ -160,9 +161,12 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         //     $('#yourName').html(fields[3]);
         //     Mixer.deepLinkSongs = fields[4].split(',');
         //     var image = new Image();
-        //     image.src = url;
         //     StacheTrack.Views.AppView.createMolder();
-        //     StacheTrack.Views.AppView.setMustacheImage( image );
+        //     setTimeout(function(){
+        //         image.src = url;
+        //         StacheTrack.Views.AppView.setMustacheImage( image );
+        //     }, 100);
+            
         // }, 100);
     }
     else
@@ -196,7 +200,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   },
   setMustacheImage: function ( canvasImage)
   {
-    var scale = 5 - ((App.videoScale-100)/30);
+    var scale = 6 - ((App.videoScale-100)/30);
     canvasImage.onload = function() 
     {
       
@@ -409,8 +413,9 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       minX = Math.min( minX, dots[i].center.x);
       
     }
-    var centerY = (dots[2].center.y + dots[6].center.y)/2; 
-    var endsY = (dots[0].center.y + dots[4].center.y) / 2;
+
+    var centerY = (parseInt(dots[2].center.y) + parseInt(dots[6].center.y))/2; 
+    var endsY = (parseInt(dots[0].center.y) + parseInt(dots[4].center.y)) / 2;
     var mustacheData = {};
     mustacheData.height = maxY - minY;
     mustacheData.width = maxX - minX;
@@ -595,18 +600,15 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     }
 
     var songs = Mixer.songsPlayed.toString();
-    console.log(songs);
     var d = new Date();
     var n = d.getTime();
     var trackName = $('#yourSongName').html();
     var userName = $('#yourName').html();
-    console.log(trackName, userName);
     $.post("http://stachetrack.com/api/sendData.php?points=" + pointString + "&track=" + trackName + "&user=" + userName + "&time="+ n + "&songs=" + songs,
     { 
         src: App.imageDataURI
     },
     function(data){
-        console.log(data);
         var testData = [];
         testData.UID = data;
         var template = $('#shareTemplate').html();
