@@ -208,9 +208,9 @@ var Mixer = {
     setTimeout(function()
     {
       StacheTrack.Views.AppView.playWave(channels.guitar.audio.currentTime/ adjustedDuration);
-      if(adjustedDuration - channels.guitar.audio.currentTime < 1)
+      if(adjustedDuration - channels.guitar.audio.currentTime < .5)
       {
-        var timeLeft = (adjustedDuration - channels.guitar.audio.currentTime) *.25;
+        var timeLeft = (adjustedDuration - channels.guitar.audio.currentTime) *.5;
         Mixer.setVolumes(timeLeft);
       }
       else
