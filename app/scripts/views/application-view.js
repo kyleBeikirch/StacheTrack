@@ -143,11 +143,27 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             var url = fields[1];
             $('#yourSongName').html(fields[2]);
             $('#yourName').html(fields[3]);
+            Mixer.deepLinkSongs = fields[4].split(',');
             var image = new Image();
             image.src = url;
             StacheTrack.Views.AppView.createMolder();
             StacheTrack.Views.AppView.setMustacheImage( image );
         });
+        // setTimeout(function()
+        // {
+        //   var data = "35,265,100,190,200,170,300,190,365,265,290,235,200,230,110,235,$$../uploads/1353395908813.png$$Stache Track$$Unknown User$$3,1,1";
+        //   var fields = data.split('$$');
+        //     var pointString = fields[0];
+        //     StacheTrack.Views.AppView.deepLinkPoints = pointString.split(',');
+        //     var url = fields[1];
+        //     $('#yourSongName').html(fields[2]);
+        //     $('#yourName').html(fields[3]);
+        //     Mixer.deepLinkSongs = fields[4].split(',');
+        //     var image = new Image();
+        //     image.src = url;
+        //     StacheTrack.Views.AppView.createMolder();
+        //     StacheTrack.Views.AppView.setMustacheImage( image );
+        // }, 100);
     }
     else
     {

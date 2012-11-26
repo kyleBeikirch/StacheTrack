@@ -3,10 +3,18 @@ var Mixer = {
   numChannels: 0,
   channelsToRender: undefined,
   songsPlayed: [],
+  deepLinkSongs: [],
   setup: function(audioFiles) {
     var that = this
     $.each(audioFiles, function(i, audioData){
-      audioData.randomTrack = Math.floor(Math.random()*audioData.numTracks) + 1;
+      if(App.deepLink !== true)
+      {
+        audioData.randomTrack = Math.floor(Math.random()*audioData.numTracks) + 1;
+      }
+      else
+      {
+        audioData.randomTrack = Mixer.deepLinkSongs[i];
+      }
       Mixer.songsPlayed.push(audioData.randomTrack);
       var channel= new Mixer.Channel(audioData);
       $('body').append(channel.render());
