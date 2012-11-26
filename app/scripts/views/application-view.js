@@ -132,12 +132,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         App.deepLink = true;
         $('#loadStache').fadeOut(0);
         $('hr').fadeOut(0);
-        $.post("http://stachetrack.com/getData.php?id=" + deepLinkID,
+        $.post("http://stachetrack.com/api/getData.php?id=" + deepLinkID,
         { 
 
         },
         function(data){
-           var data = "31,231,82,177,155,152,250,155,321,182,364,234,321,226,250,213,165,212,91,225,$$../uploads/1353395908813.png$$Super Track Name$$The User";
             var fields = data.split('$$');
             var pointString = fields[0];
             StacheTrack.Views.AppView.deepLinkPoints = pointString.split(',');
@@ -570,14 +569,15 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
     var d = new Date();
     var n = d.getTime();
-    var trackName = $('#trackField').val();
-    var userName = $('#nameField').val();
+    var trackName = $('#yourSongName').html();
+    var userName = $('#yourName').html();
     console.log(trackName, userName);
-    $.post("http://stachetrack.com/sendData.php?points=" + pointString + "&track=" + trackName + "&user=" + userName + "&time="+ n,
+    $.post("http://stachetrack.com/api/sendData.php?points=" + pointString + "&track=" + trackName + "&user=" + userName + "&time="+ n,
     { 
         src: App.imageDataURI
     },
     function(data){
+        console.log(data);
         var testData = [];
         testData.UID = data;
         var template = $('#shareTemplate').html();
