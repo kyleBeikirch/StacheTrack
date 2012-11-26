@@ -560,31 +560,35 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       Mixer.togglePlayer();
     });
 
-    $('#shareSong').click(function() 
-    {
-        var dots = StacheTrack.Views.AppView.circles;
-        var pointString = '';
-        for(var i=0;i<dots.length;i++)   
-        {
-          pointString += (dots[i].center.x + "," + dots[i].center.y + ",");       
-        }
 
-        var d = new Date();
-        var n = d.getTime();
-        var trackName = $('#trackField').val();
-        var userName = $('#nameField').val();
-        console.log(trackName, userName);
-        $.post("http://kylebeikirch.com/stacheTrack/sendData.php?points=" + pointString + "&track=" + trackName + "&user=" + userName + "&time="+ n,
-        { 
-            src: App.imageDataURI
-        },
-        function(data){
-            var mustacheID = data;
-            var deepLink = "http://kylebeikirch.com/stacheTrack/?uid=" + mustacheID;
-            var fbLink = "https://www.facebook.com/dialog/feed?app_id=458358780877780&link=https://developers.facebook.com/docs/reference/dialogs/&picture=http://fbrell.com/f8.jpg&name=Facebook%20Dialogs&caption=Reference%20Documentation&description=Using%20Dialogs%20to%20interact%20with%20users.&redirect_uri=" + deepLink;
-            var twitterLink = "https://twitter.com/intent/tweet?text=Share%20your%20mustache"
-        });
+    var dots = StacheTrack.Views.AppView.circles;
+    var pointString = '';
+    for(var i=0;i<dots.length;i++)   
+    {
+      pointString += (dots[i].center.x + "," + dots[i].center.y + ",");       
+    }
+
+    var d = new Date();
+    var n = d.getTime();
+    var trackName = $('#trackField').val();
+    var userName = $('#nameField').val();
+    console.log(trackName, userName);
+    $.post("http://kylebeikirch.com/stacheTrack/sendData.php?points=" + pointString + "&track=" + trackName + "&user=" + userName + "&time="+ n,
+    { 
+        src: App.imageDataURI
+    },
+    function(data){
+        var mustacheID = data;
+        var deepLink = "http://kylebeikirch.com/stacheTrack/?uid=" + mustacheID;
+        var fbLink = "https://www.facebook.com/dialog/feed?app_id=458358780877780&link=https://developers.facebook.com/docs/reference/dialogs/&picture=http://fbrell.com/f8.jpg&name=Facebook%20Dialogs&caption=Reference%20Documentation&description=Using%20Dialogs%20to%20interact%20with%20users.&redirect_uri=" + deepLink;
+        var twitterLink = "https://twitter.com/intent/tweet?text=Share%20your%20mustache"
     });
+    var testData = [];
+    testData.UID = 66;
+    var template = $('#shareTemplate').html();
+    var html = Mustache.to_html(template, testData);
+    $('#shareBubble').html(html);
+
 
 
     $('#export').hover(
@@ -592,7 +596,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         $('#shareBubble').fadeIn(700);
       }, 
       function () {
-        $('#shareBubble').fadeOut(400);
+        //$('#shareBubble').fadeOut(400);
       }
     );
     

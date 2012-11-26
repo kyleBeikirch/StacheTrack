@@ -80,17 +80,6 @@
                 <div id="export">
                     <div id="shareSong">Share</div>
                     <div id="shareBubble">
-                        <div id="fbShare">
-                            <div id="fbCount" class="fb-like" data-href="http://www.stachetrack.com/?uid=" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
-                        </div>
-
-                        <div id="googleShare">
-                            <div class="g-plus" data-action="share" data-annotation="none" data-href="www.stachetrack.com?uid=" data-expandTo="bottom"></div>
-                        </div>
-
-                        <div id="tweetShare">
-                            <a href="https://twitter.com/intent/tweet?text=Just%20turned%20my%20Movember%20'stache%20into%20a%20hair-raising%20track.%20Boom.%20Check%20it%20out." class="twitter-hashtag-button" data-url="http://stachetrack.com?uid=">Tweet</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -132,6 +121,21 @@
                 <div class="arrow big"><img src="images/bigArrowRight.png"></div>
             </div>
         </div>
+
+        <script id="shareTemplate" type="text/template">
+            <div id="fbShare">
+                <a href="https://www.facebook.com/dialog/feed? app_id=405595596178973& link=http://stachetrack.com/?uid={{UID}}& picture=http://stachetrack.com/images/fb1.jpg& name=Stache Track& caption=Movember& description=Just turned my Movember 'stache into a hair-raising track. Boom. Check it out. & redirect_uri=http://stachetrack.com/?uid={{UID}}" target="_blank"><img src="images/fbShare.png" /></a>
+            </div>
+
+            <div id="googleShare">
+                <div class="g-plus" data-action="share" data-annotation="none" data-href="www.stachetrack.com?uid={{UID}}" data-expandTo="bottom"></div>
+                <script type="text/javascript" src="https://apis.google.com/js/plusone.js?take2"/>
+            </div>
+
+            <div id="tweetShare">
+                <a href="http://twitter.com/home?status=Just turned my Movember 'stache into a hair-raising track. Boom. Check it out. http://stachetrack.com/?uid={{UID}}" title="Click to send this page to Twitter!" target="_blank"><img src="images/tweetShare.png" /></a>
+            </div>
+        </script>
 
         <script src="scripts/vendor/glasses/ccv.js"></script>
         <script src="scripts/vendor/glasses/face.js"></script>

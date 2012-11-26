@@ -538,7 +538,7 @@ input{
     background: url(../images/shareBubble.png) no-repeat;
     float: left;
     position: relative;
-    left: -120px;
+    left: -113px;
     top: -25px;
     z-index: 100;
     display: none;
@@ -554,11 +554,17 @@ input{
     padding-right: 10px;
 }
 
+#googleShare{
+    padding-right: 4px;
+}
+
+#twitterShare{
+    margin-left: -4px;
+}
+
 #fbShare{
-    padding-left: 1px;
-    margin-top: -7px;
-    padding-right: 0px;
-    margin-right: -5px;
+    margin-right: 2px;
+    padding-right: 1px;
 }
 
 
