@@ -14,5 +14,7 @@ echo "$$";
 echo $row[3];
 echo "$$";
 echo $row[4];
+echo "$$";
+echo $row[5];
 mysql_close();
 ?>
