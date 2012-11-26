@@ -165,12 +165,12 @@ var Mixer = {
     }
     if(data.thickness > 75)
     {
-      Mixer.channelsToRender.push(channels.other);
+      Mixer.channelsToRender.push(channels.bass);
     }
 
    // play all track
     $.each(channels, function(key, channel){
-      channel.audio.volume = .25;
+      channel.audio.volume = 0;
     });
 
     // manually looping cause the loop attrib is inaccurate
