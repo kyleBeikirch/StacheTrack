@@ -17,6 +17,10 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
           {
             $(this).find('.arrow').css('padding-right', '17px');
           }
+          else if($(this).hasClass('small'))
+          {
+            $(this).find('.arrow').css('padding-left', '13px');
+          }
           else
           {
             $(this).find('.arrow').css('padding-left', '17px');
