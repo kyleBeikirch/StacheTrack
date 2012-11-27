@@ -470,11 +470,13 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     $('div#mustacheWave line').attr( "stroke-width", "0");
 
     var lineLength = $('line').length;
-    var delayLength = 8;
+    var delayLength = 5;
+    var totalTime = lineLength * delayLength;
     if(App.deepLink === true)
     {
       delayLength = 0;
     }
+
     var count = 0
     delayedLoop();
     function delayedLoop ()
@@ -497,6 +499,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
     var phraseCount = 0;
     var phraseLength = 5;
+    var loopLength = totalTime / (phraseLength-2);
     phraseLoop();
     function phraseLoop ()
     {
@@ -520,7 +523,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         setTimeout(function() 
         {
           phraseLoop();
-        }, 1000);
+        }, loopLength);
       } 
     }
        
@@ -618,7 +621,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     
     $('#export').hover(
       function () {
-        $('#shareBubble').fadeIn(700);
+        $('#shareBubble').fadeIn(400);
       }, 
       function () {
         $('#shareBubble').fadeOut(400);
