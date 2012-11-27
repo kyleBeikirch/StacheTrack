@@ -287,7 +287,6 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         StacheTrack.Views.AppView.drawWave();
         //StacheTrack.Views.AppView.finalView();
         $('#startOver').hide();
-        $('#makeOwn').show();
       }
 
       $('#acceptImage').click(function() {
@@ -610,6 +609,10 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         if(App.deepLink !== true)
         {
           $('#startOver').fadeIn(500);
+        }
+        else
+        {
+          $('#makeOwn').fadeIn(500);
         }
         $('#yourInfo').fadeIn(500);
     });
