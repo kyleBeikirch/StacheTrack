@@ -171,7 +171,31 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     }
     else
     {
-      $('#amp, #starter').fadeIn(500);
+      
+      var nAgt = navigator.userAgent;
+      var fullVersion  = ''+parseFloat(navigator.appVersion); 
+      var majorVersion = parseInt(navigator.appVersion,10);
+      var nameOffset,verOffset,ix;
+
+      // In Chrome, the true version is after "Chrome" 
+      if ((verOffset=nAgt.indexOf("Chrome"))!=-1) 
+      {
+         fullVersion = nAgt.substring(verOffset+7);
+         majorVersion = parseInt(''+fullVersion,10);
+         if(majorVersion > 20)
+         {
+            $('#amp, #starter').fadeIn(500);
+         }
+         else
+         {
+          alert('not supported');
+         }
+      }
+
+      else
+      {
+        alert('not supported');
+      }
     }
 
 
