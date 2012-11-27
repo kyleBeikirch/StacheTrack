@@ -308,8 +308,8 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
       var graphicsDiv=document.getElementById("mustacheMolder");
       var gr = new jxGraphics(graphicsDiv);
-      var pen = new jxPen(new jxColor("black"), 2);
-      var brushBlack = new jxBrush(new jxColor('black'));
+      var pen = new jxPen(new jxColor("#ff007e"), 2);
+      var brushBlack = new jxBrush(new jxColor('#ff007e'));
 
 
       graphicsDiv.onmousemove = getMouseXY;
