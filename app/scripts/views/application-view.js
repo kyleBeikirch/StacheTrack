@@ -177,28 +177,38 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
       var majorVersion = parseInt(navigator.appVersion,10);
       var nameOffset,verOffset,ix;
 
-      // In Chrome, the true version is after "Chrome" 
-      if ((verOffset=nAgt.indexOf("Chrome"))!=-1) 
+      setTimeout(function()
       {
-         fullVersion = nAgt.substring(verOffset+7);
-         majorVersion = parseInt(''+fullVersion,10);
-         if(majorVersion > 20)
-         {
-            $('#amp, #starter').fadeIn(500);
-         }
-         else
-         {
-          alert('not supported');
-         }
-      }
+        if ((verOffset=nAgt.indexOf("Chrome"))!=-1) 
+        {
+           fullVersion = nAgt.substring(verOffset+7);
+           majorVersion = parseInt(''+fullVersion,10);
+           if(majorVersion > 20)
+           {
+              $('#amp, #starter').fadeIn(500);
+           }
+           else
+           {
 
-      else
-      {
-        alert('not supported');
-      }
+            StacheTrack.Views.AppView.showChrome();
+           }
+        }
+
+        else
+        {
+          StacheTrack.Views.AppView.showChrome();
+        }
+
+      }, 10);
+     
     }
 
 
+  },
+  showChrome: function()
+  {
+      $('#chromePage').fadeIn(600);
+      $('#contentArea').fadeOut(600);
   },
   addWebCam: function()
   {
