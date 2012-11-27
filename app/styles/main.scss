@@ -27,8 +27,20 @@ hr{
     position: relative;
     top: 403px;
     border: 0;
-    border-top: 1px solid #ff007e;
-    opacity: .4;
+    clear: both; 
+      float: none; 
+      width: 100%; 
+      height: 1px;
+      border: none; 
+      background-image: -webkit-gradient(
+          linear,
+          left bottom,
+          right bottom,
+          color-stop(0, rgba(211,13,115, 1)),
+          color-stop(0.35, rgba(211,13,115, 0)),
+          color-stop(0.65, rgba(211,13,115, 0)),
+          color-stop(1, rgba(211,13,115, 1))
+      );
 }
 
 #footer {
