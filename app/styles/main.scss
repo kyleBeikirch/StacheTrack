@@ -275,11 +275,11 @@ input{
 
 #makeOwn
 {
-    float: none;
-    margin: 0 auto;
+    float: right;
     width: 300px;
+    padding-right: 20px;
     position: relative;
-    top: -878px;
+    top: -478px;
     display: none;
     z-index: 30;
 }
