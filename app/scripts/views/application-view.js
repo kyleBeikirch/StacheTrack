@@ -1,6 +1,7 @@
 StacheTrack.Views.applicationView = Backbone.View.extend({
   circles: undefined,
   deepLinkPoints: [],
+  molderCreated: false,
   initialize: function() {
 
      setTimeout(function() 
@@ -311,7 +312,11 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
               $('#retakePic').unbind('click.retakePhoto');
               $('#retakePic').addClass('inactive');
               $('#retakePic img').attr('src', 'images/bigArrowLeftGray.png');
-              StacheTrack.Views.AppView.createMolder(); 
+              if(StacheTrack.Views.AppView.molderCreated === false)
+              {
+                StacheTrack.Views.AppView.createMolder(); 
+              }
+              
               $('#mustacheMolder').fadeIn(500);
               App.stream.stop();
               
@@ -339,10 +344,12 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   createMolder: function()
   {
 
+      StacheTrack.Views.AppView.molderCreated = true;
       var graphicsDiv=document.getElementById("mustacheMolder");
       var gr = new jxGraphics(graphicsDiv);
       var pen = new jxPen(new jxColor("#ff007e"), 2);
       var brushBlack = new jxBrush(new jxColor('#ff007e'));
+      
 
 
       graphicsDiv.onmousemove = getMouseXY;
@@ -508,27 +515,33 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     if(App.deepLink === true)
     {
       delayLength = 0;
+      $('line').attr( "stroke-width", "1");
+    }
+    else
+    {
+      var count = 0
+      delayedLoop();
+      function delayedLoop ()
+      {
+        setTimeout(function() 
+        {
+          var currentLine = $('line')[count];
+          $(currentLine).attr( "stroke-width", "1");
+          count++;
+          if(count <= lineLength)
+          {
+            delayedLoop();
+          }
+          else
+          {
+            StacheTrack.Views.AppView.finalView();
+          }
+        }, delayLength); 
+      }
+
     }
 
-    var count = 0
-    delayedLoop();
-    function delayedLoop ()
-    {
-      setTimeout(function() 
-      {
-        var currentLine = $('line')[count];
-        $(currentLine).attr( "stroke-width", "1");
-        count++;
-        if(count <= lineLength)
-        {
-          delayedLoop();
-        }
-        else
-        {
-          StacheTrack.Views.AppView.finalView();
-        }
-      }, delayLength); 
-    }
+   
 
     var phraseCount = 0;
     var phraseLength = 5;
