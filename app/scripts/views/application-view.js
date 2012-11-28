@@ -2,6 +2,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
   circles: undefined,
   deepLinkPoints: [],
   molderCreated: false,
+  lastNextClicked: false,
   initialize: function() {
 
      setTimeout(function() 
@@ -63,17 +64,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
 
         $('#retakePic').bind('click.startFromBegin', function() 
         {
-         
-          $(App.canvas).fadeOut(500, function() {
-            $('#pictureViewer').removeClass('ready');
-            $('#loadStache').fadeIn(300);
-            $('#starter').fadeIn(300);
-            $('#amp').fadeIn(300);
-            $('hr').fadeIn(300);
-
-          });
-          $('#takePicture').fadeOut(300);
-          $('#acceptImage, #retakePic').fadeOut(400);
+          StacheTrack.Views.AppView.startFromBegin();
 
         });
    
@@ -233,6 +224,37 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     _gaq.push(['_trackEvent', 'view', 'takePicture']);
     
   },
+  startFromBegin: function() {
+
+    $(App.canvas).fadeOut(500, function() {
+      $('#pictureViewer').removeClass('ready');
+      $('#loadStache').fadeIn(300);
+      $('#starter').fadeIn(300);
+      $('#amp').fadeIn(300);
+      $('hr').fadeIn(300);
+
+    });
+    $('#takePicture').fadeOut(300);
+    $('#acceptImage, #retakePic').fadeOut(400);
+
+  },
+  redoPicture: function()
+  {
+    App.restart();
+    $('#acceptImage').addClass('inactive');
+    $('#acceptImage img').attr('src', 'images/bigArrowRightGray.png');
+    $('#redoPicture, #imageHolder').fadeOut(400, function()
+      {
+        $('#imageHolder').html('');
+        $('#takePicture').fadeIn(400);
+      });
+    $('#retakePic').bind('click.startFromBegin', function() 
+    {
+      StacheTrack.Views.AppView.startFromBegin();
+
+    });
+
+  },
   setMustacheImage: function ( canvasImage)
   {
     var scale = 6 - ((App.videoScale-100)/30);
@@ -250,32 +272,10 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         });
       
 
-      $('#redoPicture').click(function() 
-      {
-        App.restart();
-        $('#acceptImage').addClass('inactive');
-        $('#acceptImage img').attr('src', 'images/bigArrowRightGray.png');
-        $('#redoPicture, #imageHolder').fadeOut(400, function()
-          {
-            $('#imageHolder').html('');
-            $('#takePicture').fadeIn(400);
-
-          });
-
-      });
-
       $('#retakePic').unbind('click.startFromBegin');
       $('#retakePic').bind('click.retakePhoto', function() 
         {
-          App.restart();
-          $('#acceptImage').addClass('inactive');
-          $('#acceptImage img').attr('src', 'images/bigArrowRightGray.png');
-          $('#redoPicture, #imageHolder').fadeOut(400, function()
-            {
-              $('#imageHolder').html('');
-              $('#takePicture').fadeIn(400);
-            });
-
+          StacheTrack.Views.AppView.redoPicture();
         });
 
       if(App.deepLink === true)
@@ -310,15 +310,28 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
             if($(this).hasClass('inactive') === false)
             {
               $('#retakePic').unbind('click.retakePhoto');
-              $('#retakePic').addClass('inactive');
-              $('#retakePic img').attr('src', 'images/bigArrowLeftGray.png');
+              $('#retakePic').bind('click.backToPhoto', function()
+              {
+                  $('#mustacheMolder').fadeOut(500);
+                  $('#adjust, #nameForm').fadeOut(400, function() 
+                  {
+                    $('#redoPicture').fadeIn(400);
+                  });
+                  $('#acceptImage').removeClass('getPoints');
+                  $('#retakePic').bind('click.retakePhoto', function() 
+                  {
+                    StacheTrack.Views.AppView.redoPicture();
+                  });
+              });
+              //$('#retakePic').addClass('inactive');
+              //$('#retakePic img').attr('src', 'images/bigArrowLeftGray.png');
               if(StacheTrack.Views.AppView.molderCreated === false)
               {
                 StacheTrack.Views.AppView.createMolder(); 
               }
               
               $('#mustacheMolder').fadeIn(500);
-              App.stream.stop();
+              //App.stream.stop();
               
               $('#redoPicture').fadeOut(400, function() 
               {
@@ -326,9 +339,19 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
                   $('#acceptImage').addClass('getPoints');
                   $('.getPoints').click(function()    
                   {
+                    if($(this).hasClass('getPoints'))
+                    {
+                      App.stream.stop();
+                       if(StacheTrack.Views.AppView.lastNextClicked === false)
+                       {
+                        StacheTrack.Views.AppView.lastNextClicked = true;
+                        StacheTrack.Views.AppView.analyzePoints();
+                        StacheTrack.Views.AppView.drawWave();
 
-                    StacheTrack.Views.AppView.analyzePoints();
-                    StacheTrack.Views.AppView.drawWave();
+                       }
+                      
+                    }
+                    
 
                   });
               });
