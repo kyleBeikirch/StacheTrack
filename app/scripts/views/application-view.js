@@ -283,7 +283,6 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         $('#yourPic').html($(canvasImage).clone());
         $('#yourPic img').css({width: 172});
         $('#mustacheMolder').fadeIn(0);
-        $('#yourInfo').css('top', '-100px');
         StacheTrack.Views.AppView.analyzePoints();
         StacheTrack.Views.AppView.drawWave();
         //StacheTrack.Views.AppView.finalView();
@@ -539,6 +538,7 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
     {
       delayLength = 0;
       $('line').attr( "stroke-width", "1");
+      StacheTrack.Views.AppView.finalView();
     }
     else
     {
@@ -691,13 +691,25 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
         var html = Mustache.to_html(template, testData);
         $('#shareBubble').html(html);
     });
+
+    // var testData = [];
+    //     testData.UID = '54';
+    //     var template = $('#shareTemplate').html();
+    //     var html = Mustache.to_html(template, testData);
+    //     $('#shareBubble').html(html);
     
     $('#export').hover(
       function () {
         $('#shareBubble').fadeIn(400);
+        $('#makeOwn').css('top', '-397px');
+        $('#startOver').css('top', '-297px');
       }, 
       function () {
-        $('#shareBubble').fadeOut(400);
+        $('#shareBubble').fadeOut(400, function() {
+          $('#makeOwn').css('top', '-370px');
+          $('#startOver').css('top', '-270px');
+        });
+        
       }
     );
     

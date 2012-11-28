@@ -264,11 +264,11 @@ input{
 }
 #startOver
 {
-    float: none;
-    margin: 0 auto;
+    float: right;
+    padding-right: 20px;
     width: 200px;
     position: relative;
-    top: -860px;
+    top: -270px;
     display: none;
     z-index: 30;
 }
@@ -279,7 +279,7 @@ input{
     width: 300px;
     padding-right: 20px;
     position: relative;
-    top: -440px;
+    top: -370px;
     display: none;
     z-index: 30;
 }
@@ -469,11 +469,10 @@ input{
     margin: 0 auto;
     font-family:'ApexNew-Medium';
     text-align: left;
-    position: relative;
     display: none;
     z-index: 50;
-    top: -24px;
     width: 350px;
+    margin-top: -100px;
 }
 
 
@@ -568,10 +567,10 @@ input{
     width: 358px;
     height:36px;
     background: url(../images/shareBubble.png) no-repeat;
-    float: left;
     position: relative;
     left: 143px;
     top: -58px;
+    float: left;
     z-index: 100;
     display: none;
     padding-top: 5px;
