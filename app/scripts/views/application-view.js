@@ -271,6 +271,10 @@ StacheTrack.Views.applicationView = Backbone.View.extend({
           
         });
       
+      $('#redoPicture').click(function() 
+        {
+          StacheTrack.Views.AppView.redoPicture();
+        });
 
       $('#retakePic').unbind('click.startFromBegin');
       $('#retakePic').bind('click.retakePhoto', function() 
